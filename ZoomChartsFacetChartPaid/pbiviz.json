@@ -1,0 +1,32 @@
+{
+  "visual": {
+    "name": "ZoomChartsFacetChartPaid",
+    "displayName": "Advanced Drill-Down Column Chart by ZoomCharts",
+    "guid": "ZoomChartsFacetChartPaidE77E4ED357DC402ABA005987437CF500",
+    "visualClassName": "Visual2",
+    "version": "1.1.0",
+    "description": "ZoomCharts Column chart provides standard column chart functionality with additional interactive features. By default, it would show a subset of data to make the labels legible - rest of the data can be accessed either by scrolling the chart by clicking and dragging the mouse (or using touch on touch-enabled devices) to left or right. If you drag the mouse up or down, it will change the width of the columns showing more or less columns in the same viewport. If you have added multiple “Category” fields, drill-down will be enabled - clicking on any column will take you to the next level. Clicking “Zoom-out” button will take you back to the previous level. Clicking on any column acts as a filter for rest of your dashboard. On touch devices you can use multi-touch gestures such as pinch to change aggregation level quickly.",
+    "supportUrl": "https://zoomcharts.com/en/microsoft-power-bi-custom-visuals/",
+    "gitHubUrl": "https://github.com/zoomcharts/powerbi-paid"
+  },
+  "apiVersion": "1.9.0",
+  "author": {
+    "name": "ZoomCharts",
+    "email": "powerbi@zoomcharts.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "../powerbi-free/common/zoomcharts/zoomcharts.js",
+    "../powerbi-free/common/src/lodash.min.js",
+    "../powerbi-free/common/src/globalize.js",
+    "../powerbi-free/common/src/globalize.culture.en-US.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-dataviewutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-typeutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-svgutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-formattingutils.js"
+  ],
+  "style": "../powerbi-free/common/style/visual.less",
+  "capabilities": "capabilities.json"
+}

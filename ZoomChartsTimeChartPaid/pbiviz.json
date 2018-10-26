@@ -1,0 +1,34 @@
+{
+  "visual": {
+    "name": "ZoomChartsTimeChartPaid",
+    "displayName": "Advanced Drill-Down Column Chart for Time-based Data by ZoomCharts",
+    "guid": "ZoomChartsTimeChartPaidE77E4ED357DC402ABA005987437CF500",
+    "visualClassName": "Visual2",
+    "version": "1.1.0",
+    "description": "ZoomCharts Column chart for time-based data provides standard column chart functionality with additional interactive features. Drill-down is automatically setup by aggregating data in different time-units. Initial aggregation unit is determined automatically based on the data. You can click on any column to drill down to the necessary time span - such drill down will act as a time selector for rest of your dashboard. You can click and drag mouse right and left to pan the timeline or up and down to increase or decrease the visible time range - time aggregation unit will change automatically as well. On touch devices you can use multi-touch gestures such as pinch to zoom-in or zoom-out. In this visual data is aggregated by summing up data points when transitioning from days to months and years and so on.",
+    "supportUrl": "https://zoomcharts.com/en/microsoft-power-bi-custom-visuals/",
+    "gitHubUrl": "https://github.com/zoomcharts/powerbi-paid"
+  },
+  "apiVersion": "1.9.0",
+  "author": {
+    "name": "ZoomCharts",
+    "email": "powerbi@zoomcharts.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "../powerbi-free/common/zoomcharts/assets/moment.js",
+    "../powerbi-free/common/zoomcharts/assets/moment-tz.js",
+    "../powerbi-free/common/zoomcharts/zoomcharts.js",
+    "../powerbi-free/common/src/lodash.min.js",
+    "../powerbi-free/common/src/globalize.js",
+    "../powerbi-free/common/src/globalize.culture.en-US.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-dataviewutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-typeutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-svgutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-formattingutils.js"
+  ],
+  "style": "../powerbi-free/common/style/visual.less",
+  "capabilities": "capabilities.json"
+}

@@ -1,0 +1,25 @@
+Install
+
+To install the newly obtained advanced custom visual/-s from ZoomCharts:
+
+1. Login on your Zoomcharts account here - https://zoomcharts.com/en/login/
+2. From top menu navigate to "Power BI" section.
+3. Find the subscription you disire or just created and click download to get the advanced visuals .zip file.
+4. Extract the zip file.
+5. Start Power BI desktop or open the Power BI cloud version.
+6. Under the visualizations tab press on the three dots "import custom visual".
+7. Select "import from file" option.
+8. Find the extracted folder, that contains the custom visual.
+9. Select the visual.pbviz file and press open.
+10. Click on the custom visual icon will add visual to your report.
+
+
+Upgrade
+
+Additional steps, if you previously used free version of custom visuals in Power BI Reports:
+
+11. Select the chart that has the logo on top of it (free visual).
+12. Click on the icon of the advanced custom visual (icon with red background).
+13. Save the report.
+14. Open the report and the logo should have disappeared.
+

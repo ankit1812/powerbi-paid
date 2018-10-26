@@ -1,0 +1,3 @@
+[submodule "powerbi-free"]
+	path = powerbi-free
+	url = https://tfs.zoomcharts.com:8080/tfs/DefaultCollection/Web/_git/powerbi

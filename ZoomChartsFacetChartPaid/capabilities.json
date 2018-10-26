@@ -1,0 +1,2696 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Category",
+            "name": "Category",
+            "kind": "Grouping"
+        },
+        { "displayName": "Series 1", "name": "Values1", "kind": "Measure" },
+        { "displayName": "Series 2", "name": "Values2", "kind": "Measure" },
+        { "displayName": "Series 3", "name": "Values3", "kind": "Measure" },
+        { "displayName": "Series 4", "name": "Values4", "kind": "Measure" },
+        { "displayName": "Series 5", "name": "Values5", "kind": "Measure" },
+        { "displayName": "Series 6", "name": "Values6", "kind": "Measure" },
+        { "displayName": "Series 7", "name": "Values7", "kind": "Measure" },
+        { "displayName": "Series 8", "name": "Values8", "kind": "Measure" },
+        { "displayName": "Series 9", "name": "Values9", "kind": "Measure" },
+        { "displayName": "Series 10", "name": "Values10", "kind": "Measure" },
+        { "displayName": "Series 11", "name": "Values11", "kind": "Measure" },
+        { "displayName": "Series 12", "name": "Values12", "kind": "Measure" }
+    ],
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "Category": {
+                        "min": 0,
+                        "max": 12
+                    },
+                    "Values1": { "min": 0, "max": 1 },
+                    "Values2": { "min": 0, "max": 1 },
+                    "Values3": { "min": 0, "max": 1 },
+                    "Values4": { "min": 0, "max": 1 },
+                    "Values5": { "min": 0, "max": 1 },
+                    "Values6": { "min": 0, "max": 1 },
+                    "Values7": { "min": 0, "max": 1 },
+                    "Values8": { "min": 0, "max": 1 },
+                    "Values9": { "min": 0, "max": 1 },
+                    "Values10": { "min": 0, "max": 1 },
+                    "Values11": { "min": 0, "max": 1 },
+                    "Values12": { "min": 0, "max": 1 }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "Category"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 100000
+                        }
+                    }
+                },
+                "values": {
+                    "select": [
+                        { "for": { "in": "Values1" } },
+                        { "for": { "in": "Values2" } },
+                        { "for": { "in": "Values3" } },
+                        { "for": { "in": "Values4" } },
+                        { "for": { "in": "Values5" } },
+                        { "for": { "in": "Values6" } },
+                        { "for": { "in": "Values7" } },
+                        { "for": { "in": "Values8" } },
+                        { "for": { "in": "Values9" } },
+                        { "for": { "in": "Values10" } },
+                        { "for": { "in": "Values11" } },
+                        { "for": { "in": "Values12" } },
+                        {
+                            "bind": {
+                                "to": "Category"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "sorting": {"default": {}}, 
+    "objects": {
+        "legend": {
+            "displayName": "Legend",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "position": {
+                    "displayName": "Position",
+                    "type": {
+                        "enumeration": [
+                            {"value": "left", "displayName": "Left"},
+                            {"value": "right", "displayName": "Right"},
+                            {"value": "top", "displayName": "Top"},
+                            {"value": "bottom", "displayName": "Bottom"}
+                        ]
+                    }
+                },
+                "width": {
+                    "displayName": "Width (target)",
+                    "type": { "integer": true }
+                },
+                "height": {
+                    "displayName": "Height (target)",
+                    "type": { "integer": true }
+                },
+                "markerSize": {
+                    "displayName": "Marker Size",
+                    "type": { "integer": true }
+                },
+                "markerShape": {
+                    "displayName": "Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                }
+            }
+        },
+        "data": {
+            "displayName": "Data",
+            "properties": {
+                "dataSorting": {
+                    "displayName": "Data Sorting",
+                    "type": {
+                        "enumeration": [
+                            {"value": "descending", "displayName": "Descending"},
+                            {"value": "ascending", "displayName": "Ascending"},
+                            {"value": "default", "displayName": "Default"}
+                        ]
+                    }
+                }
+            }
+        },
+        "valueAxis1": {
+            "displayName": "Primary Y-Axis",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "side": {
+                    "displayName": "Side",
+                    "type": {
+                        "enumeration": [
+                            {"value": "left", "displayName": "Left"},
+                            {"value": "right", "displayName": "Right"}
+                        ]
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "title": {
+                    "displayName": "Title text",
+                    "type": { "text": true }
+                },
+                "titleFontSize": {
+                    "displayName": "Title Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "titleFontFamily": {
+                    "displayName": "Title Font Family",
+                    "type": { "text": true }
+                },
+                "titleFontStyle": {
+                    "displayName": "Title Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "titleFontColor": {
+                    "displayName": "Title Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "zeroLine": {
+                    "displayName": "Zero Line",
+                    "type": {
+                        "enumeration": [
+                            {"value": "visible", "displayName": "Visible"},
+                            {"value": "center", "displayName": "Center"},
+                            {"value": "floating", "displayName": "Floating"}
+                        ]
+                    }
+                },
+                "logScale": {
+                    "displayName": "Log Scale",
+                    "description": "Whether to use logarithmic scale.",
+                    "type": { "bool": true }
+                },
+                "valueType": {
+                    "displayName": "Value Type",
+                    "description": "Whether to display values as standard numeric values or as percentage.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "numeric", "displayName": "Numeric"},
+                            {"value": "percentage", "displayName": "Percentage"}
+                        ]
+                    }
+                },
+                "valueShortening": {
+                    "displayName": "Value Shortening",
+                    "description": "Whether to use automatic value shortening (e.g. 1000 => 1 k)",
+                    "type": { "bool": true }
+                },
+                "showValueAffixes": {
+                    "displayName": "Value Affixes",
+                    "description": "Whether to use affixes or not (e.g. currency)",
+                    "type": { "bool": true }
+                },
+                "valuePrefix": {
+                    "displayName": "Value Prefix",
+                    "type": { "text": true }
+                },
+                "valueSuffix": {
+                    "displayName": "Value Suffix",
+                    "type": { "text": true }
+                }
+            }
+        },
+        "valueAxis2": {
+            "displayName": "Secondary Y-Axis",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "side": {
+                    "displayName": "Side",
+                    "type": {
+                        "enumeration": [
+                            {"value": "left", "displayName": "Left"},
+                            {"value": "right", "displayName": "Right"}
+                        ]
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "title": {
+                    "displayName": "Title Text",
+                    "type": { "text": true }
+                },
+                "titleFontSize": {
+                    "displayName": "Title Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "titleFontFamily": {
+                    "displayName": "Title Font Family",
+                    "type": { "text": true }
+                },
+                "titleFontStyle": {
+                    "displayName": "Title Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "titleFontColor": {
+                    "displayName": "Title Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "zeroLine": {
+                    "displayName": "Zero Line",
+                    "type": {
+                        "enumeration": [
+                            {"value": "visible", "displayName": "Visible"},
+                            {"value": "center", "displayName": "Center"},
+                            {"value": "floating", "displayName": "Floating"}
+                        ]
+                    }
+                },
+                "valueType": {
+                    "displayName": "Value Type",
+                    "description": "Whether to display values as standard numeric values or as percentage.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "numeric", "displayName": "Numeric"},
+                            {"value": "percentage", "displayName": "Percentage"}
+                        ]
+                    }
+                },
+                "logScale": {
+                    "displayName": "Log Scale",
+                    "description": "Whether to use logarithmic scale.",
+                    "type": { "bool": true }
+                },
+                "valueShortening": {
+                    "displayName": "Value Shortening",
+                    "description": "Whether to use automatic value shortening (e.g. 1000 => 1 k)",
+                    "type": { "bool": true }
+                },
+                "showValueAffixes": {
+                    "displayName": "Value Affixes",
+                    "description": "Whether to use affixes or not (e.g. currency)",
+                    "type": { "bool": true }
+                },
+                "valuePrefix": {
+                    "displayName": "Value Prefix",
+                    "type": { "text": true }
+                },
+                "valueSuffix": {
+                    "displayName": "Value Suffix",
+                    "type": { "text": true }
+                }
+            }
+        },
+        "facetAxis": {
+            "displayName": "X-Axis",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "labelAngle": {
+                    "displayName": "Label Orientation",
+                    "type": {
+                        "enumeration": [
+                            {"value": "0", "displayName": "Horizontal"},
+                            {"value": "-89", "displayName": "Vertical"},
+                            {"value": "-45", "displayName": "45 degrees"}
+                        ]
+                    }
+                },
+                "size": {
+                    "displayName": "Axis height",
+                    "type": { "integer": true }
+                },
+                "maxUnitWidth": {
+                    "displayName": "Max Unit Width",
+                    "description": "Maximum width of a single item (in pixels)",
+                    "type": { "integer": true }
+                },
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "titleEnabled": {
+                    "displayName": "Title Enabled",
+                    "type": { "bool": true }
+                },
+                "title": {
+                    "displayName": "Title Text",
+                    "type": { "text": true }
+                },
+                "titleFontSize": {
+                    "displayName": "Title Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "titleFontFamily": {
+                    "displayName": "Title Font Family",
+                    "type": { "text": true }
+                },
+                "titleFontStyle": {
+                    "displayName": "Title Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "titleFontColor": {
+                    "displayName": "Title Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                }
+            }
+        },
+        "stacks": {
+            "displayName": "Stack Settings",
+            "properties": {
+                "mode": {
+                    "displayName": "Mode",
+                    "type": {
+                        "enumeration": [
+                            {"value": "normal", "displayName": "Normal"},
+                            {"value": "proportional", "displayName": "100% proportional"},
+                            {"value": "based", "displayName": "Zero based"}
+                        ]
+                    }                
+                }
+            }
+        },
+        "advanced": {
+            "displayName": "Experimental Settings",
+            "properties": {
+                "leftPadding": {
+                    "displayName": "Column Left Padding",
+                    "description": "Left padding for column in px",
+                    "type": { "integer": true }
+                },
+                "rightPadding": {
+                    "displayName": "Column Right Padding",
+                    "description": "Right padding for column in px",
+                    "type": { "integer": true }
+                }
+            }
+        },
+        "fillSettings": {
+            "displayName": "Fill Color Settings",
+            "properties": {
+                "gradient": {
+                    "displayName": "Fill Mode",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid fill"},
+                            {"value": "derived", "displayName": "Gradient to a derived color"},
+                            {"value": "gradient", "displayName": "Gradient to a single color"}
+                        ]
+                    }
+                },
+                "gradientMode": {
+                    "displayName": "Gradient Direction",
+                    "type": {
+                        "enumeration": [
+                            {"value": "horizontal", "displayName": "Horizontal"},
+                            {"value": "vertical", "displayName": "Vertical"}
+                        ]
+                    }
+                },
+                "gradientColor": {
+                    "displayName": "Gradient Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "opacity": {
+                    "displayName": "Slice Outer Opacity",
+                    "description": "Opacity of the gradient color, 0 - transparent, 100 - opaque. This setting controls the outermost opacity level of the slice, if gradient mode is enabled. Opacity starts from 100 at the Gradient start location and decreases towards the set value in a linear way.",
+                    "type": { "integer": true }
+                },
+                "gradientStep": {
+                    "displayName": "Gradient Start Location",
+                    "description": "0 - inside, 100 - outside. If the outer opacity of the slice is provided, opacity calculation starts at this point from 100 to the specified opacity value.",
+                    "type": { "integer": true }
+                },
+                "baseColorHueAdjustment": {
+                    "displayName": "Hue Adjustment",
+                    "description": "50 - no Adjustment. 0 - 0 hue, 100 - 100 hue",
+                    "type": { "integer": true }
+                },
+                "baseColorSaturationAdjustment": {
+                    "displayName": "Saturation Adjustment",
+                    "description": "0 means 0% saturation, 100 means 100% saturation;  50 means saturation is unaffected. E.g. 51 means that additional 1% is added to the color's saturation.",
+                    "type": { "integer": true }
+                },
+                "baseColorLightnessAdjustment": {
+                    "displayName": "Lightness Adjustment",
+                    "description": "0 means 0% lightness, 100 means 100% lightness;  50 means lightness is unaffected. E.g. 51 means that additional 1% is added to the color's lightness.",
+                    "type": { "integer": true }
+                }
+
+            }
+        },
+        "useColors": {
+            "displayName": "Category Colors Enabled",
+            "description": "Enable Configuration of individual colors for each column. Only available when single column type series field is configured.",
+            "properties": { "show": {"displayName": "Enable", "type": { "bool": true}} }
+        },
+        "colors1": {
+            "displayName": "Category 1 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors2": {
+            "displayName": "Category 2 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors3": {
+            "displayName": "Category 3 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors4": {
+            "displayName": "Category 4 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors5": {
+            "displayName": "Category 5 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors6": {
+            "displayName": "Category 6 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors7": {
+            "displayName": "Category 7 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors8": {
+            "displayName": "Category 8 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors9": {
+            "displayName": "Category 9 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors10": {
+            "displayName": "Category 10 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors11": {
+            "displayName": "Category 11 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "colors12": {
+            "displayName": "Category 12 colors",
+            "properties": { "fill": { "displayName": "Color", "type": { "fill": { "solid": { "color": true } } } } }
+        },
+        "toolbar": {
+            "displayName": "Toolbar",
+            "properties": {
+                "logScale": {
+                    "displayName": "Lin/Log Scale Button",
+                    "description": "Whether to show the `Lin/Log` button in the toolbar",
+                    "type": { "bool": true }
+                }
+            }
+        },
+        "popup": {
+            "displayName": "Tooltip",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series1": {
+            "displayName": "Series 1 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels1": {
+            "displayName": "Series 1 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series2": {
+            "displayName": "Series 2 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels2": {
+            "displayName": "Series 2 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series3": {
+            "displayName": "Series 3 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels3": {
+            "displayName": "Series 3 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series4": {
+            "displayName": "Series 4 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels4": {
+            "displayName": "Series 4 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series5": {
+            "displayName": "Series 5 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels5": {
+            "displayName": "Series 5 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series6": {
+            "displayName": "Series 6 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels6": {
+            "displayName": "Series 6 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series7": {
+            "displayName": "Series 7 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels7": {
+            "displayName": "Series 7 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series8": {
+            "displayName": "Series 8 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels8": {
+            "displayName": "Series 8 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series9": {
+            "displayName": "Series 9 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels9": {
+            "displayName": "Series 9 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series10": {
+            "displayName": "Series 10 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels10": {
+            "displayName": "Series 10 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series11": {
+            "displayName": "Series 11 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels11": {
+            "displayName": "Series 11 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series12": {
+            "displayName": "Series 12 Configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels12": {
+            "displayName": "Series 12 Value Labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
