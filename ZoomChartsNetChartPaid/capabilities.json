@@ -477,6 +477,23 @@
                 }
             }
         },
+        "license": {
+            "displayName": "License Settings",
+            "properties": {
+                "key": {
+                    "displayName": "License Key",
+                    "type": { "text": true }
+                },
+                "hash": {
+                    "displayName": "License Hash",
+                    "type": { "text": true }
+                },
+                "info": {
+                    "displayName": "Info button",
+                    "type": { "bool": true }
+                }
+            }
+        },
         "fillSettings": {
             "displayName": "Fill Color Settings",
             "properties": {

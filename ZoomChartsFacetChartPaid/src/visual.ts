@@ -83,6 +83,7 @@ module powerbi.extensibility.visual {
             rightPadding: number
         };
         fillSettings: IFillSettings;
+        license: ILicenseSettings;
 
         series1: IChartSeriesProperties;
         series2: IChartSeriesProperties;
@@ -121,8 +122,8 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.3";
-            releaseDate = "Oct 23, 2018";
+            version = "v1.1.0.4";
+            releaseDate = "Oct 26, 2018";
             visualName = "Advanced Column, Line, Area Visual";
 
             this.defaultProperties = {
@@ -217,12 +218,17 @@ module powerbi.extensibility.visual {
                     leftPadding: 3,
                     rightPadding: 3,
                 },
+                license: {
+                    key: "",
+                    hash:"",
+                    info: true
+                },
                 fillSettings: {
                     gradient: "solid",
                     gradientMode: "horizontal",
                     gradientColor: {solid: {color: "#000"}},
                     opacity: 100,
-                    gradientStep: 80,
+                    gradientStep: 50,
                     baseColorLightnessAdjustment: 40,
                     baseColorHueAdjustment: 50,
                     baseColorSaturationAdjustment: 50
@@ -664,6 +670,7 @@ module powerbi.extensibility.visual {
                 }
                 
                 settings = addPieChartLegendSettings(settings, props);
+                settings = toggleInfoButton(this, settings, props);
                 let sortField = null; //default
                 if(props.data.dataSorting == "ascending" || props.data.dataSorting == "descending") {
                     sortField = (props.data.dataSorting == "ascending") ? "-value" : "value";
