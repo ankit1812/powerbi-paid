@@ -100,6 +100,7 @@ module powerbi.extensibility.visual {
             locale: null | "lv",
         };
         fillSettings: IFillSettings;
+        license: ILicenseSettings;
 
         series1: IChartSeriesProperties;
         series2: IChartSeriesProperties;
@@ -151,8 +152,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.1.0.2";
-            releaseDate = "Oct 23, 2018";
+            version = "v1.1.0.3";
+            releaseDate = "Oct 26, 2018";
 
             this.setLegendState = false;
 
@@ -252,12 +253,17 @@ module powerbi.extensibility.visual {
                     rightPadding: 3,
                     locale: null,
                 },
+                license: {
+                    key: "",
+                    hash:"",
+                    info: true
+                },
                 fillSettings: {
                     gradient: "solid",
                     gradientMode: "horizontal",
                     gradientColor: {solid: {color: "#000"}},
                     opacity: 100,
-                    gradientStep: 80,
+                    gradientStep: 50,
                     baseColorLightnessAdjustment: 40,
                     baseColorHueAdjustment: 50,
                     baseColorSaturationAdjustment: 50
@@ -670,6 +676,7 @@ module powerbi.extensibility.visual {
                     this.toolbarSettings = settings.toolbar;
                 }
                 settings = addPieChartLegendSettings(settings, props);
+                settings = toggleInfoButton(this, settings, props);
 
                 this.chart.updateSettings(settings);
             }

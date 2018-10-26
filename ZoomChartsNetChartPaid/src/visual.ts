@@ -65,6 +65,7 @@ module powerbi.extensibility.visual {
             padding: number;
         };
         fillSettings: IFillSettings;
+        license: ILicenseSettings;
         
         category1: IChartCategoryProperties;
         category2: IChartCategoryProperties;
@@ -97,8 +98,8 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.5";
-            releaseDate = "Oct 23, 2018";
+            version = "v1.1.0.6";
+            releaseDate = "Oct 26, 2018";
 
             this.defaultProperties = {
                 legend: {
@@ -167,11 +168,16 @@ module powerbi.extensibility.visual {
                     borderRadius: 50,
                     padding: 2
                 },
+                license: {
+                    key: "",
+                    hash:"",
+                    info: true
+                },
                 fillSettings: {
                     gradient: "solid",
                     gradientColor: {solid: {color: "#000"}},
                     opacity: 100,
-                    gradientStep: 80,
+                    gradientStep: 50,
                     baseColorLightnessAdjustment: 40,
                     baseColorHueAdjustment: 50,
                     baseColorSaturationAdjustment: 50
@@ -262,6 +268,7 @@ module powerbi.extensibility.visual {
                     },
                 };
                 settings = addLegendSettings(settings, props);
+                settings = toggleInfoButton(this, settings, props);
                 this.chart.updateSettings(settings);
             }
         }

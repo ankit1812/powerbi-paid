@@ -14,12 +14,6 @@ module powerbi.extensibility.visual {
     type TToolbarItemSide = "left"|"right"|"top"|"bottom";
 
     function addBaseInfoToolbar(settings:any, visual:any){
-        settings.events.onClick = (e, args) => {
-            if(args.clickCredits) {
-                e.preventDefault();
-                visual.host.launchUrl(args.credits.url);
-            }
-        };
         settings.toolbar.extraItems = [
             {
                 title: " Info ",
@@ -34,7 +28,6 @@ module powerbi.extensibility.visual {
             }
         ];
         return settings;
-
     }
     export function addNetChartInfoToolbar(settings:any, visual:any){
         settings.toolbar = {
@@ -145,6 +138,11 @@ module powerbi.extensibility.visual {
         baseColorLightnessAdjustment: number;
         baseColorHueAdjustment: number;
         baseColorSaturationAdjustment: number;
+    }
+    export interface ILicenseSettings {
+        key: string;
+        hash: string;
+        info: boolean;
     }
     export interface IPieLegendSettings extends ILegendSettings {
         markerShape: "square" | "rhombus" | "triangle" | "triangle2" | "circle";
@@ -571,4 +569,57 @@ module powerbi.extensibility.visual {
 
 		return [ r * 255, g * 255, b * 255 ];
 	}
+
+    export function toggleInfoButton(visual, settings, props){
+        if (props.license.key){
+            let x = props.license.key.split("#");
+            let y = props.license.hash;
+            if (x.length != 2 || !y){
+                return settings;
+            }
+            let text = x[0];
+            let signature = x[1]+y;
+			signature = atob(signature);
+			let signature_hex = "";
+            let hex = "";
+			for (let i = 0; i < signature.length; i++) {
+				hex = signature.charCodeAt(i).toString(16);
+                if (hex.length == 1)
+                    signature_hex += "0";
+				signature_hex += hex;
+			}
+            /* validate key */
+            let date_ok = false;
+            let d = text.match(/: ([0-9]+)-([0-9]+)-([0-9]+)/);
+            if (d){
+                let d1 = new Date();
+                let d2 = new Date(d[1], d[2]-1, d[3]);
+                date_ok = (d1 < d2)?true:false;
+            }
+            let ret:any;
+            if (ret = visual.ZC.ZoomCharts.Internal.Base.RsaCrypto.verifySignature(text, signature_hex) && date_ok){
+                if (visual.currentInfoButtonStatus != props.license.info){
+                    if (!props.license.info){
+                        settings.toolbar = {extraItems: []}
+                    } else {
+                        settings.toolbar = {};
+                        settings = addBaseInfoToolbar(settings, visual);
+                    }
+                    visual.currentInfoButtonStatus = props.license.info;
+                }
+            } else {
+                if (!visual.currentInfoButtonStatus){
+                    visual.currentInfoButtonStatus = true;
+                    settings.toolbar = {};
+                    settings = addBaseInfoToolbar(settings, visual);
+                }
+            }
+            if (isDebugVisual){
+                console.log("License status", text, signature_hex, ret);
+                console.log("Date status", date_ok);
+            }
+        }
+
+        return settings;
+    }
 }

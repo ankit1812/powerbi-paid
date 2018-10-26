@@ -29,17 +29,20 @@ module powerbi.extensibility.visual {
             decimals: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
             decimalsPercentage: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
         },
-        fillSettings: IFillSettings
+        fillSettings: IFillSettings,
+        license: ILicenseSettings
     }
 
     export class Visual2 extends Visual {
         private defaultProperties: IChartVisualProperties;
         private customProperties: IChartVisualProperties;
+        private currentInfoButtonStatus: boolean;
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.13";
-            releaseDate = "Oct 23, 2018";
+            version = "v1.1.0.14";
+            releaseDate = "Oct 26, 2018";
+            this.currentInfoButtonStatus = true;
 
             this.defaultProperties = {
                 donut: {
@@ -85,11 +88,16 @@ module powerbi.extensibility.visual {
                     decimals: "auto",
                     decimalsPercentage: "auto"
                 },
+                license: {
+                    key: "",
+                    hash:"",
+                    info: true
+                },
                 fillSettings: {
                     gradient: "solid",
                     gradientColor: {solid: {color: "#000"}},
                     opacity: 100,
-                    gradientStep: 80,
+                    gradientStep: 50,
                     baseColorLightnessAdjustment: 40,
                     baseColorHueAdjustment: 50,
                     baseColorSaturationAdjustment: 50
@@ -299,6 +307,7 @@ module powerbi.extensibility.visual {
                     },
                 }
                 settings = addPieChartLegendSettings(settings, props);
+                settings = toggleInfoButton(this, settings, props);
                 //sortField won't be updated if replaceData isn't called. No idea why as in SDK it is working fine.
                 //this.chart.replaceData(this.pendingData);
                 this.chart.updateSettings(settings);
