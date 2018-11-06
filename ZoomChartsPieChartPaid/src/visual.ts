@@ -30,7 +30,9 @@ module powerbi.extensibility.visual {
             decimalsPercentage: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
         },
         fillSettings: IFillSettings,
-        license: ILicenseSettings
+        license: ILicenseSettings,
+        paid: {show: boolean}
+
     }
 
     export class Visual2 extends Visual {
@@ -92,6 +94,9 @@ module powerbi.extensibility.visual {
                     key: "",
                     hash:"",
                     info: true
+                },
+                paid: {
+                    show: false
                 },
                 fillSettings: {
                     gradient: "solid",
@@ -327,15 +332,18 @@ module powerbi.extensibility.visual {
         @logExceptions()
         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration {
             const objectName = options.objectName;
+            let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
 
             if (objectName.substr(0, 6) === "colors") {
+                if (!props.paid.show) {
+                    return null;
+                }
                 const depth = parseInt(objectName.substr(6), 10);
                 let result: VisualObjectInstance[] = [];
                 Data.enumerateSlices(objectName, depth - 1, this.pendingData, result, {});
                 return result;
             }
 
-            let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
             let validValues: {
                 [propertyName: string]: string[] | ValidationOptions;
             } = void 0;
@@ -345,6 +353,11 @@ module powerbi.extensibility.visual {
                 console.warn("enumerateObjectInstances - unknown name", options);
                 return [];
             }
+            if (objectName !== "paid"){
+                if (!props.paid.show) {
+                    return null;
+                }
+           }
 
             let vkeys = Object.keys(vals);
             if (objectName === "fillSettings"){
