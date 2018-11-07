@@ -569,13 +569,13 @@ module powerbi.extensibility.visual {
 
 		return [ r * 255, g * 255, b * 255 ];
 	}
-
-    export function toggleInfoButton(visual, settings, props){
+    export function validateLicense(visual, props){
+        licenseStatus = null;
         if (props.license.key){
             let x = props.license.key.split("#");
             let y = props.license.hash;
             if (x.length != 2 || !y){
-                return settings;
+                return null;
             }
             let text = x[0];
             let signature = x[1]+y;
@@ -596,8 +596,35 @@ module powerbi.extensibility.visual {
                 let d2 = new Date(d[1], d[2]-1, d[3]);
                 date_ok = (d1 < d2)?true:false;
             }
-            let ret:any;
-            if (ret = visual.ZC.ZoomCharts.Internal.Base.RsaCrypto.verifySignature(text, signature_hex) && date_ok){
+            let ret:any = visual.ZC.ZoomCharts.Internal.Base.RsaCrypto.verifySignature(text, signature_hex);
+            visual.licenseCheckStatus = ret;
+            visual.licenseDateStatus = date_ok;
+
+            if (ret && date_ok){
+                licenseStatus = "licensed";
+            } else {
+                if (ret && !date_ok){
+                    if (props.license.key.indexOf("trial") > -1){
+                        licenseStatus = "trialExpired";
+                    } else {
+                        licenseStatus = "expired";
+                    }
+                } else {
+                    licenseStatus = "invalidLicense";
+
+                }
+            }
+        } else {
+            licenseStatus = "unlicensed";
+        }
+        return licenseStatus;
+    }
+    export function toggleInfoButton(visual, settings, props){
+        let ret:any = visual.licenseCheckStatus;
+        let date_ok:any = visual.licenseDateStatus;
+
+        if (props.license.key){
+            if (ret && date_ok){
                 if (visual.currentInfoButtonStatus != props.license.info){
                     if (!props.license.info){
                         settings.toolbar = {extraItems: []}
@@ -608,15 +635,12 @@ module powerbi.extensibility.visual {
                     visual.currentInfoButtonStatus = props.license.info;
                 }
             } else {
+
                 if (!visual.currentInfoButtonStatus){
                     visual.currentInfoButtonStatus = true;
                     settings.toolbar = {};
                     settings = addBaseInfoToolbar(settings, visual);
                 }
-            }
-            if (isDebugVisual){
-                console.log("License status", text, signature_hex, ret);
-                console.log("Date status", date_ok);
             }
         }
 

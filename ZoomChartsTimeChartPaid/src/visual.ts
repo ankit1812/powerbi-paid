@@ -152,8 +152,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.1.0.3";
-            releaseDate = "Oct 26, 2018";
+            version = "v1.1.0.4";
+            releaseDate = "Nov 06, 2018";
 
             this.setLegendState = false;
 

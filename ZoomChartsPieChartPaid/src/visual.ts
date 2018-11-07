@@ -39,6 +39,8 @@ module powerbi.extensibility.visual {
         private defaultProperties: IChartVisualProperties;
         private customProperties: IChartVisualProperties;
         private currentInfoButtonStatus: boolean;
+        private licenseCheckStatus:boolean;
+        private licenseDateStatus:boolean;
         constructor(options: VisualConstructorOptions) {
             super(options);
 
@@ -129,6 +131,18 @@ module powerbi.extensibility.visual {
 
             if (this.chart) {
                 let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
+                let license_status = validateLicense(this, props);
+                console.log("Status", license_status);
+                if (!props.paid.show){
+                    props = this.defaultProperties; 
+                    hidePaid(this.target);
+                } else {
+                    if (license_status != "licensed"){
+                        displayPaid(this.target, this.host);
+                    } else {
+                        hidePaid(this.target);
+                    }
+                }
 
                 let labelFont = getFont(props.labels);
                 let legendOnSide = props.legend.position === "left" || props.legend.position === "right" || !props.legend.position;

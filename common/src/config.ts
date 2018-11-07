@@ -12,5 +12,4 @@ module powerbi.extensibility.visual {
     "2780d7b3c87a81ee3f826272fe0eb84b6b8288ffa099a2af497886985be766eda1399c0485cea";
 
     visualMode = "paid";
-
 }
