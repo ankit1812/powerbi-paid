@@ -44,8 +44,10 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.14";
-            releaseDate = "Oct 26, 2018";
+            version = "v1.1.0.15";
+            releaseDate = "Nov 9, 2018";
+            visualType = "advanced-donut-visual";
+            visualName= "Advanced Donut Visual";
             this.currentInfoButtonStatus = true;
 
             this.defaultProperties = {
@@ -131,18 +133,8 @@ module powerbi.extensibility.visual {
 
             if (this.chart) {
                 let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
-                let license_status = validateLicense(this, props);
-                console.log("Status", license_status);
-                if (!props.paid.show){
-                    props = this.defaultProperties; 
-                    hidePaid(this.target);
-                } else {
-                    if (license_status != "licensed"){
-                        displayPaid(this.target, this.host);
-                    } else {
-                        hidePaid(this.target);
-                    }
-                }
+
+                props = handlePaidPopups(this, props);
 
                 let labelFont = getFont(props.labels);
                 let legendOnSide = props.legend.position === "left" || props.legend.position === "right" || !props.legend.position;
@@ -371,7 +363,7 @@ module powerbi.extensibility.visual {
                 if (!props.paid.show) {
                     return null;
                 }
-           }
+            }
 
             let vkeys = Object.keys(vals);
             if (objectName === "fillSettings"){

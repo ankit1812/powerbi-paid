@@ -26,6 +26,8 @@ module powerbi.extensibility.visual {
     }
 
     interface IChartVisualProperties {
+        license: ILicenseSettings,
+        paid: {show: boolean},
         legend: IPieLegendSettings,
         useColors: {
             show: boolean;
@@ -83,7 +85,7 @@ module powerbi.extensibility.visual {
             rightPadding: number
         };
         fillSettings: IFillSettings;
-        license: ILicenseSettings;
+
 
         series1: IChartSeriesProperties;
         series2: IChartSeriesProperties;
@@ -122,9 +124,10 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.4";
-            releaseDate = "Oct 26, 2018";
-            visualName = "Advanced Column, Line, Area Visual";
+            version = "v1.1.0.5";
+            releaseDate = "Nov 5, 2018";
+            visualType = "advanced-combo-visual";
+            visualName = "Advanced Combo Visual";
 
             this.defaultProperties = {
                 useColors: {
@@ -222,6 +225,9 @@ module powerbi.extensibility.visual {
                     key: "",
                     hash:"",
                     info: true
+                },
+                paid: {
+                    show: false
                 },
                 fillSettings: {
                     gradient: "solid",
@@ -476,6 +482,7 @@ module powerbi.extensibility.visual {
 
             if (this.chart) {
                 let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
+                props = handlePaidPopups(this, props);
                 this.currentProps = props;
  
                 let faLabelFont = getFont(props.facetAxis);
@@ -694,8 +701,12 @@ module powerbi.extensibility.visual {
         @logExceptions()
         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration {
             const objectName = options.objectName;
+            let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
 
             if (objectName.substr(0, 6) === "colors") {
+                if (!props.paid.show) {
+                    return null;
+                }
                 if (this.series.length !== 1
                     || !this.customProperties
                     || !this.customProperties.useColors
@@ -707,10 +718,15 @@ module powerbi.extensibility.visual {
                 return result;
             }
 
-            let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
             let validValues: {
                 [propertyName: string]: string[] | ValidationOptions;
             } = void 0;
+
+            if (objectName !== "paid"){
+                if (!props.paid.show) {
+                    return null;
+                }
+            }
 
             if (objectName.substr(0, 17) === "seriesValueLabels") {
                 const nostr = objectName.substr(17);

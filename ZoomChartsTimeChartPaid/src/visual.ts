@@ -101,6 +101,7 @@ module powerbi.extensibility.visual {
         };
         fillSettings: IFillSettings;
         license: ILicenseSettings;
+        paid: {show: boolean};
 
         series1: IChartSeriesProperties;
         series2: IChartSeriesProperties;
@@ -152,8 +153,10 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.1.0.4";
-            releaseDate = "Nov 06, 2018";
+            version = "v1.1.0.5";
+            releaseDate = "Nov 09, 2018";
+            visualType = "advanced-timeseries-visual";
+            visualName= "Advanced Timeseries Visual";
 
             this.setLegendState = false;
 
@@ -257,6 +260,9 @@ module powerbi.extensibility.visual {
                     key: "",
                     hash:"",
                     info: true
+                },
+                paid: {
+                    show: false
                 },
                 fillSettings: {
                     gradient: "solid",
@@ -520,6 +526,7 @@ module powerbi.extensibility.visual {
 
             if (this.chart) {
                 let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
+                props = handlePaidPopups(this, props);
                 this.currentProps = props;
                 this.setLegendState = props.legend.show;
                 let settings:any = {
@@ -701,6 +708,11 @@ module powerbi.extensibility.visual {
                 [propertyName: string]: string[] | ValidationOptions;
             } = void 0;
 
+            if (objectName !== "paid"){
+                if (!props.paid.show) {
+                    return null;
+                }
+            }
             if (objectName.substr(0, 17) === "seriesValueLabels") {
                 const nostr = objectName.substr(17);
                 if (!this.currentSeries["s" + nostr])

@@ -13,6 +13,28 @@ module powerbi.extensibility.visual {
 
     type TToolbarItemSide = "left"|"right"|"top"|"bottom";
 
+    export function handlePaidPopups(visual:any, props:any){
+        let license_status = validateLicense(visual, props);
+        if (!props.paid.show){
+            props = visual.defaultProperties; 
+            hidePaid(visual.target);
+        } else {
+            if (license_status != "licensed"){
+                if (license_status == "expired"){
+                    displayExpired(visual.target, visual.host);
+                    hidePaid(visual.target);
+                } else {
+                    displayPaid(visual.target, visual.host);
+                    hideExpired(visual.target);
+                }
+            } else {
+                hidePaid(visual.target);
+                hideExpired(visual.target);
+            }
+        }
+        return props;
+    }
+
     function addBaseInfoToolbar(settings:any, visual:any){
         settings.toolbar.extraItems = [
             {

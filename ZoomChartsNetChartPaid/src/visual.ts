@@ -66,6 +66,7 @@ module powerbi.extensibility.visual {
         };
         fillSettings: IFillSettings;
         license: ILicenseSettings;
+        paid: {show: boolean};
         
         category1: IChartCategoryProperties;
         category2: IChartCategoryProperties;
@@ -98,8 +99,10 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.6";
-            releaseDate = "Oct 26, 2018";
+            version = "v1.1.0.7";
+            releaseDate = "Nov 9, 2018";
+            visualType = "advanced-network-visual";
+            visualName= "Advanced Network Visual";
 
             this.defaultProperties = {
                 legend: {
@@ -173,6 +176,9 @@ module powerbi.extensibility.visual {
                     hash:"",
                     info: true
                 },
+                paid: {
+                    show: false
+                },
                 fillSettings: {
                     gradient: "solid",
                     gradientColor: {solid: {color: "#000"}},
@@ -223,6 +229,7 @@ module powerbi.extensibility.visual {
  
             if (this.chart) {
                 let props = mergePropertiesIntoNew(this.customProperties, this.defaultProperties);
+                props = handlePaidPopups(this, props);
 
 
                 let linkColor = props.links.fillColor ? props.links.fillColor.solid.color : null;
@@ -340,6 +347,11 @@ module powerbi.extensibility.visual {
             if (vals == null) {
                 console.warn("enumerateObjectInstances - unknown name", options);
                 return [];
+            }
+            if (objectName !== "paid"){
+                if (!props.paid.show) {
+                    return null;
+                }
             }
 
             //globally disabled inside labels

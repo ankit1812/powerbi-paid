@@ -105,6 +105,32 @@
         }
     ],
     "objects": {
+        "paid": {
+            "displayName": "Paid Features",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                }
+            }
+        },
+        "license": {
+            "displayName": "License Settings",
+            "properties": {
+                "key": {
+                    "displayName": "License Key",
+                    "type": { "text": true }
+                },
+                "hash": {
+                    "displayName": "License Hash",
+                    "type": { "text": true }
+                },
+                "info": {
+                    "displayName": "Info button",
+                    "type": { "bool": true }
+                }
+            }
+        },
         "legend": {
             "displayName": "Legend",
             "properties": {
@@ -474,23 +500,6 @@
                 "padding": {
                     "displayName": "Padding",
                     "type": { "integer": true }
-                }
-            }
-        },
-        "license": {
-            "displayName": "License Settings",
-            "properties": {
-                "key": {
-                    "displayName": "License Key",
-                    "type": { "text": true }
-                },
-                "hash": {
-                    "displayName": "License Hash",
-                    "type": { "text": true }
-                },
-                "info": {
-                    "displayName": "Info button",
-                    "type": { "bool": true }
                 }
             }
         },
