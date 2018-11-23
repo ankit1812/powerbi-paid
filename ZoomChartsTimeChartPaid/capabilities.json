@@ -13,7 +13,10 @@
         { "displayName": "Series 6", "name": "Values6", "kind": "Measure" },
         { "displayName": "Series 7", "name": "Values7", "kind": "Measure" },
         { "displayName": "Series 8", "name": "Values8", "kind": "Measure" },
-        { "displayName": "Series 9", "name": "Values9", "kind": "Measure" }
+        { "displayName": "Series 9", "name": "Values9", "kind": "Measure" },
+        { "displayName": "Series 10", "name": "Values10", "kind": "Measure" },
+        { "displayName": "Series 11", "name": "Values11", "kind": "Measure" },
+        { "displayName": "Series 12", "name": "Values12", "kind": "Measure" }
     ],
     "dataViewMappings": [
         {
@@ -31,7 +34,10 @@
                     "Values6": { "min": 0, "max": 1 },
                     "Values7": { "min": 0, "max": 1 },
                     "Values8": { "min": 0, "max": 1 },
-                    "Values9": { "min": 0, "max": 1 }
+                    "Values9": { "min": 0, "max": 1 },
+                    "Values10": { "min": 0, "max": 1 },
+                    "Values11": { "min": 0, "max": 1 },
+                    "Values12": { "min": 0, "max": 1 }
                 }
             ],
             "categorical": {
@@ -56,6 +62,9 @@
                         { "for": { "in": "Values7" } },
                         { "for": { "in": "Values8" } },
                         { "for": { "in": "Values9" } },
+                        { "for": { "in": "Values10" } },
+                        { "for": { "in": "Values11" } },
+                        { "for": { "in": "Values12" } },
                         {
                             "bind": {
                                 "to": "Category"
@@ -648,10 +657,8 @@
                     "description": "0 means 0% lightness, 100 means 100% lightness;  50 means lightness is unaffected. E.g. 51 means that additional 1% is added to the color's lightness.",
                     "type": { "integer": true }
                 }
-
             }
         },
-
         "series1": {
             "displayName": "Series 1 configuration",
             "properties": {
@@ -711,7 +718,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -879,7 +890,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1047,7 +1062,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1215,7 +1234,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1383,7 +1406,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1551,7 +1578,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1719,7 +1750,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -1887,7 +1922,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -2055,7 +2094,11 @@
                             {"value": "s6", "displayName": "Stack 6"},
                             {"value": "s7", "displayName": "Stack 7"},
                             {"value": "s8", "displayName": "Stack 8"},
-                            {"value": "s9", "displayName": "Stack 9"}
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
                         ]
                     }
                 },
@@ -2119,6 +2162,521 @@
         },
         "seriesValueLabels9": {
             "displayName": "Series 9 value labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series10": {
+            "displayName": "Series 10 configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Line Width (thickness)",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels10": {
+            "displayName": "Series 10 value labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series11": {
+            "displayName": "Series 11 configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Line Width (thickness)",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels11": {
+            "displayName": "Series 11 value labels",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "type": { "formatting": { "fontSize": true } }
+                },
+                "fontFamily": {
+                    "displayName": "Font Family",
+                    "type": { "text": true }
+                },
+                "fontStyle": {
+                    "displayName": "Font Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Regular"},
+                            {"value": "bold", "displayName": "Bold"},
+                            {"value": "italic", "displayName": "Italic"},
+                            {"value": "bold italic", "displayName": "Bold and italic"}
+                        ]
+                    }
+                },
+                "fontColor": {
+                    "displayName": "Font Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "decimals": {
+                    "displayName": "Value Decimals",
+                    "description": "Set number of decimals",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                }
+            }
+        },
+        "series12": {
+            "displayName": "Series 12 configuration",
+            "properties": {
+                "show": {
+                    "displayName": "Enable",
+                    "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Display Name",
+                    "type": { "text": true }
+                },
+                "type": {
+                    "displayName": "Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "columns", "displayName": "Columns"},
+                            {"value": "line", "displayName": "Line"},
+                            {"value": "area", "displayName": "Area"}
+                        ]
+                    }
+                },
+                "valueLabelsEnabled": {
+                    "displayName": "Value Labels",
+                    "type": { "bool": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "lineWidth": {
+                    "displayName": "Line Width (thickness)",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "stack": {
+                    "displayName": "Stack",
+                    "type": {
+                        "enumeration": [
+                            {"value": "s1", "displayName": "Stack 1"},
+                            {"value": "s2", "displayName": "Stack 2"},
+                            {"value": "s3", "displayName": "Stack 3"},
+                            {"value": "s4", "displayName": "Stack 4"},
+                            {"value": "s5", "displayName": "Stack 5"},
+                            {"value": "s6", "displayName": "Stack 6"},
+                            {"value": "s7", "displayName": "Stack 7"},
+                            {"value": "s8", "displayName": "Stack 8"},
+                            {"value": "s9", "displayName": "Stack 9"},
+                            {"value": "s10", "displayName": "Stack 10"},
+                            {"value": "s11", "displayName": "Stack 11"},
+                            {"value": "s12", "displayName": "Stack 12"}
+                        ]
+                    }
+                },
+                "valueAxis": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "lineMarker": {
+                    "displayName": "Outline Marker",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "None"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                },
+                "lineMarkerSize": {
+                    "displayName": "Outline Marker Size",
+                    "type": { "integer": true }
+                },
+                "lineSmoothing": {
+                    "displayName": "Outline Smoothing",
+                    "type": { "bool": true }
+                },
+                "lineColorOpacity": {
+                    "displayName": "Outline Color Opacity",
+                    "type": { "integer": true }
+                },
+                "fillColorOpacity": {
+                    "displayName": "Fill Color opacity",
+                    "type": { "integer": true }
+                },
+                "zIndex": {
+                    "displayName": "Display Order",
+                    "type": { "integer": true }
+                },
+                "legendMarkerShape": {
+                    "displayName": "Legend Marker Shape",
+                    "type": {
+                        "enumeration": [
+                            {"value": "", "displayName": "Default"},
+                            {"value": "circle", "displayName": "Circle"},
+                            {"value": "square", "displayName": "Square"},
+                            {"value": "rhombus", "displayName": "Rhombus"},
+                            {"value": "triangle", "displayName": "Triangle"},
+                            {"value": "triangle2", "displayName": "Triangle (upside down)"}
+                        ]
+                    }
+                }
+            }
+        },
+        "seriesValueLabels12": {
+            "displayName": "Series 12 value labels",
             "properties": {
                 "fontSize": {
                     "displayName": "Font Size",

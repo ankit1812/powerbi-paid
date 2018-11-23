@@ -112,6 +112,9 @@ module powerbi.extensibility.visual {
         series7: IChartSeriesProperties;
         series8: IChartSeriesProperties;
         series9: IChartSeriesProperties;
+        series10: IChartSeriesProperties;
+        series11: IChartSeriesProperties;
+        series12: IChartSeriesProperties;
         seriesValueLabels1: IChartSeriesValueLabelProperties;
         seriesValueLabels2: IChartSeriesValueLabelProperties;
         seriesValueLabels3: IChartSeriesValueLabelProperties;
@@ -121,6 +124,9 @@ module powerbi.extensibility.visual {
         seriesValueLabels7: IChartSeriesValueLabelProperties;
         seriesValueLabels8: IChartSeriesValueLabelProperties;
         seriesValueLabels9: IChartSeriesValueLabelProperties;
+        seriesValueLabels10: IChartSeriesValueLabelProperties;
+        seriesValueLabels11: IChartSeriesValueLabelProperties;
+        seriesValueLabels12: IChartSeriesValueLabelProperties;
     }
 
     interface displayUnitsMapping {
@@ -284,6 +290,9 @@ module powerbi.extensibility.visual {
                 series7: this.getDefaultSeriesConfig(7),
                 series8: this.getDefaultSeriesConfig(8),
                 series9: this.getDefaultSeriesConfig(9),
+                series10: this.getDefaultSeriesConfig(10),
+                series11: this.getDefaultSeriesConfig(11),
+                series12: this.getDefaultSeriesConfig(12),
                 seriesValueLabels1: this.getDefaultSeriesValueLabelConfig(1),
                 seriesValueLabels2: this.getDefaultSeriesValueLabelConfig(2),
                 seriesValueLabels3: this.getDefaultSeriesValueLabelConfig(3),
@@ -293,6 +302,9 @@ module powerbi.extensibility.visual {
                 seriesValueLabels7: this.getDefaultSeriesValueLabelConfig(7),
                 seriesValueLabels8: this.getDefaultSeriesValueLabelConfig(8),
                 seriesValueLabels9: this.getDefaultSeriesValueLabelConfig(9),
+                seriesValueLabels10: this.getDefaultSeriesValueLabelConfig(10),
+                seriesValueLabels11: this.getDefaultSeriesValueLabelConfig(11),
+                seriesValueLabels12: this.getDefaultSeriesValueLabelConfig(12),
             };
 
             this.displayUnitsMapping = {
