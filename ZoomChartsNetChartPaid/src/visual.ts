@@ -99,8 +99,8 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.7";
-            releaseDate = "Nov 9, 2018";
+            version = "v1.1.0.9";
+            releaseDate = "Nov 23, 2018";
             visualType = "advanced-network-visual";
             visualName= "Advanced Network Visual";
 

@@ -1,4 +1,5 @@
 module powerbi.extensibility.visual {
+    
     export class customizationInformer {
         /* mock class which is not needed in the paid version */
         constructor(...args){
@@ -12,13 +13,21 @@ module powerbi.extensibility.visual {
     }
 
     type TToolbarItemSide = "left"|"right"|"top"|"bottom";
+    type TLicenseStatus = "licensed"|"unlicensed"|"invalid"|"trial"|"trialExpired"|"expired"|null;
+    let license_status:TLicenseStatus = null;
+    let license:string = null; // text part of the license
+    let paid_mode:boolean = false;
 
     export function handlePaidPopups(visual:any, props:any){
-        let license_status = validateLicense(visual, props);
+        license_status = validateLicense(visual, props);
+        
         if (!props.paid.show){
+            paid_mode = false;
             props = visual.defaultProperties; 
             hidePaid(visual.target);
+            hideExpired(visual.target);
         } else {
+            paid_mode = true;
             if (license_status != "licensed"){
                 if (license_status == "expired"){
                     displayExpired(visual.target, visual.host);
@@ -32,18 +41,40 @@ module powerbi.extensibility.visual {
                 hideExpired(visual.target);
             }
         }
+        /* handle info popup class states */
+        toggleFreemiumLicenseDetails();
         return props;
+    }
+    export function toggleFreemiumLicenseDetails(){
+        let t = <string>license_status;
+        let pm = paid_mode;
+        if (pm == false) t = "free";
+        let l:any = document.getElementsByClassName("zc-info-window-license-more");
+        for (let x = 0; x < l.length; x++){
+            if (l[x].className.indexOf("zc-" + t) > -1){
+                l[x].style.display = "block";
+                let y = l[x].getElementsByClassName("license");
+                if (y.length > 0){
+                    y[0].innerHTML = "License: " + license;
+                }
+
+            } else {
+                l[x].style.display = "none";
+            }
+        }
+        
+
     }
 
     function addBaseInfoToolbar(settings:any, visual:any){
         settings.toolbar.extraItems = [
             {
-                title: " Info ",
-                label: " Info ",
-                showLabel: true,
+                title: "Info",
+                label: "",
+                showLabel: false,
                 side: <TToolbarItemSide>"top",
                 align: <TToolbarItemSide>"right",
-                cssClass: "DVSL-bar-btn-animated-logo",
+                cssClass: "DVSL-bar-btn-info",
                 onClick: function(e){
                     toggleFreemium(e, visual.target, visual.host, {});
                 }
@@ -591,13 +622,14 @@ module powerbi.extensibility.visual {
 
 		return [ r * 255, g * 255, b * 255 ];
 	}
-    export function validateLicense(visual, props){
-        licenseStatus = null;
+    export function validateLicense(visual, props):TLicenseStatus{
+        let licenseStatus:TLicenseStatus = null;
+        license = null;
         if (props.license.key){
             let x = props.license.key.split("#");
             let y = props.license.hash;
             if (x.length != 2 || !y){
-                return null;
+                return "invalid";
             }
             let text = x[0];
             let signature = x[1]+y;
@@ -622,6 +654,10 @@ module powerbi.extensibility.visual {
             visual.licenseCheckStatus = ret;
             visual.licenseDateStatus = date_ok;
 
+            if (ret){
+                license = text.split("#")[0];
+            }
+
             if (ret && date_ok){
                 licenseStatus = "licensed";
             } else {
@@ -632,7 +668,7 @@ module powerbi.extensibility.visual {
                         licenseStatus = "expired";
                     }
                 } else {
-                    licenseStatus = "invalidLicense";
+                    licenseStatus = "invalid";
 
                 }
             }
@@ -645,27 +681,28 @@ module powerbi.extensibility.visual {
         let ret:any = visual.licenseCheckStatus;
         let date_ok:any = visual.licenseDateStatus;
 
-        if (props.license.key){
-            if (ret && date_ok){
-                if (visual.currentInfoButtonStatus != props.license.info){
-                    if (!props.license.info){
-                        settings.toolbar = {extraItems: []}
-                    } else {
-                        settings.toolbar = {};
-                        settings = addBaseInfoToolbar(settings, visual);
-                    }
-                    visual.currentInfoButtonStatus = props.license.info;
+        if (props.paid.show){
+            /* this works in paid mode only */
+            if (visual.currentInfoButtonStatus != props.license.info){
+                if (!props.license.info){
+                    settings.toolbar = {extraItems: []}
+                } else {
+                    settings.toolbar = {};
+                    settings = addBaseInfoToolbar(settings, visual);
                 }
-            } else {
-
+                visual.currentInfoButtonStatus = props.license.info;
+            }
+        } else {
+            if (ret != "licensed"){
                 if (!visual.currentInfoButtonStatus){
                     visual.currentInfoButtonStatus = true;
-                    settings.toolbar = {};
+                    if (!settings.toolbar){
+                        settings.toolbar = {};
+                    }
                     settings = addBaseInfoToolbar(settings, visual);
                 }
             }
         }
-
         return settings;
     }
 }

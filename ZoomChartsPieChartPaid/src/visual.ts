@@ -44,8 +44,8 @@ module powerbi.extensibility.visual {
         constructor(options: VisualConstructorOptions) {
             super(options);
 
-            version = "v1.1.0.15";
-            releaseDate = "Nov 9, 2018";
+            version = "v1.1.0.16";
+            releaseDate = "Nov 23, 2018";
             visualType = "advanced-donut-visual";
             visualName= "Advanced Donut Visual";
             this.currentInfoButtonStatus = true;
