@@ -693,6 +693,36 @@ module powerbi.extensibility.visual {
         @logExceptions()
         public update(options: VisualUpdateOptions) {
             if (options.dataViews && options.dataViews.length) {
+
+                let dv = options.dataViews[0];
+                let catCount = 0;
+
+                if (typeof(dv.categorical) != "undefined" &&
+                        typeof(dv.categorical.categories) != "undefined"){
+                    catCount = dv.categorical.categories.length;  
+                }
+                if (catCount > 2){
+                    paid_mode_required = true;
+                } else {
+                    paid_mode_required = false;
+                }
+
+                if (typeof(dv.categorical) != "undefined" &&
+                        typeof(dv.categorical.values) != "undefined"){
+                    catCount = 0;
+                    for (let x = 0; x < dv.categorical.values.length; x++){
+                        let c = dv.categorical.values[x];
+                        for (let y in c.source.roles){
+                            if (c.source.roles.hasOwnProperty(y)){
+                                catCount++;
+                            }
+                        }
+                    }
+                }
+                if (catCount > 2){
+                    paid_mode_required = true;
+                }
+
                 this.updateProperties(options);
             }
             super.update(options);

@@ -329,6 +329,18 @@ module powerbi.extensibility.visual {
         public update(options: VisualUpdateOptions) {
 
             if (options.dataViews && options.dataViews.length) {
+                let dv = options.dataViews[0];
+                let catCount = 0;
+
+                if (typeof(dv.categorical) != "undefined" &&
+                        typeof(dv.categorical.categories) != "undefined"){
+                    catCount = dv.categorical.categories.length;  
+                }
+                if (catCount > 2){
+                    paid_mode_required = true;
+                } else {
+                    paid_mode_required = false;
+                }
                 this.updateProperties(options);
             }
 

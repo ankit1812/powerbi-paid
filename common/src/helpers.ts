@@ -17,11 +17,12 @@ module powerbi.extensibility.visual {
     let license_status:TLicenseStatus = null;
     let license:string = null; // text part of the license
     let paid_mode:boolean = false;
+    export let paid_mode_required:boolean = false;
 
     export function handlePaidPopups(visual:any, props:any){
         license_status = validateLicense(visual, props);
         
-        if (!props.paid.show){
+        if (!props.paid.show && !paid_mode_required){
             paid_mode = false;
             props = visual.defaultProperties; 
             hidePaid(visual.target);
