@@ -56,7 +56,8 @@ module powerbi.extensibility.visual {
                 l[x].style.display = "block";
                 let y = l[x].getElementsByClassName("license");
                 if (y.length > 0){
-                    y[0].innerHTML = "License: " + license;
+
+                    y[0].innerHTML = "License: " + license.replace(/(PBI.*)/, " Service tag: $1");
                 }
 
             } else {

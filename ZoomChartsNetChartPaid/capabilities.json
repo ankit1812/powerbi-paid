@@ -13,6 +13,7 @@
         {
             "displayName": "Image Field",
             "name": "imageField",
+            "description": "Field for url's of node images. Url's should start with https:// to ensure secure content requirements",
             "kind": "Grouping"
         },
         {

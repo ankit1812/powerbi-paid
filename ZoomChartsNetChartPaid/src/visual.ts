@@ -337,6 +337,13 @@ module powerbi.extensibility.visual {
                     paid_mode_required = false;
                 }
 
+                for (let x = 0; x < dv.metadata.columns.length; x++){
+                    let c = dv.metadata.columns[x];
+                    if (c.roles.imageField || c.roles.nodeColorField || c.roles.linkLabelField ){
+                        paid_mode_required = true;
+                        break;
+                    }
+                }
  
                 this.lastOptions = options;
                 this.updateProperties(options);
