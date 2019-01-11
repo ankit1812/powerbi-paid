@@ -30,7 +30,7 @@ module powerbi.extensibility.visual {
         } else {
             paid_mode = true;
             if (license_status != "licensed"){
-                if (license_status == "expired"){
+                if (license_status == "expired" || license_status == "trialExpired"){
                     displayExpired(visual.target, visual.host);
                     hidePaid(visual.target);
                 } else {
@@ -628,51 +628,55 @@ module powerbi.extensibility.visual {
         let licenseStatus:TLicenseStatus = null;
         license = null;
         if (props.license.key){
-            let x = props.license.key.split("#");
-            let y = props.license.hash;
-            if (x.length != 2 || !y){
-                return "invalid";
-            }
-            let text = x[0];
-            let signature = x[1]+y;
-			signature = atob(signature);
-			let signature_hex = "";
-            let hex = "";
-			for (let i = 0; i < signature.length; i++) {
-				hex = signature.charCodeAt(i).toString(16);
-                if (hex.length == 1)
-                    signature_hex += "0";
-				signature_hex += hex;
-			}
-            /* validate key */
-            let date_ok = false;
-            let d = text.match(/: ([0-9]+)-([0-9]+)-([0-9]+)/);
-            if (d){
-                let d1 = new Date();
-                let d2 = new Date(d[1], d[2]-1, d[3]);
-                date_ok = (d1 < d2)?true:false;
-            }
-            let ret:any = visual.ZC.ZoomCharts.Internal.Base.RsaCrypto.verifySignature(text, signature_hex);
-            visual.licenseCheckStatus = ret;
-            visual.licenseDateStatus = date_ok;
-
-            if (ret){
-                license = text.split("#")[0];
-            }
-
-            if (ret && date_ok){
-                licenseStatus = "licensed";
-            } else {
-                if (ret && !date_ok){
-                    if (props.license.key.indexOf("trial") > -1){
-                        licenseStatus = "trialExpired";
-                    } else {
-                        licenseStatus = "expired";
-                    }
-                } else {
-                    licenseStatus = "invalid";
-
+            try {
+                let x = props.license.key.split("#");
+                let y = props.license.hash;
+                if (x.length != 2 || !y){
+                    return "invalid";
                 }
+                let text = x[0];
+                let signature = x[1]+y;
+                signature = atob(signature);
+                let signature_hex = "";
+                let hex = "";
+                for (let i = 0; i < signature.length; i++) {
+                    hex = signature.charCodeAt(i).toString(16);
+                    if (hex.length == 1)
+                        signature_hex += "0";
+                    signature_hex += hex;
+                }
+                /* validate key */
+                let date_ok = false;
+                let d = text.match(/: ([0-9]+)-([0-9]+)-([0-9]+)/);
+                if (d){
+                    let d1 = new Date();
+                    let d2 = new Date(d[1], d[2]-1, d[3]);
+                    date_ok = (d1 < d2)?true:false;
+                }
+                let ret:any = visual.ZC.ZoomCharts.Internal.Base.RsaCrypto.verifySignature(text, signature_hex);
+                visual.licenseCheckStatus = ret;
+                visual.licenseDateStatus = date_ok;
+
+                if (ret){
+                    license = text.split("#")[0];
+                }
+
+                if (ret && date_ok){
+                    licenseStatus = "licensed";
+                } else {
+                    if (ret && !date_ok){
+                        if (props.license.key.indexOf("trial") > -1){
+                            licenseStatus = "trialExpired";
+                        } else {
+                            licenseStatus = "expired";
+                        }
+                    } else {
+                        licenseStatus = "invalid";
+
+                    }
+                }
+            } catch (err) {
+                licenseStatus = "unlicensed";
             }
         } else {
             licenseStatus = "unlicensed";
