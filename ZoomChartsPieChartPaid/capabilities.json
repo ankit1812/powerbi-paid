@@ -145,6 +145,15 @@
                             {"value": "auto", "displayName": "Default"}
                         ]
                     }
+                },
+                "othersSizing": {
+                    "displayName": "`Others`/`Previous` Sizing",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Default"},
+                            {"value": "actual", "displayName": "Actual"}
+                        ]
+                    }
                 }
             }
         },

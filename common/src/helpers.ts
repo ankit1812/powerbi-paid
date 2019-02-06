@@ -146,6 +146,15 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    export function othersSizingControl(settings:any, props: any) {
+        if (props.donut.othersSizing === "actual") {
+            settings.interaction.others.minSliceFraction = 0;
+            settings.interaction.others.maxOthersFraction = 1;
+            settings.interaction.others.navigationFraction = 0;
+        }
+        return settings;
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;
