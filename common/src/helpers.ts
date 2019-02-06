@@ -138,6 +138,14 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    export function addLocalizationSettings(settings:any, props:any) {
+        settings.localization = {
+            othersLabel: secureString(props.donut.othersLabel) || "Others",
+            previousLabel: secureString(props.donut.previousLabel) || "Previous"
+        }
+        return settings;
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;

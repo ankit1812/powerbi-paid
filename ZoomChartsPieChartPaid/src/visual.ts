@@ -8,6 +8,8 @@ module powerbi.extensibility.visual {
             theme3d: boolean;
             others: boolean;
             maxSlicesVisible: number;
+            othersLabel: string;
+            previousLabel: string;
             dataSorting: "ascending" | "descending" | "auto";
         },
         legend: IPieLegendSettings,
@@ -58,6 +60,8 @@ module powerbi.extensibility.visual {
                     theme3d: false,
                     others: true,
                     maxSlicesVisible: 15,
+                    othersLabel: "",
+                    previousLabel: "",
                     dataSorting: "auto",
                 },
                 legend: {
@@ -317,6 +321,7 @@ module powerbi.extensibility.visual {
                         }
                     },
                 }
+                settings = addLocalizationSettings(settings, props);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 //sortField won't be updated if replaceData isn't called. No idea why as in SDK it is working fine.

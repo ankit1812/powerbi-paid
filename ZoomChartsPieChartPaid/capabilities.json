@@ -122,6 +122,20 @@
                         "integer": true 
                     }
                 },
+                "othersLabel": {
+                    "displayName": "`Others` Label",
+                    "description": "This setting allows to change the name of `Others` slice.",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "previousLabel": {
+                    "displayName": "`Previous` Label",
+                    "description": "This setting allows to change the name of `Previous` slice.",
+                    "type": {
+                        "text": true
+                    }
+                },
                 "dataSorting": {
                     "displayName": "Data Sorting",
                     "type": {
