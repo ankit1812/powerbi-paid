@@ -148,6 +148,7 @@
                 },
                 "othersSizing": {
                     "displayName": "`Others`/`Previous` Sizing",
+                    "description": "This setting allows to switch between actual and default sizing mode for the `Others` and `Previous` slices.",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},

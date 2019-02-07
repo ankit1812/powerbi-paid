@@ -12,9 +12,6 @@ module powerbi.extensibility.visual {
             previousLabel: string;
             dataSorting: "ascending" | "descending" | "auto";
             othersSizing: "default" | "actual";
-            minSliceFraction: number;
-            maxOthersFraction: number;
-            navigationFraction: number;
         },
         legend: IPieLegendSettings,
         labels: IFontSettings & {
@@ -67,10 +64,7 @@ module powerbi.extensibility.visual {
                     othersLabel: "",
                     previousLabel: "",
                     dataSorting: "auto",
-                    othersSizing: "default",
-                    minSliceFraction: 0.01,
-                    maxOthersFraction: 0.6,
-                    navigationFraction: 0.15
+                    othersSizing: "default"
                 },
                 legend: {
                     show: false,
@@ -178,9 +172,6 @@ module powerbi.extensibility.visual {
                         others: { 
                             enabled: props.donut.others,
                             maxSlicesVisible: props.donut.maxSlicesVisible,
-                            minSliceFraction: props.donut.minSliceFraction,
-                            maxOthersFraction: props.donut.maxOthersFraction,
-                            navigationFraction: props.donut.navigationFraction
                         }
                     },
                     labels: {
@@ -329,10 +320,10 @@ module powerbi.extensibility.visual {
                                 s.fillGradient = null;
                             }
 
+                            s = sliceSizingControl(s, props);
                         }
                     },
                 }
-                settings = othersSizingControl(settings, props);
                 settings = addLocalizationSettings(settings, props);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);

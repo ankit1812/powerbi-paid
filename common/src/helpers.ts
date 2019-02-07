@@ -146,13 +146,17 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
-    export function othersSizingControl(settings:any, props: any) {
+    // Function will rewrite slice fraction size, so that it would be 
+    // an 'actual' size. There is no need to set values:
+    //      - settings.maxOthersFraction = 1;
+    //      - settings.minSliceFraction = 0;
+    //      - settings.navigationFraction = 0;
+    // because nothing is impeding and slices are drawn correctly.
+    export function sliceSizingControl(slice:any, props: any) {
         if (props.donut.othersSizing === "actual") {
-            settings.interaction.others.minSliceFraction = 0;
-            settings.interaction.others.maxOthersFraction = 1;
-            settings.interaction.others.navigationFraction = 0;
+            slice.fraction = slice.percent / 100;
         }
-        return settings;
+        return slice;
     }
 
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
