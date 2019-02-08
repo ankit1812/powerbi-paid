@@ -204,8 +204,8 @@ module powerbi.extensibility.visual {
                     showGridlines: true,
                     lineType: "solid",
                     lineWidth: 1,
-                    gridlineColor: { solid: { color: "rgba(255, 255, 255, 0.2)" } },
-                    gridlineOpacity: 100
+                    gridlineColor: { solid: { color: "#FFF" } },
+                    gridlineOpacity: 20
                 },
                 valueAxis2: {
                     show: false,
@@ -239,8 +239,8 @@ module powerbi.extensibility.visual {
                     showGridlines: true,
                     lineType: "solid",
                     lineWidth: 1,
-                    gridlineColor: { solid: { color: "rgba(255, 255, 255, 0.2)" } },
-                    gridlineOpacity: 100
+                    gridlineColor: { solid: { color: "#000" } },
+                    gridlineOpacity: 10
                 },
                 stacks: {
                     mode: "normal",
