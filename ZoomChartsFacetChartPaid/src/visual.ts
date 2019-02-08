@@ -578,7 +578,7 @@ module powerbi.extensibility.visual {
                             title: secureString(props.valueAxis1.title),
                             zeroLine: props.valueAxis1.zeroLine,
                             logScale: props.valueAxis1.logScale,
-                            hgrid: (!props.valueAxis1.showGridlines ? false : null),
+                            hgrid: props.valueAxis1.showGridlines,
                             style: {
                                 valueLabel: {
                                     textStyle: {
