@@ -64,6 +64,7 @@ module powerbi.extensibility.visual {
             show: boolean;
             maxUnitWidth: number;
             minUnitWidth: number;
+            showHolidays: boolean;
         };
         stacks: {
             mode: "normal" | "proportional" | "based";
@@ -232,7 +233,8 @@ module powerbi.extensibility.visual {
                     fontStyle: "",
                     fontSize: 12,
                     maxUnitWidth: 200,
-                    minUnitWidth: 1
+                    minUnitWidth: 1,
+                    showHolidays: true
                 },
                 stacks: {
                     mode: "normal",
@@ -571,7 +573,8 @@ module powerbi.extensibility.visual {
                             }
                         },
                         maxUnitWidth: props.timeAxis.maxUnitWidth ? props.timeAxis.maxUnitWidth : Math.max(2, this.series.length) * 100,
-                        minUnitWidth: props.timeAxis.minUnitWidth
+                        minUnitWidth: props.timeAxis.minUnitWidth,
+                        showHolidays: props.timeAxis.showHolidays
                     },
                     stacks: this.createStackConfig(props),
                     valueAxis: {
