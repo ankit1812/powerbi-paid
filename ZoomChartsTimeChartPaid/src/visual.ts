@@ -60,11 +60,12 @@ module powerbi.extensibility.visual {
             valuePrefix: string;
             valueSuffix: string;
         };
-        timeAxis: IFontSettings & {
+        timeAxis: IFontSettings & IGridlineSettings & {
             show: boolean;
             maxUnitWidth: number;
             minUnitWidth: number;
             showHolidays: boolean;
+            showGridlines: boolean;
         };
         stacks: {
             mode: "normal" | "proportional" | "based";
@@ -234,7 +235,12 @@ module powerbi.extensibility.visual {
                     fontSize: 12,
                     maxUnitWidth: 200,
                     minUnitWidth: 1,
-                    showHolidays: true
+                    showHolidays: true,
+                    showGridlines: true,
+                    lineType: "solid",
+                    lineWidth: 1,
+                    gridlineColor: { solid: { color: "rgba(255, 255, 255, 0.2)" } },
+                    gridlineOpacity: 100
                 },
                 stacks: {
                     mode: "normal",
@@ -574,7 +580,8 @@ module powerbi.extensibility.visual {
                         },
                         maxUnitWidth: props.timeAxis.maxUnitWidth ? props.timeAxis.maxUnitWidth : Math.max(2, this.series.length) * 100,
                         minUnitWidth: props.timeAxis.minUnitWidth,
-                        showHolidays: props.timeAxis.showHolidays
+                        showHolidays: props.timeAxis.showHolidays,
+                        vgrid: props.timeAxis.showGridlines
                     },
                     stacks: this.createStackConfig(props),
                     valueAxis: {
@@ -704,7 +711,8 @@ module powerbi.extensibility.visual {
                     };
                     this.toolbarSettings = settings.toolbar;
                 }
-                settings = setGridlineSettings(settings, props, this);
+                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props.valueAxis1, this.defaultProperties.valueAxis1, this);
+                settings.timeAxis.style.vgrid = setGridlineSettings(settings.timeAxis.style.vgrid, props.timeAxis, this.defaultProperties.timeAxis, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
 
@@ -870,9 +878,22 @@ module powerbi.extensibility.visual {
             }
 
             if (objectName === "timeAxis") {
+                if (!props.timeAxis.showGridlines) {
+                    delete props.timeAxis.lineType;
+                    delete props.timeAxis.lineWidth;
+                    delete props.timeAxis.gridlineColor;
+                    delete props.timeAxis.gridlineOpacity;
+                } else {
+                    if (props.timeAxis.lineType === "solid") {
+                        delete props.timeAxis.lineWidth;
+                    }
+                }
+
                 validValues = {
                     maxUnitWidth: { numberRange: { min: 0, max: 1000 } },
                     minUnitWidth: { numberRange: { min: 0, max: 1000 } },
+                    lineWidth: { numberRange: {min: 0, max: 100} },
+                    gridlineOpacity: { numberRange: {min: 0 , max: 100} }
                 };
             }
 

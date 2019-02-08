@@ -166,22 +166,26 @@ module powerbi.extensibility.visual {
         gridlineOpacity: number;
     }
 
-    export function setGridlineSettings(settings:any, props:any, visual:any) {
-        let gridlineSettings: IGridlineSettings = visual.defaultProperties.valueAxis1;
+    export function setGridlineSettings(gridlineSettings:any, gridlineProperties:any, defaultGridlineProperties:any, visual:any) {
+        let localGridlineSettings: IGridlineSettings = defaultGridlineProperties;
 
-        if (props.valueAxis1.showGridlines) {
-            gridlineSettings.lineType = props.valueAxis1.lineType;
-            gridlineSettings.lineWidth = props.valueAxis1.lineWidth;
-            gridlineSettings.gridlineOpacity = props.valueAxis1.gridlineOpacity;
-            gridlineSettings.gridlineColor = props.valueAxis1.gridlineColor;
+        if (gridlineProperties.showGridlines) {
+            localGridlineSettings.lineType = gridlineProperties.lineType;
+            localGridlineSettings.lineWidth = gridlineProperties.lineWidth;
+            localGridlineSettings.gridlineOpacity = gridlineProperties.gridlineOpacity;
+            localGridlineSettings.gridlineColor = gridlineProperties.gridlineColor;
         }
 
-        settings.valueAxis.primary.style.hgrid = {
-            lineColor: deriveColor(visual.ZC.ZoomCharts, gridlineSettings.gridlineColor, gridlineSettings.gridlineOpacity),
-            lineWidth: gridlineSettings.lineWidth,
-            lineDash: getLineDash(gridlineSettings)
+        gridlineSettings = {
+            lineColor: deriveColor(visual.ZC.ZoomCharts, localGridlineSettings.gridlineColor, localGridlineSettings.gridlineOpacity),
+            lineWidth: localGridlineSettings.lineWidth,
+            lineDash: getLineDash(localGridlineSettings)
         }
-        return settings;
+        console.log("gridlineSettings");
+        console.log(gridlineSettings);
+        console.log("gridlineProperties");
+        console.log(gridlineProperties);
+        return gridlineSettings;
     }
 
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {

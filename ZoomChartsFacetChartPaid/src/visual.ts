@@ -684,7 +684,7 @@ module powerbi.extensibility.visual {
                     this.toolbarSettings = settings.toolbar;
                 }
                 
-                settings = setGridlineSettings(settings, props, this);
+                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props.valueAxis1, this.defaultProperties.valueAxis1, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 let sortField = null; //default
