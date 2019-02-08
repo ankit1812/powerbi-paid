@@ -181,10 +181,6 @@ module powerbi.extensibility.visual {
             lineWidth: localGridlineSettings.lineWidth,
             lineDash: getLineDash(localGridlineSettings)
         }
-        console.log("gridlineSettings");
-        console.log(gridlineSettings);
-        console.log("gridlineProperties");
-        console.log(gridlineProperties);
         return gridlineSettings;
     }
 
