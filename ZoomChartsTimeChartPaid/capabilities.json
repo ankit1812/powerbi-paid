@@ -372,6 +372,37 @@
                 "valueSuffix": {
                     "displayName": "Value Suffix",
                     "type": { "text": true }
+                },
+                "showGridlines": {
+                    "displayName": "Gridlines",
+                    "description": "Turn horizontal gridlines on/off",
+                    "type": { "bool": true }
+                },
+                "lineType": {
+                    "displayName": "Gridline Style",
+                    "description": "Style for gridline",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "lineWidth": {
+                    "displayName": "Gridline Width",
+                    "description": "This setting allows to adjust the width and spacing for dashes in the gridline",
+                    "type" : { "integer": true }
+                },
+                "gridlineColor": {
+                    "displayName": "Gridline Color",
+                    "description": "Color of gridline",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "gridlineOpacity": {
+                    "displayName": "Gridline Opacity",
+                    "description": "Opacity of gridline color",
+                    "type": { "integer": true }
                 }
             }
         },

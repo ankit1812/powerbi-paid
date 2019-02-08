@@ -35,7 +35,7 @@ module powerbi.extensibility.visual {
             width: number;
             height: number;
         };
-        valueAxis1: IFontSettings & ITitleFontSettings & {
+        valueAxis1: IFontSettings & ITitleFontSettings & IGridlineSettings & {
             show: boolean;
             side: "left" | "right";
             title: string;
@@ -46,6 +46,7 @@ module powerbi.extensibility.visual {
             showValueAffixes: boolean;
             valuePrefix: string;
             valueSuffix: string;
+            showGridlines: boolean;
         };
         valueAxis2: IFontSettings & ITitleFontSettings & {
             show: boolean;
@@ -198,6 +199,11 @@ module powerbi.extensibility.visual {
                     showValueAffixes: false,
                     valuePrefix: "",
                     valueSuffix: "",
+                    showGridlines: true,
+                    lineType: "solid",
+                    lineWidth: 1,
+                    gridlineColor: { solid: { color: "rgba(255, 255, 255, 0.2)" } },
+                    gridlineOpacity: 100
                 },
                 valueAxis2: {
                     show: false,
@@ -694,6 +700,7 @@ module powerbi.extensibility.visual {
                     };
                     this.toolbarSettings = settings.toolbar;
                 }
+                settings = setGridlineSettings(settings, props, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
 
@@ -880,6 +887,22 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis1.valuePrefix;
                     delete props.valueAxis1.valueSuffix;
                 }
+
+                if (!props.valueAxis1.showGridlines) {
+                    delete props.valueAxis1.lineType;
+                    delete props.valueAxis1.lineWidth;
+                    delete props.valueAxis1.gridlineColor;
+                    delete props.valueAxis1.gridlineOpacity;
+                } else {
+                    if (props.valueAxis1.lineType === "solid") {
+                        delete props.valueAxis1.lineWidth;
+                    }
+                }
+
+                validValues = {
+                    lineWidth: { numberRange: {min: 0, max: 100} },
+                    gridlineOpacity: { numberRange: {min: 0 , max: 100} }
+                };
             }
             if( objectName === "valueAxis2") {
                 if (!props.valueAxis2.showValueAffixes) {

@@ -159,6 +159,33 @@ module powerbi.extensibility.visual {
         return slice;
     }
 
+    export interface IGridlineSettings {
+        lineType: "solid" | "dotted" | "dashed";
+        lineWidth: number;
+        gridlineColor: { solid: { color: string; } };
+        gridlineOpacity: number;
+    }
+
+    export function setGridlineSettings(settings:any, props:any, visual:any) {
+        let gridlineSettings: IGridlineSettings = visual.defaultProperties.valueAxis1;
+
+        if (props.valueAxis1.showGridlines) {
+            gridlineSettings.lineType = props.valueAxis1.lineType;
+            gridlineSettings.lineWidth = props.valueAxis1.lineWidth;
+            gridlineSettings.gridlineOpacity = props.valueAxis1.gridlineOpacity;
+            gridlineSettings.gridlineColor = props.valueAxis1.gridlineColor;
+        } else {
+            gridlineSettings.gridlineOpacity = 0;
+        }
+
+        settings.valueAxis.primary.style.hgrid = {
+            lineColor: deriveColor(visual.ZC.ZoomCharts, gridlineSettings.gridlineColor, gridlineSettings.gridlineOpacity),
+            lineWidth: gridlineSettings.lineWidth,
+            lineDash: getLineDash(gridlineSettings)
+        }
+        return settings;
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;
