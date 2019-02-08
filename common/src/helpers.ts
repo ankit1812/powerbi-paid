@@ -174,8 +174,6 @@ module powerbi.extensibility.visual {
             gridlineSettings.lineWidth = props.valueAxis1.lineWidth;
             gridlineSettings.gridlineOpacity = props.valueAxis1.gridlineOpacity;
             gridlineSettings.gridlineColor = props.valueAxis1.gridlineColor;
-        } else {
-            gridlineSettings.gridlineOpacity = 0;
         }
 
         settings.valueAxis.primary.style.hgrid = {
