@@ -60,7 +60,7 @@ module powerbi.extensibility.visual {
             valuePrefix: string;
             valueSuffix: string;
         };
-        timeAxis: IFontSettings & IGridlineSettings & {
+        timeAxis: IFontSettings & IHolidayHighlightStyle & IGridlineSettings & {
             show: boolean;
             maxUnitWidth: number;
             minUnitWidth: number;
@@ -236,6 +236,12 @@ module powerbi.extensibility.visual {
                     maxUnitWidth: 200,
                     minUnitWidth: 1,
                     showHolidays: true,
+                    holidayFillColor: { solid: { color: "#E6E6E6" } },
+                    holidayFillOpacity: 20,
+                    holidayLineColor: { solid: { color: "#FFF" } },
+                    holidayLineOpacity: 0,
+                    holidayLineType: "solid",
+                    holidayLineWidth: 0,
                     showGridlines: true,
                     lineType: "solid",
                     lineWidth: 1,
@@ -713,6 +719,7 @@ module powerbi.extensibility.visual {
                 }
                 settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props.valueAxis1, this.defaultProperties.valueAxis1, this);
                 settings.timeAxis.style.vgrid = setGridlineSettings(settings.timeAxis.style.vgrid, props.timeAxis, this.defaultProperties.timeAxis, this);
+                settings = setHolidayHighlightSettings(settings, props, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
 
@@ -878,6 +885,16 @@ module powerbi.extensibility.visual {
             }
 
             if (objectName === "timeAxis") {
+                // remove 'Holiday Highlight' styling settings
+                if (!props.timeAxis.showHolidays) {
+                    delete props.timeAxis.holidayFillColor;
+                    delete props.timeAxis.holidayFillOpacity;
+                    delete props.timeAxis.holidayLineColor;
+                    delete props.timeAxis.holidayLineOpacity;
+                    delete props.timeAxis.holidayLineType;
+                    delete props.timeAxis.holidayLineWidth;
+                }
+
                 if (!props.timeAxis.showGridlines) {
                     delete props.timeAxis.lineType;
                     delete props.timeAxis.lineWidth;
@@ -892,6 +909,9 @@ module powerbi.extensibility.visual {
                 validValues = {
                     maxUnitWidth: { numberRange: { min: 0, max: 1000 } },
                     minUnitWidth: { numberRange: { min: 0, max: 1000 } },
+                    holidayFillOpacity: { numberRange: {min: 0 , max: 100} },
+                    holidayLineOpacity: { numberRange: {min: 0 , max: 100} },
+                    holidayLineWidth: { numberRange: {min: 0 , max: 100} },
                     lineWidth: { numberRange: {min: 0, max: 100} },
                     gridlineOpacity: { numberRange: {min: 0 , max: 100} }
                 };

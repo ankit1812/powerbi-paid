@@ -562,6 +562,36 @@
                     "description": "Turn holiday highlight on/off",
                     "type": { "bool": true }
                 },
+                "holidayFillColor": {
+                    "displayName": "Holiday Highlight Fill Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "holidayFillOpacity": {
+                    "displayName": "Holiday Highlight Fill Opacity",
+                    "type": { "integer": true }
+                },
+                "holidayLineColor": {
+                    "displayName": "Holiday Highlight Line Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "holidayLineOpacity": {
+                    "displayName": "Holiday Highlight Line Opacity",
+                    "type": { "integer": true }
+                },
+                "holidayLineType": {
+                    "displayName": "Holiday Highlight Line Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "holidayLineWidth": {
+                    "displayName": "Holiday Highlight Line Width",
+                    "type" : { "integer": true }
+                },
                 "showGridlines": {
                     "displayName": "Gridlines",
                     "description": "Turn vertical gridlines on/off",

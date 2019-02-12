@@ -184,6 +184,30 @@ module powerbi.extensibility.visual {
         return gridlineSettings;
     }
 
+    export interface IHolidayHighlightStyle {
+        holidayFillColor: { solid: { color: string } };
+        holidayFillOpacity: number;
+        holidayLineColor: { solid: { color: string } };
+        holidayLineOpacity: number;
+        holidayLineType: "solid" | "dotted" | "dashed";
+        holidayLineWidth: number;
+    }
+
+    export function setHolidayHighlightSettings(settings: any, props: any, visual: any) {
+        let localHolidaySettings = {
+            lineWidth: props.timeAxis.holidayLineWidth,
+            lineType: props.timeAxis.holidayLineType
+        };
+
+        settings.timeAxis.style.dateHolidays = {
+            fillColor: deriveColor(visual.ZC.ZoomCharts, props.timeAxis.holidayFillColor, props.timeAxis.holidayFillOpacity),
+            lineColor: deriveColor(visual.ZC.ZoomCharts, props.timeAxis.holidayLineColor, props.timeAxis.holidayLineOpacity),
+            lineDash: getLineDash(localHolidaySettings),
+            lineWidth: props.timeAxis.holidayLineWidth
+        }
+        return settings;
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;
