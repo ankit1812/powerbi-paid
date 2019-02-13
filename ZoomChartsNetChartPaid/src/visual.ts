@@ -4,6 +4,7 @@ module powerbi.extensibility.visual {
     interface IChartCategoryProperties extends ILabelAndValueFontSettings {
         show: boolean;
         name: string;
+        nodeType: "default" | "text";
         shape: "default" | "circle" | "rectangle" | "droplet";
         showImages: boolean;
         colorMode: "default" | "auto" | "fixed" | "dynamic";
@@ -285,6 +286,7 @@ module powerbi.extensibility.visual {
             return {
                 show: false,
                 name: null,
+                nodeType: "default",
                 shape: "default",
                 showImages: true,
                 colorMode: "default",
@@ -434,6 +436,11 @@ module powerbi.extensibility.visual {
                     //
                 } else {
                     delete vals.fillColor;
+                }
+
+                //remove 'Node Shape' setting
+                if (co.nodeType === "text") {
+                    delete vals.shape;
                 }
 
                 //no Field for images, so don't show 'Show Images' switch:
@@ -649,7 +656,7 @@ module powerbi.extensibility.visual {
             }
             let cprops = belonging_category.props;
             let self = this;
-            n.label = null;
+            n.label = "";
             if (cprops.show == true && cprops.relativeSizes){
                 let relativeMinRadius:any;
                 let relativeMaxRadius:any;
@@ -681,8 +688,12 @@ module powerbi.extensibility.visual {
                 n.fillColor = current_fillColor;
             }
 
-
-
+            if (cprops.show === true) {
+                let nodeShape: string = Data.nodeShape(cprops);
+                if (nodeShape !== "") {
+                    n.display = nodeShape;
+                }
+            }
 
             if (n.selected){
                 n.lineColor = "black";
@@ -750,15 +761,6 @@ module powerbi.extensibility.visual {
                 n.image = null;
             }
 
-
-            //no items detected, so create those:
-            if (typeof(n.data.extra.items) == "undefined"){
-                n.data.extra.items = {};
-                this.createInnerLabel(n, "", props, cprops);
-                this.createOuterLabel(n, "", props, cprops);
-            }
-
-
             //labels - hide/show/update:
 
             let label:string = "(empty)";
@@ -767,42 +769,53 @@ module powerbi.extensibility.visual {
                 label = name+"";
             }
 
-            let valueAutoShortener = getProperValue(props, cprops, "nodes", "valueAutoShortener");
-            let value = n.data.extra.value;
-            if (valueAutoShortener) {
-                value = (formatText(Math.round(n.data.extra.value*100)/100));
-            } else {
-                let valueDecimals:any = getProperValue(props, cprops, "nodes", "valueDecimals");
-                if(valueDecimals != "auto") {
-                    value = value.toFixed(valueDecimals);
+            let i1:any = null;
+            let i2:any = null;
+            if (cprops.nodeType === "default") {
+                //no items detected, so create those:
+                if (typeof(n.data.extra.items) == "undefined"){
+                    n.data.extra.items = {};
+                    this.createInnerLabel(n, "", props, cprops);
+                    this.createOuterLabel(n, "", props, cprops);
                 }
-                //value = powerbi.extensibility.utils.formatting.valueFormatter.format(
-                //    value,
-                //    series.extra.format);
-            }
-            value = "" + value;
 
-            //value and label location:
-            let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
-            let labelLocation = getProperValue(props, cprops, "nodes", "labelLocation"); 
-            
-            let i1:any=null;
-            let i2:any=null;
-            if(valueLocation == labelLocation) {
-                let format = getProperValue(props, cprops, "nodes", "labelFormat");
-                label = this.formatLabelAndValue(value, name, format);
-
-                if(valueLocation == "inside") {
-                    i1 = this.updateInnerLabel(n, label, props, cprops);
+                let valueAutoShortener = getProperValue(props, cprops, "nodes", "valueAutoShortener");
+                let value = n.data.extra.value;
+                if (valueAutoShortener) {
+                    value = (formatText(Math.round(n.data.extra.value*100)/100));
                 } else {
-                    i1 = this.updateOuterLabel(n, label, props, cprops);
+                    let valueDecimals:any = getProperValue(props, cprops, "nodes", "valueDecimals");
+                    if(valueDecimals != "auto") {
+                        value = value.toFixed(valueDecimals);
+                    }
+                    //value = powerbi.extensibility.utils.formatting.valueFormatter.format(
+                    //    value,
+                    //    series.extra.format);
                 }
-            } else if(valueLocation == "inside") {
-                i1 = this.updateOuterLabel(n, label, props, cprops);
-                i2 = this.updateInnerLabel(n, value, props, cprops);
-            } else if (valueLocation == "outside") {
-                i1 = this.updateOuterLabel(n, value, props, cprops);
-                i2 = this.updateInnerLabel(n, label, props, cprops);
+                value = "" + value;
+
+                //value and label location:
+                let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
+                let labelLocation = getProperValue(props, cprops, "nodes", "labelLocation"); 
+                
+                if(valueLocation == labelLocation) {
+                    let format = getProperValue(props, cprops, "nodes", "labelFormat");
+                    label = this.formatLabelAndValue(value, name, format);
+
+                    if(valueLocation == "inside") {
+                        i1 = this.updateInnerLabel(n, label, props, cprops);
+                    } else {
+                        i1 = this.updateOuterLabel(n, label, props, cprops);
+                    }
+                } else if(valueLocation == "inside") {
+                    i1 = this.updateOuterLabel(n, label, props, cprops);
+                    i2 = this.updateInnerLabel(n, value, props, cprops);
+                } else if (valueLocation == "outside") {
+                    i1 = this.updateOuterLabel(n, value, props, cprops);
+                    i2 = this.updateInnerLabel(n, label, props, cprops);
+                }
+            } else {
+                n.label = label;
             }
 
             n.items = [];

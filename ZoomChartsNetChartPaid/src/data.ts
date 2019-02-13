@@ -82,9 +82,6 @@ module powerbi.extensibility.visual {
 
                 //override based on category specific values:
                 if(co && co.show == true) { //apply category specific values only if category is enabled
-                    if(co.shape && co.shape != "default") {
-                        o.style.display = co.shape;
-                    }
                     if(co.colorMode && co.colorMode == "fixed") {
                         if(co.fillColor && co.fillColor.solid.color) {
                             o.style.fillColor = co.fillColor.solid.color;
@@ -362,6 +359,19 @@ module powerbi.extensibility.visual {
                 }
             }
             return a;
+        }
+
+        public static nodeShape(node: any): string {
+            let nodeShape: string = "";
+
+            if (node.nodeType && node.nodeType === "default") {
+                if (node.shape && node.shape != "default") {
+                    nodeShape = node.shape;
+                }
+            } else {
+                nodeShape = node.nodeType;
+            }
+            return nodeShape;
         }
     }
 
