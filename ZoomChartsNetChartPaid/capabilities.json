@@ -204,7 +204,8 @@
                         "enumeration": [
                             {"value": "circle", "displayName": "Circle"},
                             {"value": "rectangle", "displayName": "Rectangle"},
-                            {"value": "droplet", "displayName": "Droplet"}
+                            {"value": "droplet", "displayName": "Droplet"},
+                            {"value": "text", "displayName": "Text"}
                         ]
                     }
                 },

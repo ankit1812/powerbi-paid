@@ -5,7 +5,7 @@ module powerbi.extensibility.visual {
         show: boolean;
         name: string;
         nodeType: "default" | "text";
-        shape: "default" | "circle" | "rectangle" | "droplet";
+        shape: "default" | "circle" | "rectangle" | "droplet" | "text";
         showImages: boolean;
         colorMode: "default" | "auto" | "fixed" | "dynamic";
         fillColor: { solid: { color: string; } };
@@ -24,7 +24,7 @@ module powerbi.extensibility.visual {
         
         legend: ILegendSettings,
         nodes: {
-            shape: "circle" | "rectangle" | "droplet";
+            shape: "circle" | "rectangle" | "droplet" | "text";
             showImages: boolean;
             colorMode: "auto" | "fixed" | "dynamic";
             fillColor: { solid: { color: string; } };
@@ -246,7 +246,7 @@ module powerbi.extensibility.visual {
                     style: {
                         node: {
                             imageCropping: true,
-                            display: props.nodes.shape,
+                            //display: props.nodes.shape,
                             fillColor: props.nodes.fillColor ? props.nodes.fillColor.solid.color : null,
                         },
                         link: {
@@ -656,7 +656,7 @@ module powerbi.extensibility.visual {
             }
             let cprops = belonging_category.props;
             let self = this;
-            n.label = "";
+            n.label = "";//null;
             if (cprops.show == true && cprops.relativeSizes){
                 let relativeMinRadius:any;
                 let relativeMaxRadius:any;
@@ -688,12 +688,12 @@ module powerbi.extensibility.visual {
                 n.fillColor = current_fillColor;
             }
 
-            if (cprops.show === true) {
+            /*if (cprops.show === true) {
                 let nodeShape: string = Data.nodeShape(cprops);
                 if (nodeShape !== "") {
                     n.display = nodeShape;
                 }
-            }
+            }*/
 
             if (n.selected){
                 n.lineColor = "black";
@@ -771,28 +771,30 @@ module powerbi.extensibility.visual {
 
             let i1:any = null;
             let i2:any = null;
-            if (cprops.nodeType === "default") {
-                //no items detected, so create those:
-                if (typeof(n.data.extra.items) == "undefined"){
-                    n.data.extra.items = {};
-                    this.createInnerLabel(n, "", props, cprops);
-                    this.createOuterLabel(n, "", props, cprops);
-                }
 
-                let valueAutoShortener = getProperValue(props, cprops, "nodes", "valueAutoShortener");
-                let value = n.data.extra.value;
-                if (valueAutoShortener) {
-                    value = (formatText(Math.round(n.data.extra.value*100)/100));
-                } else {
-                    let valueDecimals:any = getProperValue(props, cprops, "nodes", "valueDecimals");
-                    if(valueDecimals != "auto") {
-                        value = value.toFixed(valueDecimals);
-                    }
-                    //value = powerbi.extensibility.utils.formatting.valueFormatter.format(
-                    //    value,
-                    //    series.extra.format);
+            //no items detected, so create those:
+            if (typeof(n.data.extra.items) == "undefined"){
+                n.data.extra.items = {};
+                this.createInnerLabel(n, "", props, cprops);
+                this.createOuterLabel(n, "", props, cprops);
+            }
+
+            let valueAutoShortener = getProperValue(props, cprops, "nodes", "valueAutoShortener");
+            let value = n.data.extra.value;
+            if (valueAutoShortener) {
+                value = (formatText(Math.round(n.data.extra.value*100)/100));
+            } else {
+                let valueDecimals:any = getProperValue(props, cprops, "nodes", "valueDecimals");
+                if(valueDecimals != "auto") {
+                    value = value.toFixed(valueDecimals);
                 }
-                value = "" + value;
+                //value = powerbi.extensibility.utils.formatting.valueFormatter.format(
+                //    value,
+                //    series.extra.format);
+            }
+            value = "" + value;
+
+            if (cprops.nodeType === "default") {
 
                 //value and label location:
                 let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
@@ -815,6 +817,9 @@ module powerbi.extensibility.visual {
                     i2 = this.updateInnerLabel(n, label, props, cprops);
                 }
             } else {
+                let format = getProperValue(props, cprops, "nodes", "labelFormat");
+                label = this.formatLabelAndValue(value, name, format);
+
                 n.label = label;
             }
 

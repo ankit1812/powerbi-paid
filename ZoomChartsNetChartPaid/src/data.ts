@@ -58,6 +58,8 @@ module powerbi.extensibility.visual {
                 "#53a8c2",
                 "#778183"
             ];
+
+            let default_shape = props.nodes.shape;
  
             for (let y = 0; y < categories; y++){
                 //let color = getColor(dataView.categorical.categories[y], y, "fillColor" + (y + 1).toFixed(0));
@@ -67,9 +69,17 @@ module powerbi.extensibility.visual {
                     color = props.nodes.fillColor.solid.color;
                 }
                 let co = null; //category object containing category specific properties & values
+                
+                let shape = default_shape;
+
                 if(props["category"+m]){
                     co = props["category"+m];
                 }
+
+                /*if (co){
+                 * TODO apply proper shape using custom settings
+                 * move other category dependent settings here from nodeStyle function
+                }*/
                 
                 nodeMap[y] = {};
                 let o:any = {
@@ -77,6 +87,7 @@ module powerbi.extensibility.visual {
                     nameLegend: dataView.categorical.categories[y].source.displayName,
                     style: {
                         fillColor: color,
+                        display: shape
                     }
                 };
 
