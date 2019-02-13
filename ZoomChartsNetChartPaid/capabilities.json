@@ -557,6 +557,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node Shape",
                     "type": {
@@ -767,6 +776,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node Shape",
@@ -979,6 +997,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node Shape",
                     "type": {
@@ -1189,6 +1216,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node Shape",
@@ -1401,6 +1437,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node Shape",
                     "type": {
@@ -1611,6 +1656,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node Shape",
@@ -1834,6 +1888,15 @@
                         ]
                     }
                 },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "showImages": {
                     "displayName": "Show images",
                     "description": "To set node image source, please see 'Fields' tab.",
@@ -2033,6 +2096,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node Shape",
@@ -2244,6 +2316,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node Shape",
