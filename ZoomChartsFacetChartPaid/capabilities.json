@@ -296,7 +296,7 @@
                     "type": { "text": true }
                 },
                 "showGridlines": {
-                    "displayName": "Gridlines",
+                    "displayName": "BETA - Gridlines (toggle)",
                     "description": "Turn horizontal gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -312,7 +312,7 @@
                     }
                 },
                 "lineWidth": {
-                    "displayName": "Gridline Width",
+                    "displayName": "Gridline Spacing/Width",
                     "description": "This setting allows to adjust the width and spacing for dashes in the gridline",
                     "type" : { "integer": true }
                 },
@@ -537,7 +537,7 @@
             }
         },
         "advanced": {
-            "displayName": "Experimental Settings",
+            "displayName": "Column Padding",
             "properties": {
                 "leftPadding": {
                     "displayName": "Column Left Padding",

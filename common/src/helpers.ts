@@ -166,14 +166,16 @@ module powerbi.extensibility.visual {
         gridlineOpacity: number;
     }
 
-    export function setGridlineSettings(gridlineSettings:any, gridlineProperties:any, defaultGridlineProperties:any, visual:any) {
-        let localGridlineSettings: IGridlineSettings = defaultGridlineProperties;
+    export function setGridlineSettings(gridlineSettings:any, properties:any, provertyValue:string, visual:any) {
+        let property: string = (!properties.hasOwnProperty(provertyValue) ? null : provertyValue);
 
-        if (gridlineProperties.showGridlines) {
-            localGridlineSettings.lineType = gridlineProperties.lineType;
-            localGridlineSettings.lineWidth = gridlineProperties.lineWidth;
-            localGridlineSettings.gridlineOpacity = gridlineProperties.gridlineOpacity;
-            localGridlineSettings.gridlineColor = gridlineProperties.gridlineColor;
+        if (property === null) {
+            return {};
+        }
+
+        let localGridlineSettings: IGridlineSettings = properties[property];
+        if (property === "valueAxis1" && properties[property].lineType !== "dashed") {
+            localGridlineSettings.lineWidth = 1;
         }
 
         gridlineSettings = {
@@ -185,25 +187,20 @@ module powerbi.extensibility.visual {
     }
 
     export interface IHolidayHighlightStyle {
-        holidayFillColor: { solid: { color: string } };
-        holidayFillOpacity: number;
-        holidayLineColor: { solid: { color: string } };
-        holidayLineOpacity: number;
-        holidayLineType: "solid" | "dotted" | "dashed";
-        holidayLineWidth: number;
+        fillColor: { solid: { color: string } };
+        fillOpacity: number;
+        lineColor: { solid: { color: string } };
+        lineOpacity: number;
+        lineType: "solid" | "dotted" | "dashed";
+        lineWidth: number;
     }
 
     export function setHolidayHighlightSettings(settings: any, props: any, visual: any) {
-        let localHolidaySettings = {
-            lineWidth: props.timeAxis.holidayLineWidth,
-            lineType: props.timeAxis.holidayLineType
-        };
-
         settings.timeAxis.style.dateHolidays = {
-            fillColor: deriveColor(visual.ZC.ZoomCharts, props.timeAxis.holidayFillColor, props.timeAxis.holidayFillOpacity),
-            lineColor: deriveColor(visual.ZC.ZoomCharts, props.timeAxis.holidayLineColor, props.timeAxis.holidayLineOpacity),
-            lineDash: getLineDash(localHolidaySettings),
-            lineWidth: props.timeAxis.holidayLineWidth
+            fillColor: deriveColor(visual.ZC.ZoomCharts, props.holidayHighlight.fillColor, props.holidayHighlight.fillOpacity),
+            lineColor: deriveColor(visual.ZC.ZoomCharts, props.holidayHighlight.lineColor, props.holidayHighlight.lineOpacity),
+            lineDash: getLineDash(props.holidayHighlight),
+            lineWidth: props.holidayHighlight.lineWidth
         }
         return settings;
     }

@@ -60,13 +60,15 @@ module powerbi.extensibility.visual {
             valuePrefix: string;
             valueSuffix: string;
         };
-        timeAxis: IFontSettings & IHolidayHighlightStyle & IGridlineSettings & {
+        timeAxis: IFontSettings & IGridlineSettings & {
             show: boolean;
             maxUnitWidth: number;
             minUnitWidth: number;
-            showHolidays: boolean;
             showGridlines: boolean;
         };
+        holidayHighlight: IHolidayHighlightStyle & {
+            show: boolean;
+        }
         stacks: {
             mode: "normal" | "proportional" | "based";
         };
@@ -235,18 +237,20 @@ module powerbi.extensibility.visual {
                     fontSize: 12,
                     maxUnitWidth: 200,
                     minUnitWidth: 1,
-                    showHolidays: true,
-                    holidayFillColor: { solid: { color: "#E6E6E6" } },
-                    holidayFillOpacity: 20,
-                    holidayLineColor: { solid: { color: "#FFF" } },
-                    holidayLineOpacity: 0,
-                    holidayLineType: "solid",
-                    holidayLineWidth: 0,
                     showGridlines: true,
                     lineType: "solid",
                     lineWidth: 1,
                     gridlineColor: { solid: { color: "#000" } },
                     gridlineOpacity: 10
+                },
+                holidayHighlight: {
+                    show: true,
+                    fillColor: { solid: { color: "#E6E6E6" } },
+                    fillOpacity: 20,
+                    lineColor: { solid: { color: "#FFF" } },
+                    lineOpacity: 0,
+                    lineType: "solid",
+                    lineWidth: 0
                 },
                 stacks: {
                     mode: "normal",
@@ -586,7 +590,7 @@ module powerbi.extensibility.visual {
                         },
                         maxUnitWidth: props.timeAxis.maxUnitWidth ? props.timeAxis.maxUnitWidth : Math.max(2, this.series.length) * 100,
                         minUnitWidth: props.timeAxis.minUnitWidth,
-                        showHolidays: props.timeAxis.showHolidays,
+                        showHolidays: props.holidayHighlight.show,
                         vgrid: props.timeAxis.showGridlines
                     },
                     stacks: this.createStackConfig(props),
@@ -717,8 +721,8 @@ module powerbi.extensibility.visual {
                     };
                     this.toolbarSettings = settings.toolbar;
                 }
-                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props.valueAxis1, this.defaultProperties.valueAxis1, this);
-                settings.timeAxis.style.vgrid = setGridlineSettings(settings.timeAxis.style.vgrid, props.timeAxis, this.defaultProperties.timeAxis, this);
+                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props, "valueAxis1", this);
+                settings.timeAxis.style.vgrid = setGridlineSettings(settings.timeAxis.style.vgrid, props, "timeAxis", this);
                 settings = setHolidayHighlightSettings(settings, props, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
@@ -885,34 +889,17 @@ module powerbi.extensibility.visual {
             }
 
             if (objectName === "timeAxis") {
-                // remove 'Holiday Highlight' styling settings
-                if (!props.timeAxis.showHolidays) {
-                    delete props.timeAxis.holidayFillColor;
-                    delete props.timeAxis.holidayFillOpacity;
-                    delete props.timeAxis.holidayLineColor;
-                    delete props.timeAxis.holidayLineOpacity;
-                    delete props.timeAxis.holidayLineType;
-                    delete props.timeAxis.holidayLineWidth;
-                }
-
                 if (!props.timeAxis.showGridlines) {
                     delete props.timeAxis.lineType;
                     delete props.timeAxis.lineWidth;
                     delete props.timeAxis.gridlineColor;
                     delete props.timeAxis.gridlineOpacity;
-                } else {
-                    if (props.timeAxis.lineType === "solid") {
-                        delete props.timeAxis.lineWidth;
-                    }
                 }
 
                 validValues = {
                     maxUnitWidth: { numberRange: { min: 0, max: 1000 } },
                     minUnitWidth: { numberRange: { min: 0, max: 1000 } },
-                    holidayFillOpacity: { numberRange: {min: 0 , max: 100} },
-                    holidayLineOpacity: { numberRange: {min: 0 , max: 100} },
-                    holidayLineWidth: { numberRange: {min: 0 , max: 100} },
-                    lineWidth: { numberRange: {min: 0, max: 100} },
+                    lineWidth: { numberRange: {min: 0, max: 10} },
                     gridlineOpacity: { numberRange: {min: 0 , max: 100} }
                 };
             }
@@ -939,13 +926,13 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis1.gridlineColor;
                     delete props.valueAxis1.gridlineOpacity;
                 } else {
-                    if (props.valueAxis1.lineType === "solid") {
+                    if (props.valueAxis1.lineType !== "dashed") {
                         delete props.valueAxis1.lineWidth;
                     }
                 }
 
                 validValues = {
-                    lineWidth: { numberRange: {min: 0, max: 100} },
+                    lineWidth: { numberRange: {min: 0, max: 10} },
                     gridlineOpacity: { numberRange: {min: 0 , max: 100} }
                 };
             }
@@ -954,6 +941,14 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis2.valuePrefix;
                     delete props.valueAxis2.valueSuffix;
                 }
+            }
+
+            if (objectName === "holidayHighlight") {
+                validValues = {
+                    fillOpacity: { numberRange: {min: 0 , max: 100} },
+                    lineOpacity: { numberRange: {min: 0 , max: 100} },
+                    lineWidth: { numberRange: {min: 0 , max: 10} },
+                };
             }
 
             return [{

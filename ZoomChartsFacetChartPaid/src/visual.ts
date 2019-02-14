@@ -684,7 +684,7 @@ module powerbi.extensibility.visual {
                     this.toolbarSettings = settings.toolbar;
                 }
                 
-                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props.valueAxis1, this.defaultProperties.valueAxis1, this);
+                settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props, "valueAxis1", this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 let sortField = null; //default
@@ -897,13 +897,13 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis1.gridlineColor;
                     delete props.valueAxis1.gridlineOpacity;
                 } else {
-                    if (props.valueAxis1.lineType === "solid") {
+                    if (props.valueAxis1.lineType !== "dashed") {
                         delete props.valueAxis1.lineWidth;
                     }
                 }
 
                 validValues = {
-                    lineWidth: { numberRange: {min: 0, max: 100} },
+                    lineWidth: { numberRange: {min: 0, max: 10} },
                     gridlineOpacity: { numberRange: {min: 0 , max: 100} }
                 };
             }

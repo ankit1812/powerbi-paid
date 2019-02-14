@@ -374,7 +374,7 @@
                     "type": { "text": true }
                 },
                 "showGridlines": {
-                    "displayName": "Gridlines",
+                    "displayName": "BETA - Gridlines (toggle)",
                     "description": "Turn horizontal gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -557,43 +557,8 @@
                     "description": "Minimum width of a single time axis display unit (in pixels)",
                     "type": { "integer": true }
                 },
-                "showHolidays": {
-                    "displayName": "Holiday Highlight",
-                    "description": "Turn holiday highlight on/off",
-                    "type": { "bool": true }
-                },
-                "holidayFillColor": {
-                    "displayName": "Holiday Highlight Fill Color",
-                    "type": { "fill": { "solid": { "color": true }} }
-                },
-                "holidayFillOpacity": {
-                    "displayName": "Holiday Highlight Fill Opacity",
-                    "type": { "integer": true }
-                },
-                "holidayLineColor": {
-                    "displayName": "Holiday Highlight Line Color",
-                    "type": { "fill": { "solid": { "color": true }} }
-                },
-                "holidayLineOpacity": {
-                    "displayName": "Holiday Highlight Line Opacity",
-                    "type": { "integer": true }
-                },
-                "holidayLineType": {
-                    "displayName": "Holiday Highlight Line Style",
-                    "type": {
-                        "enumeration": [
-                            {"value": "solid", "displayName": "Solid"},
-                            {"value": "dotted", "displayName": "Dotted"},
-                            {"value": "dashed", "displayName": "Dashed"}
-                        ]
-                    }
-                },
-                "holidayLineWidth": {
-                    "displayName": "Holiday Highlight Line Width",
-                    "type" : { "integer": true }
-                },
                 "showGridlines": {
-                    "displayName": "Gridlines",
+                    "displayName": "BETA - Gridlines (toggle)",
                     "description": "Turn vertical gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -625,6 +590,45 @@
                 }
             }
         },
+        "holidayHighlight": {
+            "displayName": "BETA - Holiday Highlight (toggle)",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "fillColor": {
+                    "displayName": "Fill Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "fillOpacity": {
+                    "displayName": "Fill Color Opacity",
+                    "type": { "integer": true }
+                },
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "lineOpacity": {
+                    "displayName": "Outline Opacity",
+                    "type": { "integer": true }
+                },
+                "lineType": {
+                    "displayName": "Outline Style",
+                    "type": {
+                        "enumeration": [
+                            {"value": "solid", "displayName": "Solid"},
+                            {"value": "dotted", "displayName": "Dotted"},
+                            {"value": "dashed", "displayName": "Dashed"}
+                        ]
+                    }
+                },
+                "lineWidth": {
+                    "displayName": "Outline Spacing/Width",
+                    "type" : { "integer": true }
+                }
+            }
+        },
         "stacks": {
             "displayName": "Stack Settings",
             "properties": {
@@ -641,7 +645,7 @@
             }
         },
         "advanced": {
-            "displayName": "Experimental Settings",
+            "displayName": "Column Padding",
             "properties": {
                 "leftPadding": {
                     "displayName": "Column Left Padding",
