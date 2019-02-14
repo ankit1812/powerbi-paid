@@ -59,7 +59,7 @@ module powerbi.extensibility.visual {
                 "#778183"
             ];
 
-            let default_shape = props.nodes.shape;
+            let default_shape = Data.nodeShape(props.nodes);
  
             for (let y = 0; y < categories; y++){
                 //let color = getColor(dataView.categorical.categories[y], y, "fillColor" + (y + 1).toFixed(0));
@@ -80,7 +80,13 @@ module powerbi.extensibility.visual {
                  * TODO apply proper shape using custom settings
                  * move other category dependent settings here from nodeStyle function
                 }*/
-                
+                if (co && co.show === true) {
+                    let customCategoryShape: string = Data.nodeShape(co);
+                    if (customCategoryShape !== "") {
+                        shape = customCategoryShape;
+                    }
+                }
+
                 nodeMap[y] = {};
                 let o:any = {
                     className: "category" + m, //y

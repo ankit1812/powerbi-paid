@@ -198,14 +198,22 @@
             "displayName": "Nodes (Default Category)",
             "description": "Settings used for default category nodes and values.",
             "properties": {
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Shape",
                     "type": {
                         "enumeration": [
                             {"value": "circle", "displayName": "Circle"},
                             {"value": "rectangle", "displayName": "Rectangle"},
-                            {"value": "droplet", "displayName": "Droplet"},
-                            {"value": "text", "displayName": "Text"}
+                            {"value": "droplet", "displayName": "Droplet"}
                         ]
                     }
                 },
@@ -559,10 +567,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -779,10 +787,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -999,10 +1007,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -1219,10 +1227,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -1439,10 +1447,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -1659,10 +1667,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -1890,10 +1898,10 @@
                     }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -2099,10 +2107,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
@@ -2319,10 +2327,10 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "Node Type",
+                    "displayName": "BETA - Node Type",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Shape"},
+                            {"value": "default", "displayName": "Shape (default)"},
                             {"value": "text", "displayName": "Text"}
                         ]
                     }
