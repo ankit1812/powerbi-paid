@@ -82,6 +82,7 @@ module powerbi.extensibility.visual {
                 }*/
                 if (co && co.show === true) {
                     let customCategoryShape: string = Data.nodeShape(co);
+
                     if (customCategoryShape !== "") {
                         shape = customCategoryShape;
                     }
@@ -115,7 +116,6 @@ module powerbi.extensibility.visual {
                 };
                 visual.currentCategories[m] = o2;
             }
-
 
             if (typeof(dataView.categorical.values) == "undefined"){
                 displayMessage(target, "Please, select measure to view the network", "Incorrect data", false);
@@ -382,9 +382,7 @@ module powerbi.extensibility.visual {
             let nodeShape: string = "";
 
             if (node.nodeType && node.nodeType === "default") {
-                if (node.shape && node.shape != "default") {
-                    nodeShape = node.shape;
-                }
+                nodeShape = node.shape;
             } else {
                 nodeShape = node.nodeType;
             }
