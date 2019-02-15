@@ -906,8 +906,8 @@ module powerbi.extensibility.visual {
 
             if (objectName === "advanced") {
                 validValues = {
-                    leftPadding: { numberRange: { min: 0, max: 10 } },
-                    rightPadding: { numberRange: { min: 0, max: 10 } },
+                    leftPadding: { numberRange: { min: 0, max: 15 } },
+                    rightPadding: { numberRange: { min: 0, max: 15 } },
                 };
 
                 //tmp:

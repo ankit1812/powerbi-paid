@@ -649,12 +649,12 @@
             "properties": {
                 "leftPadding": {
                     "displayName": "Column Left Padding",
-                    "description": "Left padding for column in px",
+                    "description": "Left padding for column in px\nMax value: 15px",
                     "type": { "integer": true }
                 },
                 "rightPadding": {
                     "displayName": "Column Right Padding",
-                    "description": "Right padding for column in px",
+                    "description": "Right padding for column in px\nMax value: 15px",
                     "type": { "integer": true }
                 },
                 "locale": {
