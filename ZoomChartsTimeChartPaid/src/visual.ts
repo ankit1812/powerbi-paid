@@ -247,10 +247,10 @@ module powerbi.extensibility.visual {
                     show: true,
                     fillColor: { solid: { color: "#E6E6E6" } },
                     fillOpacity: 20,
-                    lineColor: { solid: { color: "#FFF" } },
-                    lineOpacity: 0,
+                    lineWidth: 0,
                     lineType: "solid",
-                    lineWidth: 0
+                    lineColor: { solid: { color: "#FFF" } },
+                    lineOpacity: 100
                 },
                 stacks: {
                     mode: "normal",

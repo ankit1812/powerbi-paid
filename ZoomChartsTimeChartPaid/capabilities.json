@@ -374,7 +374,7 @@
                     "type": { "text": true }
                 },
                 "showGridlines": {
-                    "displayName": "BETA - Gridlines (toggle)",
+                    "displayName": "BETA - Gridlines",
                     "description": "Turn horizontal gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -558,7 +558,7 @@
                     "type": { "integer": true }
                 },
                 "showGridlines": {
-                    "displayName": "BETA - Gridlines (toggle)",
+                    "displayName": "BETA - Gridlines",
                     "description": "Turn vertical gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -591,7 +591,7 @@
             }
         },
         "holidayHighlight": {
-            "displayName": "BETA - Holiday Highlight (toggle)",
+            "displayName": "BETA - Holiday Highlight",
             "properties": {
                 "show": {
                     "displayName": "Show",
@@ -605,13 +605,9 @@
                     "displayName": "Fill Color Opacity",
                     "type": { "integer": true }
                 },
-                "lineColor": {
-                    "displayName": "Outline Color",
-                    "type": { "fill": { "solid": { "color": true }} }
-                },
-                "lineOpacity": {
-                    "displayName": "Outline Opacity",
-                    "type": { "integer": true }
+                "lineWidth": {
+                    "displayName": "Outline Width",
+                    "type" : { "integer": true }
                 },
                 "lineType": {
                     "displayName": "Outline Style",
@@ -623,9 +619,13 @@
                         ]
                     }
                 },
-                "lineWidth": {
-                    "displayName": "Outline Spacing/Width",
-                    "type" : { "integer": true }
+                "lineColor": {
+                    "displayName": "Outline Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "lineOpacity": {
+                    "displayName": "Outline Opacity",
+                    "type": { "integer": true }
                 }
             }
         },

@@ -189,10 +189,10 @@ module powerbi.extensibility.visual {
     export interface IHolidayHighlightStyle {
         fillColor: { solid: { color: string } };
         fillOpacity: number;
+        lineWidth: number;
+        lineType: "solid" | "dotted" | "dashed";
         lineColor: { solid: { color: string } };
         lineOpacity: number;
-        lineType: "solid" | "dotted" | "dashed";
-        lineWidth: number;
     }
 
     export function setHolidayHighlightSettings(settings: any, props: any, visual: any) {
