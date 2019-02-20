@@ -912,11 +912,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1092,11 +1092,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1272,11 +1272,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1452,11 +1452,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1632,11 +1632,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1812,11 +1812,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -1992,11 +1992,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -2172,11 +2172,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -2352,11 +2352,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -2532,11 +2532,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -2712,11 +2712,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
@@ -2891,11 +2891,11 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background Color",
+                    "displayName": "BETA - Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "Background Opacity",
+                    "displayName": "BETA - Background Opacity",
                     "type": { "integer": true }
                 },
                 "decimals": {
