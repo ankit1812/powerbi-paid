@@ -911,6 +911,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -1082,6 +1090,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",
@@ -1255,6 +1271,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -1426,6 +1450,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",
@@ -1599,6 +1631,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -1770,6 +1810,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",
@@ -1943,6 +1991,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -2114,6 +2170,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",
@@ -2287,6 +2351,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -2458,6 +2530,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",
@@ -2631,6 +2711,14 @@
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
+                },
                 "decimals": {
                     "displayName": "Value Decimals",
                     "description": "Set number of decimals",
@@ -2801,6 +2889,14 @@
                 "fontColor": {
                     "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColor": {
+                    "displayName": "Background Color",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "backgroundColorOpacity": {
+                    "displayName": "Background Opacity",
+                    "type": { "integer": true }
                 },
                 "decimals": {
                     "displayName": "Value Decimals",

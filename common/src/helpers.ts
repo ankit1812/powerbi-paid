@@ -205,6 +205,11 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    export interface IBackgroundSettings {
+        backgroundColor: { solid: { color: string } },
+        backgroundColorOpacity: number
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;

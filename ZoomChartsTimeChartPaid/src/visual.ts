@@ -22,7 +22,7 @@ module powerbi.extensibility.visual {
         legendMarkerShape: null | "square" | "rhombus" | "triangle" | "triangle2" | "circle";
     }
 
-    interface IChartSeriesValueLabelProperties extends IFontSettings {
+    interface IChartSeriesValueLabelProperties extends IFontSettings, IBackgroundSettings {
         decimals: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
     }
 
@@ -359,6 +359,8 @@ module powerbi.extensibility.visual {
                 fontSize: 14,
                 fontFamily: "",
                 fontStyle: "",
+                backgroundColor: { solid: { color: "#FFF" } },
+                backgroundColorOpacity: 40,
                 decimals: "auto"
             };
         }
@@ -518,6 +520,9 @@ module powerbi.extensibility.visual {
                         textStyle: { 
                             font: getFont(vconfig),
                             fillColor: vconfig.fontColor.solid.color
+                        },
+                        backgroundStyle: {
+                            fillColor: deriveColor(this.ZC.ZoomCharts, vconfig.backgroundColor, vconfig.backgroundColorOpacity)
                         }
                     },
                     contentsFunction: (v) => {
@@ -792,6 +797,10 @@ module powerbi.extensibility.visual {
                 const relseries = <IChartSeriesProperties>props["series" + nostr];
                 if (!relseries.show || !relseries.valueLabelsEnabled)
                     return [];
+
+                validValues = {
+                    backgroundColorOpacity: { numberRange: {min:0, max: 100} },
+                };
             }
 
             if (objectName.length < 9 && objectName.substr(0, 6) === "series") {
