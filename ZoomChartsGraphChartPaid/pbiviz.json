@@ -1,0 +1,32 @@
+{
+  "visual": {
+    "name": "ZoomChartsGraphChartPaid",
+    "displayName": "ZoomCharts Advanced Network Chart Basic",
+    "guid": "ZoomChartsGraphChartPaidA2C55E4B59078FDD51C4CD1C4D4E6623V8N8",
+    "visualClassName": "Visual2",
+    "version": "1.1.1",
+    "description": "ZoomCharts Advanced Network Chart Basic",
+    "supportUrl": "https://zoomcharts.com/en/microsoft-power-bi-custom-visuals/",
+    "gitHubUrl": "https://github.com/zoomcharts/powerbi/tree/master/ZoomChartsNetChartFree"
+  },
+  "apiVersion": "1.9.0",
+  "author": {
+    "name": "ZoomCharts",
+    "email": "powerbi@zoomcharts.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "../powerbi-free/common/zoomcharts/netchart.js",
+    "../powerbi-free/common/src/lodash.min.js",
+    "../powerbi-free/common/src/globalize.js",
+    "../powerbi-free/common/src/globalize.culture.en-US.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-dataviewutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-typeutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-svgutils.js",
+    "../powerbi-free/common/src/powerbi-visuals-utils-formattingutils.js"
+  ],
+  "style": "../powerbi-free/common/style/visual.less",
+  "capabilities": "capabilities.json"
+}
