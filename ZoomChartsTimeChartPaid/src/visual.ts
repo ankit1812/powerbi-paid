@@ -22,7 +22,7 @@ module powerbi.extensibility.visual {
         legendMarkerShape: null | "square" | "rhombus" | "triangle" | "triangle2" | "circle";
     }
 
-    interface IChartSeriesValueLabelProperties extends IFontSettings, IBackgroundSettings {
+    interface IChartSeriesValueLabelProperties extends IFontSettings, IValueLabelSettings, IBackgroundSettings {
         decimals: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
     }
 
@@ -358,12 +358,27 @@ module powerbi.extensibility.visual {
 
         private getDefaultSeriesValueLabelConfig(i: number): IChartSeriesValueLabelProperties {
             return {
+                valueLabelPosition: "insideTopAuto",
+                valueLabelAngle: 0,
+                valueLabelBorderRadius: 0,
+                valueLabelPadding: 1,
                 fontColor: { solid: { color: "#000" } },
                 fontSize: 14,
                 fontFamily: "",
                 fontStyle: "",
                 backgroundColor: { solid: { color: "#FFF" } },
                 backgroundColorOpacity: 40,
+                backgroundLineColor: { solid: { color: "#FFF" } },
+                backgroundLineColorOpacity: 40,
+                backgroundLineWidth: 1,
+                backgroundShadowColor: { solid: { color: "#FFF" } },
+                backgroundShadowColorOpacity: 100,
+                backgroundShadowBlur: 0,
+                backgroundShadowPlacement: false,
+                backgroundShadowOffsetXDirection: "up",
+                backgroundShadowOffsetX: 0,
+                backgroundShadowOffsetYDirection: "right",
+                backgroundShadowOffsetY: 0,
                 decimals: "auto"
             };
         }
@@ -519,14 +534,22 @@ module powerbi.extensibility.visual {
                 series.valueLabels = {
                     enabled: true,
                     minFontSize: 4,
+                    position: vconfig.valueLabelPosition,
                     style: {
                         textStyle: { 
                             font: getFont(vconfig),
                             fillColor: vconfig.fontColor.solid.color
                         },
                         backgroundStyle: {
-                            fillColor: deriveColor(this.ZC.ZoomCharts, vconfig.backgroundColor, vconfig.backgroundColorOpacity)
-                        }
+                            fillColor: deriveColor(this.ZC.ZoomCharts, vconfig.backgroundColor, vconfig.backgroundColorOpacity),
+                            lineColor: deriveColor(this.ZC.ZoomCharts, vconfig.backgroundLineColor, vconfig.backgroundLineColorOpacity),
+                            lineWidth: vconfig.backgroundLineWidth,
+                            shadowColor: deriveColor(this.ZC.ZoomCharts, vconfig.backgroundShadowColor, vconfig.backgroundShadowColorOpacity),
+                            shadowBlur: vconfig.backgroundShadowBlur
+                        },
+                        angle: vconfig.valueLabelAngle,
+                        borderRadius: vconfig.valueLabelBorderRadius,
+                        padding: vconfig.valueLabelPadding
                     },
                     contentsFunction: (v) => {
                         if (!v == null) return "";
@@ -540,6 +563,7 @@ module powerbi.extensibility.visual {
 
                     }
                 };
+                series.valueLabels = setShadowOffsetSettings(series.valueLabels, vconfig);
             }
             series.style.legend.marker.shape = config.legendMarkerShape;
         }
@@ -816,8 +840,25 @@ module powerbi.extensibility.visual {
                 if (!relseries.show || !relseries.valueLabelsEnabled)
                     return [];
 
+                const seriesLabels = <IChartSeriesValueLabelProperties>props[objectName];
+                if (!seriesLabels.backgroundShadowPlacement) {
+                    delete seriesLabels.backgroundShadowOffsetXDirection;
+                    delete seriesLabels.backgroundShadowOffsetYDirection;
+                    delete seriesLabels.backgroundShadowOffsetX;
+                    delete seriesLabels.backgroundShadowOffsetY;
+                }
+
                 validValues = {
-                    backgroundColorOpacity: { numberRange: {min:0, max: 100} },
+                    valueLabelAngle: { numberRange: { min: 0, max: 360 } },
+                    valueLabelBorderRadius: { numberRange: { min: 0, max: 50 } },
+                    valueLabelPadding: { numberRange: { min: 0, max: 20 } },
+                    backgroundColorOpacity: { numberRange: { min: 0, max: 100 } },
+                    backgroundLineColorOpacity: { numberRange: { min: 0, max: 100 } },
+                    backgroundLineWidth: { numberRange: { min: 0, max: 10 } },
+                    backgroundShadowColorOpacity: { numberRange: { min: 0, max: 100 } },
+                    backgroundShadowBlur: { numberRange: { min: 0, max: 10 } },
+                    backgroundShadowOffsetX: { numberRange: { min: 0, max: 10 } },
+                    backgroundShadowOffsetY: { numberRange: { min: 0, max: 10 } }
                 };
             }
 

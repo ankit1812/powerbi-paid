@@ -205,9 +205,52 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    export interface IValueLabelSettings {
+        valueLabelPosition: "insideTopAuto" | "insideTop" | "insideCenter" | "insideBase" | 
+        "outside" | "aboveValue" | "value" | "belowValue";
+        valueLabelBorderRadius: number;
+        valueLabelAngle: number;
+        valueLabelPadding: number;
+    }
+
     export interface IBackgroundSettings {
-        backgroundColor: { solid: { color: string } },
-        backgroundColorOpacity: number
+        backgroundColor: { solid: { color: string } };
+        backgroundColorOpacity: number;
+        backgroundLineColor: { solid: { color: string } };
+        backgroundLineColorOpacity: number;
+        backgroundLineWidth: number;
+        backgroundShadowColor:{ solid: { color: string } };
+        backgroundShadowColorOpacity: number;
+        backgroundShadowBlur: number;
+        backgroundShadowPlacement: boolean;
+        backgroundShadowOffsetXDirection: "up" | "down";
+        backgroundShadowOffsetX: number;
+        backgroundShadowOffsetYDirection: "left" | "right";
+        backgroundShadowOffsetY: number;
+    }
+
+    export function shadowOffsetValue(seriesValueLabelProps: any, directionObjectName: string, valueObjectName: string) {
+        let offsetValue: number = (valueObjectName ? seriesValueLabelProps[valueObjectName] : 0);
+        if(directionObjectName && seriesValueLabelProps[directionObjectName]) {
+            switch (seriesValueLabelProps[directionObjectName]) {
+                case "up":
+                case "left":
+                    offsetValue *= (-1);
+                break;
+                default:
+                    // nothing todo here
+                break;
+            }
+        }
+        return offsetValue
+    }
+
+    export function setShadowOffsetSettings(settings: any, props: any) {
+        if (props.backgroundShadowPlacement) {
+            settings.style.backgroundStyle.shadowOffsetX = shadowOffsetValue(props, "backgroundShadowOffsetXDirection", "backgroundShadowOffsetX");
+            settings.style.backgroundStyle.shadowOffsetY = shadowOffsetValue(props, "backgroundShadowOffsetYDirection", "backgroundShadowOffsetY");
+        }
+        return settings;
     }
 
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
