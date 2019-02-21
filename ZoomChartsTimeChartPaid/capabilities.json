@@ -676,6 +676,11 @@
                     "displayName": "Lin/Log Scale Button",
                     "description": "Whether to show the `Lin/Log` button in the toolbar",
                     "type": { "bool": true }
+                },
+                "darkMode": {
+                    "displayName": "Dark mode",
+                    "description": "Dark mode",
+                    "type": { "bool": true }
                 }
             }
         },

@@ -74,6 +74,7 @@ module powerbi.extensibility.visual {
         };
         toolbar: {
             logScale: boolean;
+            darkMode: boolean;
         };
         popup: {
             show: boolean;
@@ -161,6 +162,7 @@ module powerbi.extensibility.visual {
         private displayUnitsMapping: displayUnitsMapping;
         public initialDisplayUnitSet: boolean = false;
         private toolbarSettings: any;
+        private darkMode: any;
 
         constructor(options: VisualConstructorOptions) {
             super(options);
@@ -257,6 +259,7 @@ module powerbi.extensibility.visual {
                 },
                 toolbar: {
                     logScale: true,
+                    darkMode: false,
                 },
                 popup: {
                     show: true,
@@ -726,6 +729,21 @@ module powerbi.extensibility.visual {
                     };
                     this.toolbarSettings = settings.toolbar;
                 }
+                if (this.darkMode != props.toolbar.darkMode){
+                    this.toolbarSettings = settings.toolbar;
+                    let chart:any = this.chart;
+                    let dom:HTMLElement = chart._impl.shell.domLayer.container;
+                    if (props.toolbar.darkMode){
+                        if (!dom.className.match(/DVSL-dark/)){
+                            dom.className += " DVSL-dark";
+                        }
+                    } else {
+                        if (dom.className.match(/DVSL-dark/)){
+                            dom.className = dom.className.replace(/ DVSL-dark/, "");
+                        }
+                    } 
+                }
+
                 settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props, "valueAxis1", this);
                 settings.timeAxis.style.vgrid = setGridlineSettings(settings.timeAxis.style.vgrid, props, "timeAxis", this);
                 settings = setHolidayHighlightSettings(settings, props, this);
