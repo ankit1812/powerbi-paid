@@ -84,6 +84,8 @@ module powerbi.extensibility.visual {
                 });
             }
 
+            let default_shape = Data.nodeShape(props.nodes);
+
             for (let y = 1; y <= 9; y++){
                 //let color = getColor(dataView.categorical.categories[y], y, "fillColor" + (y + 1).toFixed(0));
                 let m = y;
@@ -96,9 +98,21 @@ module powerbi.extensibility.visual {
                     }
                 }
 
+                let shape = default_shape;
                 let co = null; //category object containing category specific properties & values
                 if(props["category"+m]){
                     co = props["category"+m];
+                }
+
+                /*if (co){
+                 * TODO apply proper shape using custom settings
+                 * move other category dependent settings here from nodeStyle function
+                }*/
+                if (co && co.show === true) {
+                    let customCategoryShape: string = Data.nodeShape(co);
+                    if (customCategoryShape !== "") {
+                        shape = customCategoryShape;
+                    }
                 }
                 
                 let o:any = {
@@ -108,14 +122,12 @@ module powerbi.extensibility.visual {
                     //nameLegend: dataView.categorical.categories[y].source.displayName,
                     style: {
                         fillColor: color,
+                        display: shape
                     }
                 };
 
                 //override based on category specific values:
                 if(co && co.show == true) { //apply category specific values only if category is enabled
-                    if(co.shape && co.shape != "default") {
-                        o.style.display = co.shape;
-                    }
                     if(co.colorMode && co.colorMode == "fixed") {
                         if(co.fillColor && co.fillColor.solid.color) {
                             o.style.fillColor = co.fillColor.solid.color;
@@ -132,7 +144,6 @@ module powerbi.extensibility.visual {
                 };
                 visual.currentCategories[m] = o2;
             }
-        
 
             if (typeof(dataView.categorical.values) == "undefined"){
                 displayMessage(target, "Please, select measure to view the network", "Incorrect data", false);
@@ -552,6 +563,16 @@ module powerbi.extensibility.visual {
             }
 
             return a;
+        }
+
+        public static nodeShape(node: any): string {
+            let nodeShape: string = "";
+            if (node.nodeType && node.nodeType === "default") {
+                nodeShape = node.shape;
+            } else {
+                nodeShape = node.nodeType;
+            }
+            return nodeShape;
         }
     }
 
