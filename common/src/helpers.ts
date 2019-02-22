@@ -84,11 +84,23 @@ module powerbi.extensibility.visual {
         ];
         return settings;
     }
-    export function addNetChartInfoToolbar(settings:any, visual:any){
+
+    // Function completely overrides toolbar settings. In this case, usage of, for example, 'fullscreen: true' will 
+    // not work, it will need to be added as 'item:' into 'items:'.
+    function addNetChartDefaultToolbarSettings(settings: any) {
         settings.toolbar = {
-            enabled: true,
-            export: false
+            items: [
+                { item: "zoomControl", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
+                { item: "fit", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
+                { item: "rearrange", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" },
+                { item: "back", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" }
+            ]
         };
+        return settings;
+    }
+
+    export function addNetChartInfoToolbar(settings:any, visual:any){
+        settings = addNetChartDefaultToolbarSettings(settings);
         return addBaseInfoToolbar(settings, visual);
     }
     export function addPieChartInfoToolbar(settings:any, visual:any){
