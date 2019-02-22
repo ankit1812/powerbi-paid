@@ -493,8 +493,8 @@ module powerbi.extensibility.visual {
                     delete vals.valueDecimals;
                 }
                 validValues = {
-                    minRadius: { numberRange: { min: 0, max: 200 } },
-                    maxRadius: { numberRange: { min: 0, max: 200 } },
+                    minRadius: { numberRange: { min: 1, max: 200 } },
+                    maxRadius: { numberRange: { min: 1, max: 200 } },
                     insideLabelsBackgroundOpacity: { numberRange: { min: 0, max: 100 } },
                     outsideLabelsBackgroundOpacity: { numberRange: { min: 0, max: 100 } },
                 };
@@ -563,8 +563,8 @@ module powerbi.extensibility.visual {
                 }
 
                 validValues = {
-                    minRadius: { numberRange: { min: 0, max: 200 } },
-                    maxRadius: { numberRange: { min: 0, max: 200 } },
+                    minRadius: { numberRange: { min: 1, max: 200 } },
+                    maxRadius: { numberRange: { min: 1, max: 200 } },
                 };
             } else if (objectName == "links") {
                 if (props.links.colorMode === "fixed") {
