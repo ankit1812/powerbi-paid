@@ -35,6 +35,21 @@ module powerbi.extensibility.visual {
             let props = mergePropertiesIntoNew(visual.customProperties, visual.defaultProperties);
             let tableRows = Data.getTableRows(dataView);
             let columns = Data.getMetadataColumns(dataView);
+            let columnIndexes = Data.getMetadataColumnIndexes(dataView);
+
+            visual.columnIndexes = columnIndexes;
+            
+            let fromNodesColumnIndex = columnIndexes.fromNodesColumnIndex;
+            let toNodesColumnIndex = columnIndexes.toNodesColumnIndex;
+            let imageColumnIndex = columnIndexes.imageColumnIndex;
+            let linkLabelColumnIndex = columnIndexes.linkLabelColumnIndex;
+            let nodeColorColumnIndex = columnIndexes.nodeColorColumnIndex;
+            let linkColorColumnIndex = columnIndexes.linkColorColumnIndex;
+            let valueColumnIndex = columnIndexes.valueColumnIndex;
+            let nodeLabelColumnIndex = columnIndexes.nodeLabelColumnIndex;
+            let categoryClassColumnIndex = columnIndexes.categoryClassColumnIndex;
+            let nodePopupColumnIndexes = columnIndexes.nodePopupColumnIndexes;
+            let linkWidthColumnIndex = columnIndexes.linkWidthColumnIndex;
 
             //Clear currentCategories
             if(visual.currentCategories) {
@@ -55,6 +70,26 @@ module powerbi.extensibility.visual {
                 "#778183"
             ];
  
+            let categoryColorsFromData = { };
+            if (categoryClassColumnIndex && nodeColorColumnIndex != null) {
+                tableRows.forEach(function(row) {
+                    if (row && row[categoryClassColumnIndex] && row[nodeColorColumnIndex]) {
+                        let catgeoryClassColumn: any = secureString(row[categoryClassColumnIndex]);
+                        if (!categoryColorsFromData.hasOwnProperty(catgeoryClassColumn)) {
+                            if (catgeoryClassColumn == "category3") {
+                                categoryColorsFromData[catgeoryClassColumn] = "light red";
+                            } else if (catgeoryClassColumn == "category5") {
+                                categoryColorsFromData[catgeoryClassColumn] = "green";
+                            } else {
+                                categoryColorsFromData[catgeoryClassColumn] = secureString(row[nodeColorColumnIndex]);
+                            }
+                        }
+                    }
+                });
+            }
+
+            console.log("categoryColors:");
+            console.log(categoryColorsFromData);
 
             for (let y = 1; y <= 9; y++){
                 //let color = getColor(dataView.categorical.categories[y], y, "fillColor" + (y + 1).toFixed(0));
@@ -62,7 +97,12 @@ module powerbi.extensibility.visual {
                 let color = colorMap[y];
                 if(props.nodes.colorMode == "fixed" && props.nodes.fillColor) {
                     color = props.nodes.fillColor.solid.color;
+                } else if (props.nodes.colorMode == "dynamic" && !isEmptyObject(categoryColorsFromData)) {
+                    if (categoryColorsFromData.hasOwnProperty("category" + m)) {
+                        color = categoryColorsFromData["category" + m];
+                    }
                 }
+
                 let co = null; //category object containing category specific properties & values
                 if(props["category"+m]){
                     co = props["category"+m];
@@ -109,22 +149,6 @@ module powerbi.extensibility.visual {
             let format = dataView.categorical.values[0].source.format;
             root.format = format;
 
-            let columnIndexes = Data.getMetadataColumnIndexes(dataView);
-            visual.columnIndexes = columnIndexes;
-            
-            let fromNodesColumnIndex = columnIndexes.fromNodesColumnIndex;
-            let toNodesColumnIndex = columnIndexes.toNodesColumnIndex;
-            let imageColumnIndex = columnIndexes.imageColumnIndex;
-            let linkLabelColumnIndex = columnIndexes.linkLabelColumnIndex;
-            let nodeColorColumnIndex = columnIndexes.nodeColorColumnIndex;
-            let linkColorColumnIndex = columnIndexes.linkColorColumnIndex;
-            let valueColumnIndex = columnIndexes.valueColumnIndex;
-            let nodeLabelColumnIndex = columnIndexes.nodeLabelColumnIndex;
-            let categoryClassColumnIndex = columnIndexes.categoryClassColumnIndex;
-            let nodePopupColumnIndexes = columnIndexes.nodePopupColumnIndexes;
-            let linkWidthColumnIndex = columnIndexes.linkWidthColumnIndex;
-            
-            
             let validCategoryClasses = [];
             for(let cx = 1; cx <= 9; cx++) {
                 validCategoryClasses.push("category" + cx);
@@ -133,6 +157,7 @@ module powerbi.extensibility.visual {
             let nodeMap2 = {};
             let linkMap2 = {};
             let categoriesFound = [];
+
             for (let x = 0; x < tableRows.length; x++) {
                 let row = tableRows[x];
                 let fromNodeId = row[fromNodesColumnIndex].replace(/ /g, "");
