@@ -1,11 +1,11 @@
 {
   "visual": {
     "name": "ZoomChartsGraphChartPaid",
-    "displayName": "ZoomCharts Advanced Network Chart Basic",
+    "displayName": "ZoomCharts Advanced Graph Visual",
     "guid": "ZoomChartsGraphChartPaidA2C55E4B59078FDD51C4CD1C4D4E6623V8N8",
     "visualClassName": "Visual2",
     "version": "1.1.1",
-    "description": "ZoomCharts Advanced Network Chart Basic",
+    "description": "ZoomCharts Advanced Graph Visual",
     "supportUrl": "https://zoomcharts.com/en/microsoft-power-bi-custom-visuals/",
     "gitHubUrl": "https://github.com/zoomcharts/powerbi/tree/master/ZoomChartsNetChartFree"
   },

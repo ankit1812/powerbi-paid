@@ -73,7 +73,7 @@ module powerbi.extensibility.visual {
             // If in data we have to specify names, such as, 'category1' till 'category9', then 
             // we safely can do below code for color assignment to 'categoryColorsFromData'
             let categoryColorsFromData = { };
-            if (categoryClassColumnIndex && nodeColorColumnIndex != null) {
+            if (categoryClassColumnIndex != null && nodeColorColumnIndex != null) {
                 tableRows.forEach(function(row) {
                     if (row && row[categoryClassColumnIndex] && row[nodeColorColumnIndex]) {
                         let catgeoryClassColumn: any = secureString(row[categoryClassColumnIndex]);
