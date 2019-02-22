@@ -70,26 +70,19 @@ module powerbi.extensibility.visual {
                 "#778183"
             ];
  
+            // If in data we have to specify names, such as, 'category1' till 'category9', then 
+            // we safely can do below code for color assignment to 'categoryColorsFromData'
             let categoryColorsFromData = { };
             if (categoryClassColumnIndex && nodeColorColumnIndex != null) {
                 tableRows.forEach(function(row) {
                     if (row && row[categoryClassColumnIndex] && row[nodeColorColumnIndex]) {
                         let catgeoryClassColumn: any = secureString(row[categoryClassColumnIndex]);
                         if (!categoryColorsFromData.hasOwnProperty(catgeoryClassColumn)) {
-                            if (catgeoryClassColumn == "category3") {
-                                categoryColorsFromData[catgeoryClassColumn] = "light red";
-                            } else if (catgeoryClassColumn == "category5") {
-                                categoryColorsFromData[catgeoryClassColumn] = "green";
-                            } else {
-                                categoryColorsFromData[catgeoryClassColumn] = secureString(row[nodeColorColumnIndex]);
-                            }
+                            categoryColorsFromData[catgeoryClassColumn] = removeSpaces(secureString(row[nodeColorColumnIndex]));
                         }
                     }
                 });
             }
-
-            console.log("categoryColors:");
-            console.log(categoryColorsFromData);
 
             for (let y = 1; y <= 9; y++){
                 //let color = getColor(dataView.categorical.categories[y], y, "fillColor" + (y + 1).toFixed(0));

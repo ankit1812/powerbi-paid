@@ -286,6 +286,10 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    export function removeSpaces(value: string) {
+        return value.replace(" ", "");
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;
