@@ -85,22 +85,30 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
-    // Function completely overrides toolbar settings. In this case, usage of, for example, 'fullscreen: true' will 
-    // not work, it will need to be added as 'item:' into 'items:'.
-    function addNetChartDefaultToolbarSettings(settings: any) {
-        settings.toolbar = {
-            items: [
+    // Function completely overrides toolbar settings. In this case 'chartType' is not provided, then settings from
+    // powerbi-free/ZoomChartsNetChartFree will be returned, otherwise 'toolbar' settings will be overriden, depending 
+    // on 'chartType'. This is done like so because some users, for 'NetChart' need toolbar button 'Lock All'. 
+    // In this layout, usage of, for example, 'fullscreen: true' will  not work, it will need to be added as 
+    // 'item:' into 'items:'.
+    export function addNetChartCustomToolbarSettings(settings: any, chartType: string) {
+        if (chartType.length) {
+            let toolbarButtons = [
                 { item: "zoomControl", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
                 { item: "fit", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
-                { item: "rearrange", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" },
-                { item: "back", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" }
-            ]
-        };
+                { item: "rearrange", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" }
+            ];
+
+            if (chartType.toLowerCase() === "netchart") {
+                toolbarButtons.push({ item: "freeze", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" });
+            }
+            toolbarButtons.push({ item: "back", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" });
+            settings.toolbar.items = toolbarButtons;
+        }
         return settings;
     }
 
-    export function addNetChartInfoToolbar(settings:any, visual:any){
-        settings = addNetChartDefaultToolbarSettings(settings);
+    export function addNetChartInfoToolbar(settings:any, visual:any, chartType: string){
+        settings = addNetChartCustomToolbarSettings(settings, chartType);
         return addBaseInfoToolbar(settings, visual);
     }
     export function addPieChartInfoToolbar(settings:any, visual:any){

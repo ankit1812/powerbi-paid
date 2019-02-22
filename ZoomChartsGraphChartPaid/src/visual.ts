@@ -206,7 +206,7 @@ module powerbi.extensibility.visual {
 
         protected createChart(zc: typeof ZoomCharts) {
             super.createChart(zc, (settings:any)=>{
-                return addNetChartInfoToolbar(settings, this);
+                return addNetChartInfoToolbar(settings, this, "GraphChart");
             });
         }
 
