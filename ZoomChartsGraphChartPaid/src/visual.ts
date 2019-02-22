@@ -28,6 +28,7 @@ module powerbi.extensibility.visual {
             position: "left" | "right" | "top" | "bottom";
             markerSize: number;
             height: number;
+            width: number;
         };
         nodes: {
             shape: "circle" | "rectangle" | "droplet";
@@ -119,7 +120,8 @@ module powerbi.extensibility.visual {
                 legend: {
                     show: false,
                     position: "bottom",
-                    height: 200,
+                    height: 0,
+                    width: 225,
                     markerSize: 16,
                     fontColor: { solid: { color: "#000" } },
                     fontSize: 12,
@@ -238,7 +240,7 @@ module powerbi.extensibility.visual {
                     legend: {
                         enabled: props.legend.show,
                         height: legendOnSide ? null : props.legend.height,
-                        //width: legendOnSide ? props.legend.width : null,
+                        width: legendOnSide ? props.legend.width : null,
                         text: {
                             font: getFont(props.legend),
                             fillColor: props.legend.fontColor.solid.color
@@ -319,7 +321,7 @@ module powerbi.extensibility.visual {
                         }
                     }*/
                 };
-                settings = addLegendSettings(settings, props);
+                settings = addNetChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 this.chart.updateSettings(settings);
             }
@@ -511,6 +513,7 @@ module powerbi.extensibility.visual {
                 if(isEmptyObject(this.currentCategories)) {
                     return [];
                 }
+
                 let legendOnSide = props.legend.position === "left" || props.legend.position === "right";
                 if (legendOnSide) {
                     delete vals.height;
@@ -520,7 +523,7 @@ module powerbi.extensibility.visual {
 
                 validValues = {
                     markerSize: { numberRange: { min: 0, max: 50 } },
-                    //width: { numberRange: { min: 0, max: 1000 } },
+                    width: { numberRange: { min: 225, max: 1000 } },
                     height: { numberRange: { min: 0, max: 1000 } },
                 };
             } else if (objectName == "nodes") {

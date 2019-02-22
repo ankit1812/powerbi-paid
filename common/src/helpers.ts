@@ -128,19 +128,32 @@ module powerbi.extensibility.visual {
     export function addTimeChartInfoToolbar(settings:any, visual:any){
         return addBaseInfoToolbar(settings, visual);
     }
+
     export function addPieChartLegendSettings(settings:any, props:any){
         settings = addLegendSettings(settings, props);
         settings.legend.marker.shape = props.legend.markerShape || null;
         return settings;
     }
 
+    export function addNetChartLegendSettings(settings: any, props: any) {
+        settings = addLegendSettings(settings, props);
+
+        let legendOnSide: boolean = props.legend.position === "left" || props.legend.position === "right";
+
+        settings.legend.height = legendOnSide ? null : props.legend.height;
+        settings.legend.width = legendOnSide ? props.legend.width : null;
+        settings.legend.minHeight = legendOnSide ? null : props.legend.height;
+        settings.legend.minWidth = legendOnSide ? props.legend.width : null;
+        return settings;
+    }
+
     export function addLegendSettings(settings:any, props:any){
         settings.legend =  {
             enabled: props.legend.show,
-            height: props.legend.height?props.legend.height:null,
-            minHeight: props.legend.height?props.legend.height:null,
-            width: props.legend.width?props.legend.width:null,
-            minWidth: props.legend.width?props.legend.width:null,
+            height: props.legend.height ? props.legend.height : null,
+            minHeight: props.legend.height ? props.legend.height : null,
+            width: props.legend.width ? props.legend.width : null,
+            minWidth: props.legend.width ? props.legend.width : null,
             text: {
                 font: getFont(props.legend),
                 fillColor: props.legend.fontColor.solid.color

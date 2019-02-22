@@ -230,7 +230,11 @@
                     }
                 },
                 "height": {
-                    "displayName": "Max Height",
+                    "displayName": "Height",
+                    "type": { "integer": true }
+                },
+                "width": {
+                    "displayName": "Width",
                     "type": { "integer": true }
                 },
                 "markerSize": {
