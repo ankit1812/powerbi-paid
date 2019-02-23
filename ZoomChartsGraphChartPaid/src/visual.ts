@@ -559,7 +559,7 @@ module powerbi.extensibility.visual {
                 }
 
                 // only do this part of code if 'Node Type' is 'default'
-                if (isDefaultNodeType(null, props.nodes)) {
+                if (isDefaultNodeType(null, props)) {
                     //show labelFormat only if both category label locations match.
                     if(props.nodes.valueLocation != props.nodes.labelLocation) {
                         delete vals.labelFormat;
@@ -784,7 +784,7 @@ module powerbi.extensibility.visual {
             }
             value = "" + value;
 
-            if (isDefaultNodeType(cprops, props.nodes)) {
+            if (isDefaultNodeType(cprops, props)) {
 
                 //value and label location:
                 let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 

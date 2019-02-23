@@ -865,12 +865,7 @@ module powerbi.extensibility.visual {
     }
 
     export function isDefaultNodeType(categoryProps: any, nodeProps: any): boolean {
-        let isDefault: boolean = (nodeProps && nodeProps.nodeType === "default");
-        if (categoryProps && categoryProps.show === true) {
-            if (categoryProps.nodeType === "default") {
-                isDefault = true;
-            }
-        }
-        return isDefault;
+        let nodeType:string = getProperValue(nodeProps, categoryProps, "nodes", "nodeType");
+        return nodeType === "default";
     }
 }
