@@ -85,6 +85,27 @@ module powerbi.extensibility.visual {
         return settings;
     }
 
+    function addToolbarItem(paramAlign: string, paramCssClass: string, paramDropDownItems: any, 
+        paramEnabled: boolean, paramImage: string, paramItem: string, paramLabel: any, paramLocation: string, 
+        paramOnClick: any, paramShowLabel: boolean, paramSide: string, paramTitle: string)
+    {
+        let toolbarItem = {
+            align: <TToolbarItemSide>paramAlign,
+            cssClass: paramCssClass,
+            dropDownItems: paramDropDownItems,
+            enabled: paramEnabled,
+            image: paramImage,
+            item: paramItem,
+            label: paramLabel,
+            location: paramLocation,
+            onClick: paramOnClick,
+            showLabel: paramShowLabel,
+            side: <TToolbarItemSide>paramSide,
+            title: paramTitle
+        };
+        return toolbarItem;
+    }
+
     // Function completely overrides toolbar settings. In this case 'chartType' is not provided, then settings from
     // powerbi-free/ZoomChartsNetChartFree will be returned, otherwise 'toolbar' settings will be overriden, depending 
     // on 'chartType'. This is done like so because some users, for 'NetChart' need toolbar button 'Lock All'. 
@@ -93,15 +114,15 @@ module powerbi.extensibility.visual {
     export function addNetChartCustomToolbarSettings(settings: any, chartType: string) {
         if (chartType.length) {
             let toolbarButtons = [
-                { item: "zoomControl", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
-                { item: "fit", side: <TToolbarItemSide>"left", align: <TToolbarItemSide>"bottom" },
-                { item: "rearrange", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" }
+                addToolbarItem("bottom", null, null, true, null, "zoomControl", null, "inside", null, false, "left", null),
+                addToolbarItem("bottom", null, null, true, null, "fit", null, "inside", null, false, "left", null),
+                addToolbarItem("left", null, null, true, null, "rearrange", null, "inside", null, false, "bottom", null),
             ];
 
             if (chartType.toLowerCase() === "netchart") {
-                toolbarButtons.push({ item: "freeze", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" });
+                toolbarButtons.push(addToolbarItem("left", null, null, true, null, "freeze", null, "inside", null, false, "bottom", null));
             }
-            toolbarButtons.push({ item: "back", side: <TToolbarItemSide>"bottom", align: <TToolbarItemSide>"left" });
+            toolbarButtons.push(addToolbarItem("left", null, null, true, null, "back", null, "inside", null, false, "bottom", null));
             settings.toolbar.items = toolbarButtons;
         }
         return settings;
@@ -284,6 +305,10 @@ module powerbi.extensibility.visual {
             settings.style.backgroundStyle.shadowOffsetY = shadowOffsetValue(props, "backgroundShadowOffsetYDirection", "backgroundShadowOffsetY");
         }
         return settings;
+    }
+
+    export function removeSpaces(value: string) {
+        return value.replace(" ", "");
     }
 
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
@@ -858,5 +883,13 @@ module powerbi.extensibility.visual {
             }
         }
         return settings;
+    }
+
+    export function isDefaultNodeType(categoryProps: any, nodeProps: any): boolean {
+        let isDefault: boolean = (nodeProps && nodeProps.nodeType === "default");
+        if (categoryProps && categoryProps.show === true) {
+                isDefault = (categoryProps.nodeType === "default");
+        }
+        return isDefault;
     }
 }

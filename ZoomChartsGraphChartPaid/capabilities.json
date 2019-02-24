@@ -270,6 +270,15 @@
             "displayName": "Nodes Style (Default Category)",
             "description": "Settings used for all nodes by default.",
             "properties": {
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Shape",
                     "type": {
@@ -366,7 +375,7 @@
             }
         },
         "links": {
-            "displayName": "Links",
+            "displayName": "Links (Default Category)",
             "properties": {
                 "dashed": {
                     "displayName": "Dashed",
@@ -588,6 +597,15 @@
                     "displayName": "Label",
                     "type": { "text": true }
                 },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node shape",
                     "type": {
@@ -802,6 +820,15 @@
                 "name": {
                     "displayName": "Label",
                     "type": { "text": true }
+                },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node shape",
@@ -1018,6 +1045,15 @@
                     "displayName": "Label",
                     "type": { "text": true }
                 },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node shape",
                     "type": {
@@ -1228,6 +1264,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node shape",
@@ -1440,6 +1485,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node shape",
                     "type": {
@@ -1650,6 +1704,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node shape",
@@ -1862,6 +1925,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node shape",
                     "type": {
@@ -2073,6 +2145,15 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
+                },
                 "shape": {
                     "displayName": "Node shape",
                     "type": {
@@ -2283,6 +2364,15 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "nodeType": {
+                    "displayName": "BETA - Node Type",
+                    "type": {
+                        "enumeration": [
+                            {"value": "default", "displayName": "Shape (default)"},
+                            {"value": "text", "displayName": "Text"}
+                        ]
+                    }
                 },
                 "shape": {
                     "displayName": "Node shape",

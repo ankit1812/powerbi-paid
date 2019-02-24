@@ -448,7 +448,7 @@ module powerbi.extensibility.visual {
                 vals = this.removeNodeSetting(co, vals);
 
                 // only do this part of code if 'Node Type' is 'default'
-                if (this.isDefaultNodeType(null, co)) {
+                if (isDefaultNodeType(null, co)) {
                     //show labelFormat only if both category label locations match.
                     if(co.valueLocation != co.labelLocation) {
                         delete vals.labelFormat;
@@ -543,7 +543,7 @@ module powerbi.extensibility.visual {
                 }
 
                 // only do this part of code if 'Node Type' is 'default'
-                if (this.isDefaultNodeType(null, props.nodes)) {
+                if (isDefaultNodeType(null, props.nodes)) {
                     //show labelFormat only if both category label locations match.
                     if(props.nodes.valueLocation != props.nodes.labelLocation) {
                         delete vals.labelFormat;
@@ -794,8 +794,7 @@ module powerbi.extensibility.visual {
             }
             value = "" + value;
 
-            let nodeType:string = getProperValue(props, cprops, "nodes", "nodeType");
-            if (nodeType === "default") {
+            if (isDefaultNodeType(cprops, props.nodes)) {
 
                 //value and label location:
                 let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
@@ -996,16 +995,6 @@ module powerbi.extensibility.visual {
                 delete props.outsideLabelsBackgroundOpacity;
             }
             return props;
-        }
-
-        public isDefaultNodeType(categoryProps: any, nodeProps: any): boolean {
-            let isDefault: boolean = (nodeProps && nodeProps.nodeType === "default");
-            if (categoryProps && categoryProps.show === true) {
-                if (isDefault && categoryProps.nodeType === "default") {
-                    isDefault = true;
-                }
-            }
-            return isDefault;
         }
 
     }

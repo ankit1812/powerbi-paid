@@ -4,6 +4,7 @@ module powerbi.extensibility.visual {
     interface IChartCategoryProperties extends ILabelAndValueFontSettings {
         show: boolean;
         name: string;
+        nodeType: "default" | "text";
         shape: "default" | "circle" | "rectangle" | "droplet";
         showImages: boolean;
         colorMode: "default" | "auto" | "fixed" | "dynamic";
@@ -31,6 +32,7 @@ module powerbi.extensibility.visual {
             width: number;
         };
         nodes: {
+            nodeType: "default" | "text";
             shape: "circle" | "rectangle" | "droplet";
             showImages: boolean;
             colorMode: "auto" | "fixed" | "dynamic";
@@ -129,6 +131,7 @@ module powerbi.extensibility.visual {
                     fontStyle: "",
                 },
                 nodes: {
+                    nodeType: "default",
                     shape: "circle",
                     showImages: true,
                     colorMode: "dynamic",
@@ -255,7 +258,6 @@ module powerbi.extensibility.visual {
                     style: {
                         node: {
                             imageCropping: true,
-                            display: props.nodes.shape,
                             fillColor: props.nodes.fillColor ? props.nodes.fillColor.solid.color : null,
                         },
                         link: {
@@ -333,6 +335,7 @@ module powerbi.extensibility.visual {
             return {
                 show: false,
                 name: null,
+                nodeType: "default",
                 shape: "default",
                 showImages: true,
                 colorMode: "default",
@@ -398,6 +401,12 @@ module powerbi.extensibility.visual {
                 return [];
             }
 
+            if (objectName !== "paid"){
+                if (!props.paid.show) {
+                    return null;
+                }
+            }
+
             //globally disabled inside labels
             let insideLabelsOn = true;
             if (!props.insideLabels.show) {
@@ -441,52 +450,57 @@ module powerbi.extensibility.visual {
                     delete vals.showImages;
                 }
 
-                //show labelFormat only if both category label locations match.
-                if(co.valueLocation != co.labelLocation) {
-                    delete vals.labelFormat;
-                }
+                //remove 'Node Shape' setting
+                vals = this.removeNodeSetting(co, vals);
 
-                //if no inside labels for category:
-                if(co.valueLocation != "inside" && co.labelLocation != "inside") {
-                    delete vals.customInsideLabel;
-                }
-                //if no outside labels for category:
-                if(co.valueLocation != "outside" && co.labelLocation != "outside") {
-                    delete vals.customOutsideLabel;
-                }
+                // only do this part of code if 'Node Type' is 'default'
+                if (isDefaultNodeType(null, co)) {
+                    //show labelFormat only if both category label locations match.
+                    if(co.valueLocation != co.labelLocation) {
+                        delete vals.labelFormat;
+                    }
 
-                //if no inside labels globally or category doesn't use custom inside labels, 
-                //delete all inside lables for category
-                if(!co.customInsideLabel || !insideLabelsOn) {
-                    delete vals.fontSize;
-                    delete vals.insideLabelsFontFamily;
-                    delete vals.insideLabelsFontSizeMode;
-                    delete vals.insideLabelsFontStyle;
-                    delete vals.insideLabelsFontColor;
-                    delete vals.insideLabelsBackgroundColor;
-                    delete vals.insideLabelsBackgroundOpacity;
-                }
-                //... same for outside labels:
-                if(!co.customOutsideLabel || !outsideLabelsOn) {
-                    delete vals.textSize;
-                    delete vals.outsideLabelsFontFamily;
-                    delete vals.outsideLabelsFontSizeMode;
-                    delete vals.outsideLabelsFontStyle;
-                    delete vals.outsideLabelsFontColor;
-                    delete vals.outsideLabelsBackgroundColor;
-                    delete vals.outsideLabelsBackgroundOpacity;
-                }
+                    //if no inside labels for category:
+                    if(co.valueLocation != "inside" && co.labelLocation != "inside") {
+                        delete vals.customInsideLabel;
+                    }
+                    //if no outside labels for category:
+                    if(co.valueLocation != "outside" && co.labelLocation != "outside") {
+                        delete vals.customOutsideLabel;
+                    }
 
-                //if no inside labels and no outside labels, then don't show value/label locations
-                //and other fields related to values/labels
-                if(!insideLabelsOn && !outsideLabelsOn) {
-                    delete vals.valueLocation;
-                    delete vals.labelLocation;
-                    delete vals.labelFormat;
-                    delete vals.valueAutoShortener;
-                    delete vals.valueDecimals;
-                }
+                    //if no inside labels globally or category doesn't use custom inside labels, 
+                    //delete all inside lables for category
+                    if(!co.customInsideLabel || !insideLabelsOn) {
+                        delete vals.fontSize;
+                        delete vals.insideLabelsFontFamily;
+                        delete vals.insideLabelsFontSizeMode;
+                        delete vals.insideLabelsFontStyle;
+                        delete vals.insideLabelsFontColor;
+                        delete vals.insideLabelsBackgroundColor;
+                        delete vals.insideLabelsBackgroundOpacity;
+                    }
+                    //... same for outside labels:
+                    if(!co.customOutsideLabel || !outsideLabelsOn) {
+                        delete vals.textSize;
+                        delete vals.outsideLabelsFontFamily;
+                        delete vals.outsideLabelsFontSizeMode;
+                        delete vals.outsideLabelsFontStyle;
+                        delete vals.outsideLabelsFontColor;
+                        delete vals.outsideLabelsBackgroundColor;
+                        delete vals.outsideLabelsBackgroundOpacity;
+                    }
 
+                    //if no inside labels and no outside labels, then don't show value/label locations
+                    //and other fields related to values/labels
+                    if(!insideLabelsOn && !outsideLabelsOn) {
+                        delete vals.valueLocation;
+                        delete vals.labelLocation;
+                        delete vals.labelFormat;
+                        delete vals.valueAutoShortener;
+                        delete vals.valueDecimals;
+                    }
+                }
 
                 //If auto shortener enabled, hide value decimals as they won't be used
                 //in this case
@@ -537,24 +551,30 @@ module powerbi.extensibility.visual {
                     delete vals.fillColor;
                 }
 
+                //remove 'Node Shape' setting
+                vals = this.removeNodeSetting(props.nodes, vals);
+
                 //no Field for images, so don't show 'Show Images' switch:
                 if(!this.columnIndexes.imageColumnIndex) {
                     delete vals.showImages;
                 }
 
-                //show labelFormat only if both category label locations match.
-                if(props.nodes.valueLocation != props.nodes.labelLocation) {
-                    delete vals.labelFormat;
-                }
+                // only do this part of code if 'Node Type' is 'default'
+                if (isDefaultNodeType(null, props.nodes)) {
+                    //show labelFormat only if both category label locations match.
+                    if(props.nodes.valueLocation != props.nodes.labelLocation) {
+                        delete vals.labelFormat;
+                    }
 
-                //if no inside labels and no outside labels, then don't show value/label locations
-                //and other fields related to values/labels
-                if(!insideLabelsOn && !outsideLabelsOn) {
-                    delete vals.valueLocation;
-                    delete vals.labelLocation;
-                    delete vals.labelFormat;
-                    delete vals.valueAutoShortener;
-                    delete vals.valueDecimals;
+                    //if no inside labels and no outside labels, then don't show value/label locations
+                    //and other fields related to values/labels
+                    if(!insideLabelsOn && !outsideLabelsOn) {
+                        delete vals.valueLocation;
+                        delete vals.labelLocation;
+                        delete vals.labelFormat;
+                        delete vals.valueAutoShortener;
+                        delete vals.valueDecimals;
+                    }
                 }
 
                 //If auto shortener enabled, hide value decimals as they won't be used
@@ -671,7 +691,7 @@ module powerbi.extensibility.visual {
             }
 
             let self = this;
-            n.label = null;
+            n.label = "";
 
             if (cprops.show == true && cprops.relativeSizes){
                 let relativeMinRadius:any;
@@ -734,21 +754,20 @@ module powerbi.extensibility.visual {
                 n.image = null;
             }
 
+            //labels - hide/show/update:
+            let label:string = "(empty)";
+            let name = n.data.extra.name;
+            if (name){
+                label = name+"";
+            }
+            let i1:any = null;
+            let i2:any = null;
 
             //no items detected, so create those:
             if (typeof(n.data.extra.items) == "undefined"){
                 n.data.extra.items = {};
                 this.createInnerLabel(n, "", props, cprops);
                 this.createOuterLabel(n, "", props, cprops);
-            }
-
-
-            //labels - hide/show/update:
-
-            let label:string = "(empty)";
-            let name = n.data.extra.name;
-            if (name){
-                label = name+"";
             }
 
             let valueAutoShortener = getProperValue(props, cprops, "nodes", "valueAutoShortener");
@@ -766,27 +785,33 @@ module powerbi.extensibility.visual {
             }
             value = "" + value;
 
-            //value and label location:
-            let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
-            let labelLocation = getProperValue(props, cprops, "nodes", "labelLocation"); 
-            
-            let i1:any=null;
-            let i2:any=null;
-            if(valueLocation == labelLocation) {
+            if (isDefaultNodeType(cprops, props.nodes)) {
+
+                //value and label location:
+                let valueLocation = getProperValue(props, cprops, "nodes", "valueLocation"); 
+                let labelLocation = getProperValue(props, cprops, "nodes", "labelLocation"); 
+
+                if(valueLocation == labelLocation) {
+                    let format = getProperValue(props, cprops, "nodes", "labelFormat");
+                    label = this.formatLabelAndValue(value, name, format);
+
+                    if(valueLocation == "inside") {
+                        i1 = this.updateInnerLabel(n, label, props, cprops);
+                    } else {
+                        i1 = this.updateOuterLabel(n, label, props, cprops);
+                    }
+                } else if(valueLocation == "inside") {
+                    i1 = this.updateOuterLabel(n, label, props, cprops);
+                    i2 = this.updateInnerLabel(n, value, props, cprops);
+                } else if (valueLocation == "outside") {
+                    i1 = this.updateOuterLabel(n, value, props, cprops);
+                    i2 = this.updateInnerLabel(n, label, props, cprops);
+                }
+            } else {
                 let format = getProperValue(props, cprops, "nodes", "labelFormat");
                 label = this.formatLabelAndValue(value, name, format);
 
-                if(valueLocation == "inside") {
-                    i1 = this.updateInnerLabel(n, label, props, cprops);
-                } else {
-                    i1 = this.updateOuterLabel(n, label, props, cprops);
-                }
-            } else if(valueLocation == "inside") {
-                i1 = this.updateOuterLabel(n, label, props, cprops);
-                i2 = this.updateInnerLabel(n, value, props, cprops);
-            } else if (valueLocation == "outside") {
-                i1 = this.updateOuterLabel(n, value, props, cprops);
-                i2 = this.updateInnerLabel(n, label, props, cprops);
+                n.label = label;
             }
 
             n.items = [];
@@ -934,6 +959,33 @@ module powerbi.extensibility.visual {
                 label = value + ", " + name; 
             }
             return label;
+        }
+
+        public removeNodeSetting(nodeProps: any, props: any) {
+            if (nodeProps && nodeProps.nodeType === "text") {
+                delete props.shape;
+                delete props.valueLocation;
+                delete props.labelLocation;
+                delete props.customInsideLabel;
+                delete props.customOutsideLabel;
+
+                delete props.fontSize;
+                delete props.insideLabelsFontFamily;
+                delete props.insideLabelsFontSizeMode;
+                delete props.insideLabelsFontStyle;
+                delete props.insideLabelsFontColor;
+                delete props.insideLabelsBackgroundColor;
+                delete props.insideLabelsBackgroundOpacity;
+
+                delete props.textSize;
+                delete props.outsideLabelsFontFamily;
+                delete props.outsideLabelsFontSizeMode;
+                delete props.outsideLabelsFontStyle;
+                delete props.outsideLabelsFontColor;
+                delete props.outsideLabelsBackgroundColor;
+                delete props.outsideLabelsBackgroundOpacity;
+            }
+            return props;
         }
 
     }
