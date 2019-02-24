@@ -161,7 +161,7 @@ module powerbi.extensibility.visual {
         private lastOptions: VisualUpdateOptions = null;
         private displayUnitsMapping: displayUnitsMapping;
         public initialDisplayUnitSet: boolean = false;
-        private toolbarSettings: any;
+        private toolbarSettings: any;// = null;
         private darkMode: any;
 
         constructor(options: VisualConstructorOptions) {
@@ -754,7 +754,7 @@ module powerbi.extensibility.visual {
                     this.toolbarSettings = settings.toolbar;
                 }
                 if (this.darkMode != props.toolbar.darkMode){
-                    this.toolbarSettings = settings.toolbar;
+                    this.darkMode = props.toolbar.darkMode;
                     let chart:any = this.chart;
                     let dom:HTMLElement = chart._impl.shell.domLayer.container;
                     if (props.toolbar.darkMode){

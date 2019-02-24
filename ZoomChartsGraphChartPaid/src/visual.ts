@@ -324,6 +324,7 @@ module powerbi.extensibility.visual {
                 settings = addNetChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 this.chart.updateSettings(settings);
+
             }
         }
 
