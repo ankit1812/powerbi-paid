@@ -1265,6 +1265,10 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
+                },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
                     "type": {
@@ -1484,6 +1488,10 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
                 },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
@@ -1705,6 +1713,10 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
+                },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
                     "type": {
@@ -1924,6 +1936,10 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
                 },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
@@ -2145,6 +2161,10 @@
                     "displayName": "Show",
                     "type": { "bool": true }
                 },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
+                },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
                     "type": {
@@ -2364,6 +2384,10 @@
                 "show": {
                     "displayName": "Show",
                     "type": { "bool": true }
+                },
+                "name": {
+                    "displayName": "Label",
+                    "type": { "text": true }
                 },
                 "nodeType": {
                     "displayName": "BETA - Node Type",
