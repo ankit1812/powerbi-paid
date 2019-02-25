@@ -7,7 +7,7 @@ module powerbi.extensibility.visual {
         nodeType: "default" | "text";
         shape: "default" | "circle" | "rectangle" | "droplet";
         showImages: boolean;
-        colorMode: "default" | "auto" | "fixed" | "dynamic";
+        colorMode: "auto" | "fixed" | "dynamic";
         fillColor: { solid: { color: string; } };
         relativeSizes: boolean;
         minRadius: number;
@@ -338,7 +338,7 @@ module powerbi.extensibility.visual {
                 nodeType: "default",
                 shape: "default",
                 showImages: true,
-                colorMode: "default",
+                colorMode: "dynamic",
                 fillColor: { solid: { color: color } },
                 relativeSizes: false,
                 minRadius: 10,

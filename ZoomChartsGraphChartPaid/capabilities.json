@@ -631,7 +631,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -855,7 +854,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -1079,7 +1077,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -1303,7 +1300,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -1527,7 +1523,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -1751,7 +1746,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -1975,7 +1969,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -2199,7 +2192,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
@@ -2423,7 +2415,6 @@
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
-                            {"value": "default", "displayName": "Default"},
                             {"value": "auto", "displayName": "Auto"},
                             {"value": "fixed", "displayName": "Fixed"},
                             {"value": "dynamic", "displayName": "Dynamic"}
