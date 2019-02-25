@@ -219,8 +219,9 @@ module powerbi.extensibility.visual {
 
                                 //create link
                                 let linkId = fromNodeId + ":" + toNodeId;
-                                let link = Data.createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target, linkMap2);
+                                let link = Data.createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target);
                                 linkMap2[linkId] = link;
+                                root.links.push(linkMap2[linkId]);
                             }
                         }
                     }
@@ -242,12 +243,6 @@ module powerbi.extensibility.visual {
                         }
                     }
                 }
-            }
-
-            if (!isEmptyObject(linkMap2)) {
-                Object.keys(linkMap2).forEach(function(objectKey) {
-                    root.links.push(linkMap2[objectKey]);
-                });
             }
 
             let unusedCategories = validCategoryClasses.filter(function(i) {return categoriesFound.indexOf(i) < 0;});
@@ -455,7 +450,7 @@ module powerbi.extensibility.visual {
             return node;
         }
 
-        public static createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target, existingData) {
+        public static createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target) {
             let linkLabelColumnIndex = columnIndexes.linkLabelColumnIndex;
             let linkColorColumnIndex = columnIndexes.linkColorColumnIndex;
             let linkWidthColumnIndex = columnIndexes.linkWidthColumnIndex;
@@ -466,7 +461,7 @@ module powerbi.extensibility.visual {
                 to: toNodeId,
                 extra: {
                     linkLabel: null,
-                    linkValue: existingData.hasOwnProperty(linkId) ? existingData[linkId].extra.linkValue : 0,
+                    linkValue: 0,
                     linkColor: (linkColorColumnIndex === null) ? "" : secureString(row[linkColorColumnIndex]),
                     linkWidth: (linkWidthColumnIndex === null) ? 1  : secureString(row[linkWidthColumnIndex]),
                 }
@@ -488,7 +483,6 @@ module powerbi.extensibility.visual {
                 rowLinkValue = parseFloat(row[linkLabelColumnIndex]);
                 link.extra.linkValue += rowLinkValue;
             }
-
             return link;
         }
 

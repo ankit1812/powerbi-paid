@@ -1,25 +1,27 @@
 {
     "dataRoles": [
         {
-            "displayName": "From node",
+            "displayName": "Source Nodes",
             "name": "fromNodes",
             "description": "Field containing an ID of from node. An ID should not contain spaces.",
             "kind": "Grouping"
         },
         {
-            "displayName": "To nodes",
+            "displayName": "Target Nodes",
             "name": "toNodes",
-            "description": "Field containing comma separated IDs of target nodes. This field will be used to create links between nodes. An ID of the node should not contain spaces.",
+            "description": "Field containing comma separated Target node IDs of target nodes. An ID of the node should not contain spaces.",
             "kind": "Grouping"
         },
         {
-            "displayName": "Measure",
+            "displayName": "Value",
             "name": "Size",
+            "description": "This field will be used to determine the value and size of the nodes",
             "kind": "Measure"
         },
         {
             "displayName": "Image Field",
             "name": "imageField",
+            "description": "This field will determine, what image will be displayed on node. URl`s should start with https:// to ensure secure content requirement. NOTE: provided links need to be publicly accessible in order for the image to be displayed.",
             "kind": "Grouping"
         },
         {
@@ -31,7 +33,7 @@
         {
             "displayName": "Node Label Field",
             "name": "nodeLabelField",
-            "description": "Field for setting a node label.",
+            "description": "Field for setting a node label. If left blank, node id will be displayed.",
             "kind": "Grouping"
         },
         {
@@ -43,8 +45,8 @@
         {
             "displayName": "Link Label Field",
             "name": "linkLabelField",
-            "description": "Field for setting a link label. This label should be a numeric value as the values for the same link will be summed together.",
-            "kind": "Grouping"
+            "description": "Field for setting a link label. This label should be a numeric value as the values for the same link will be summed together. If left blank there will be no link label displayed",
+            "kind": "Measure"
         },
         {
             "displayName": "Category Class Field",
@@ -53,15 +55,15 @@
             "kind": "Grouping"
         },
         {
-            "displayName": "Node Popup Content Fields",
+            "displayName": "Tooltip Content Fields",
             "name": "nodePopupContentFields",
-            "description": "Field for setting node popup content",
+            "description": "Field for setting node tooltip content, tooltip will be shown on right click.",
             "kind": "Grouping"
         },
         {
             "displayName": "Link Width",
             "name": "linkWidthField",
-            "description": "Field for setting link width. Link width is dynamically calculated based on the values. There are maximum 20 link steps available.",
+            "description": "Field for setting link width. Link width is dynamically calculated based on the values.",
             "kind": "Grouping"
         }
     ],
@@ -267,11 +269,11 @@
             }
         },
         "nodes": {
-            "displayName": "Nodes Style (Default Category)",
+            "displayName": "Nodes (Default Category)",
             "description": "Settings used for all nodes by default.",
             "properties": {
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -290,7 +292,7 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
@@ -306,21 +308,21 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -329,7 +331,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -338,7 +340,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "name+(value)", "displayName": "Name (Value)"},
@@ -349,12 +351,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -376,13 +378,14 @@
         },
         "links": {
             "displayName": "Links (Default Category)",
+            "description": "Settings used for all links by default.",
             "properties": {
                 "dashed": {
                     "displayName": "Dashed",
                     "type": { "bool": true }
                 },
                 "fromDecoration": {
-                    "displayName": "From decoration",
+                    "displayName": "From Decoration",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "None"},
@@ -392,7 +395,7 @@
                     }
                 },
                 "toDecoration": {
-                    "displayName": "To decoration",
+                    "displayName": "To Decoration",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "None"},
@@ -402,7 +405,7 @@
                     }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -413,27 +416,27 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Link fill color",
+                    "displayName": "Link Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "minWidth": {
-                    "displayName": "Min link width",
+                    "displayName": "Min Link Width",
                     "type": { "integer": true }
                 },
                 "maxWidth": {
-                    "displayName": "Max link width",
+                    "displayName": "Max Link Width",
                     "type": { "integer": true }
                 },
                 "fontSize": {
-                    "displayName": "Font size",
+                    "displayName": "Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "fontFamily": {
-                    "displayName": "Font family",
+                    "displayName": "Font Family",
                     "type": { "text": true }
                 },
                 "fontStyle": {
-                    "displayName": "Font style",
+                    "displayName": "Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
@@ -444,29 +447,30 @@
                     }
                 },
                 "fontColor": {
-                    "displayName": "Font color",
+                    "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "linkLabelBackgroundColor": {
-                    "displayName": "Link label bg. color",
+                    "displayName": "Link Label Bg. Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "linkLabelBackgroundOpacity": {
-                    "displayName": "Link label bg. opacity",
+                    "displayName": "Link Label Bg. Opacity",
                     "type": { "integer": true }
                 },
                 "linkLabelBorderColor": {
-                    "displayName": "Link label border color",
+                    "displayName": "Link Label Border Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "rotateLabelWithLink": {
-                    "displayName": "Rotate label with link",
+                    "displayName": "Rotate Label With Link",
+                    "description": "If turned on, link labels will be rotated to match link angle.",
                     "type": { "bool": true }
                 }
             }
         },
         "insideLabels": {
-            "displayName": "Inside labels",
+            "displayName": "Inside Labels",
             "properties": {
                 "show": {
                     "displayName": "Show",
@@ -475,7 +479,7 @@
                     }
                 },
                 "fontSizeMode": {
-                    "displayName": "Font size mode",
+                    "displayName": "Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",
                     "type": {
                         "enumeration": [
@@ -485,15 +489,15 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Font size",
+                    "displayName": "Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "fontFamily": {
-                    "displayName": "Font family",
+                    "displayName": "Font Family",
                     "type": { "text": true }
                 },
                 "fontStyle": {
-                    "displayName": "Font style",
+                    "displayName": "Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
@@ -504,19 +508,19 @@
                     }
                 },
                 "fontColor": {
-                    "displayName": "Font color",
+                    "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundOpacity": {
-                    "displayName": "Background opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "borderRadius": {
-                    "displayName": "Border radius",
+                    "displayName": "Border Radius",
                     "type": { "integer": true }
                 },
                 "padding": {
@@ -526,7 +530,7 @@
             }
         },
         "outsideLabels": {
-            "displayName": "Outside labels",
+            "displayName": "Outside Labels",
             "properties": {
                 "show": {
                     "displayName": "Show",
@@ -535,7 +539,7 @@
                     }
                 },
                 "fontSizeMode": {
-                    "displayName": "Font size mode",
+                    "displayName": "Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -545,15 +549,15 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Font size",
+                    "displayName": "Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "fontFamily": {
-                    "displayName": "Font family",
+                    "displayName": "Font Family",
                     "type": { "text": true }
                 },
                 "fontStyle": {
-                    "displayName": "Font style",
+                    "displayName": "Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
@@ -564,19 +568,19 @@
                     }
                 },
                 "fontColor": {
-                    "displayName": "Font color",
+                    "displayName": "Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "Background color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundOpacity": {
-                    "displayName": "Background opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "borderRadius": {
-                    "displayName": "Border radius",
+                    "displayName": "Border Radius",
                     "type": { "integer": true }
                 },
                 "padding": {
@@ -594,11 +598,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -607,7 +611,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -618,12 +622,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -635,7 +639,7 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
@@ -643,17 +647,17 @@
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -662,7 +666,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -671,7 +675,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -683,12 +687,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -708,13 +712,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
+                    "displayName": "Inside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -725,15 +729,15 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
@@ -744,27 +748,27 @@
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. Color",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -775,15 +779,15 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
@@ -794,16 +798,16 @@
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -818,11 +822,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -842,12 +846,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -859,7 +863,7 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
@@ -868,17 +872,17 @@
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -887,7 +891,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -896,7 +900,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -908,12 +912,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -933,13 +937,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -949,46 +953,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -999,35 +1003,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -1042,11 +1046,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1066,12 +1070,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -1083,25 +1087,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1110,7 +1115,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1119,7 +1124,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1131,12 +1136,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -1156,14 +1161,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1173,46 +1177,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -1223,35 +1227,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -1266,11 +1270,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1290,12 +1294,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -1307,25 +1311,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1334,7 +1339,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1343,7 +1348,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1355,12 +1360,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -1380,14 +1385,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1397,46 +1401,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -1447,35 +1451,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -1490,11 +1494,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1503,7 +1507,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1514,12 +1518,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -1531,25 +1535,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1558,7 +1563,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1567,7 +1572,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1579,12 +1584,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -1604,14 +1609,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1621,46 +1625,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -1671,35 +1675,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -1714,11 +1718,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1727,7 +1731,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1738,12 +1742,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -1755,25 +1759,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1782,7 +1787,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -1791,7 +1796,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1803,12 +1808,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -1828,14 +1833,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1845,46 +1849,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -1895,35 +1899,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -1938,11 +1942,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1951,7 +1955,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -1962,12 +1966,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -1979,25 +1983,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2006,7 +2011,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2015,7 +2020,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2027,12 +2032,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -2052,14 +2057,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2069,46 +2073,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -2119,35 +2123,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -2162,11 +2166,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -2175,7 +2179,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2186,12 +2190,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -2203,25 +2207,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2230,7 +2235,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2239,7 +2244,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2251,12 +2256,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -2276,14 +2281,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2293,46 +2297,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -2343,35 +2347,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
@@ -2386,11 +2390,11 @@
                     "type": { "bool": true }
                 },
                 "name": {
-                    "displayName": "Label",
+                    "displayName": "Category Name",
                     "type": { "text": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -2399,7 +2403,7 @@
                     }
                 },
                 "shape": {
-                    "displayName": "Node shape",
+                    "displayName": "Node Shape",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2410,12 +2414,12 @@
                     }
                 },
                 "showImages": {
-                    "displayName": "Show images",
+                    "displayName": "Show Images",
                     "description": "To set node image source, please see 'Fields' tab.",
                     "type": { "bool": true }
                 },
                 "colorMode": {
-                    "displayName": "Color mode",
+                    "displayName": "Color Mode",
                     "description": "'Default' - inherited value from 'Default' settings; 'Auto': visual automatically assigns different colors for each category; 'Fixed' - a color picker appears for you to choose your desired color; 'Dynamic' - a color will be picked from defined color Field in 'Fields' tab. ",
                     "type": {
                         "enumeration": [
@@ -2427,25 +2431,26 @@
                     }
                 },
                 "fillColor": {
-                    "displayName": "Node fill color",
+                    "displayName": "Node Fill Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "relativeSizes": {
                     "displayName": "Use Relative Sizes",
+                    "description": "Nodes are sized relative to each other within the catgory",
                     "type": { "bool": true }
                 },
                 "minRadius": {
-                    "displayName": "Min node radius",
+                    "displayName": "Min Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "maxRadius": {
-                    "displayName": "Max node radius",
+                    "displayName": "Max Node Radius",
                     "description": "As node radius is calculated based on it's value, you can limit node size by using 'Min node radius' together with 'Max node radius'. If 'Max node radius' is set larger than 'Min node radius' you will get reverse behavior.",
                     "type": { "integer": true }
                 },
                 "valueLocation": {
-                    "displayName": "Value location",
+                    "displayName": "Value Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2454,7 +2459,7 @@
                     }
                 },
                 "labelLocation": {
-                    "displayName": "Label location",
+                    "displayName": "Label Position",
                     "type": {
                         "enumeration": [
                             {"value": "inside", "displayName": "Inside"},
@@ -2463,7 +2468,7 @@
                     }
                 },
                 "labelFormat": {
-                    "displayName": "Label format",
+                    "displayName": "Label Format",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2475,12 +2480,12 @@
                     }
                 },
                 "valueAutoShortener": {
-                    "displayName": "Value auto shortener",
+                    "displayName": "Value Auto Shortener",
                     "description": "Whether to convert values, e.g., from '1000' to '1k'",
                     "type": { "bool": true }
                 },
                 "valueDecimals": {
-                    "displayName": "Value decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals",
                     "type": {
                         "enumeration": [
@@ -2500,14 +2505,13 @@
                     }
                 },
                 "customInsideLabel": {
-                    "displayName": "Custom inside label",
+                    "displayName": "Custom Inside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "insideLabelsFontSizeMode": {
-                    "displayName": "Inside label font size mode",
-                    "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
+                    "displayName": "Inside Label Font Size Mode",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Default"},
@@ -2517,46 +2521,46 @@
                     }
                 },
                 "fontSize": {
-                    "displayName": "Inside label font size",
+                    "displayName": "Inside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "insideLabelsFontFamily": {
-                    "displayName": "Inside label font family",
+                    "displayName": "Inside Label Font Family",
                     "type": { "text": true }
                 },
                 "insideLabelsFontStyle": {
-                    "displayName": "Inside label font style",
+                    "displayName": "Inside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "insideLabelsFontColor": {
-                    "displayName": "Inside label font color",
+                    "displayName": "Inside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundColor": {
-                    "displayName": "Inside label bg. color",
+                    "displayName": "Inside Label Bg. cClor",
                     "description": "Intside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "insideLabelsBackgroundOpacity": {
-                    "displayName": "Inside label bg. opacity",
+                    "displayName": "Inside Label Bg. Opacity",
                     "description": "Inside label background opacity.",
                     "type": { "integer": true }
                 },
                 "customOutsideLabel": {
-                    "displayName": "Custom outside label",
+                    "displayName": "Custom Outside Label",
                     "type": {
                         "bool": true
                     }
                 },
                 "outsideLabelsFontSizeMode": {
-                    "displayName": "Outside label font size mode",
+                    "displayName": "Outside Label Font Size Mode",
                     "description": "Auto - size of the font is determined automatically by node size. Fixed - you will be able to set fixed font size in 'px'",           
                     "type": {
                         "enumeration": [
@@ -2567,35 +2571,35 @@
                     }
                 },
                 "textSize": {
-                    "displayName": "Outside label font size",
+                    "displayName": "Outside Label Font Size",
                     "type": { "formatting": { "fontSize": true } }
                 },
                 "outsideLabelsFontFamily": {
-                    "displayName": "Outside label font family",
+                    "displayName": "Outside Label Font Family",
                     "type": { "text": true }
                 },
                 "outsideLabelsFontStyle": {
-                    "displayName": "Outside label font style",
+                    "displayName": "Outside Label Font Style",
                     "type": {
                         "enumeration": [
                             {"value": "", "displayName": "Regular"},
                             {"value": "bold", "displayName": "Bold"},
                             {"value": "italic", "displayName": "Italic"},
-                            {"value": "bold italic", "displayName": "Bold and italic"}
+                            {"value": "bold italic", "displayName": "Bold and Italic"}
                         ]
                     }
                 },
                 "outsideLabelsFontColor": {
-                    "displayName": "Outside label font color",
+                    "displayName": "Outside Label Font Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundColor": {
-                    "displayName": "Outside label bg. color",
+                    "displayName": "Outside Label Bg. Color",
                     "description": "Outside label background color.",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "outsideLabelsBackgroundOpacity": {
-                    "displayName": "Outside label bg. opacity",
+                    "displayName": "Outside Label Bg. Opacity",
                     "description": "Outside label background opacity.",
                     "type": { "integer": true }
                 }
