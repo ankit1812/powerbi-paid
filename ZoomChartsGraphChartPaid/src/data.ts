@@ -219,8 +219,7 @@ module powerbi.extensibility.visual {
 
                                 //create link
                                 let linkId = fromNodeId + ":" + toNodeId;
-                                let link = Data.createLink(linkId, fromNodeId, toNodeId, row, columnIndexes);
-                                root.links.push(link);
+                                let link = Data.createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target, linkMap2);
                                 linkMap2[linkId] = link;
                             }
                         }
@@ -243,7 +242,12 @@ module powerbi.extensibility.visual {
                         }
                     }
                 }
+            }
 
+            if (!isEmptyObject(linkMap2)) {
+                Object.keys(linkMap2).forEach(function(objectKey) {
+                    root.links.push(linkMap2[objectKey]);
+                });
             }
 
             let unusedCategories = validCategoryClasses.filter(function(i) {return categoriesFound.indexOf(i) < 0;});
@@ -451,7 +455,7 @@ module powerbi.extensibility.visual {
             return node;
         }
 
-        public static createLink(linkId, fromNodeId, toNodeId, row, columnIndexes) {
+        public static createLink(linkId, fromNodeId, toNodeId, row, columnIndexes, target, existingData) {
             let linkLabelColumnIndex = columnIndexes.linkLabelColumnIndex;
             let linkColorColumnIndex = columnIndexes.linkColorColumnIndex;
             let linkWidthColumnIndex = columnIndexes.linkWidthColumnIndex;
@@ -460,12 +464,29 @@ module powerbi.extensibility.visual {
                 id: linkId,
                 from: fromNodeId,
                 to: toNodeId,
-                extra: { 
-                    linkLabel: (linkLabelColumnIndex === null)?"":secureString(row[linkLabelColumnIndex]),
-                    linkValue: 0,
-                    linkColor: (linkColorColumnIndex === null)?"":secureString(row[linkColorColumnIndex]),
-                    linkWidth: (linkWidthColumnIndex === null)? 1 : secureString(row[linkWidthColumnIndex]),
+                extra: {
+                    linkLabel: null,
+                    linkValue: existingData.hasOwnProperty(linkId) ? existingData[linkId].extra.linkValue : 0,
+                    linkColor: (linkColorColumnIndex === null) ? "" : secureString(row[linkColorColumnIndex]),
+                    linkWidth: (linkWidthColumnIndex === null) ? 1  : secureString(row[linkWidthColumnIndex]),
                 }
+            }
+
+            if (linkLabelColumnIndex != null) {
+                let rowLinkValue: number = 0;
+                if (row[linkLabelColumnIndex]) {
+                    if (isNaN(parseFloat(row[linkLabelColumnIndex])) || !isFinite(row[linkLabelColumnIndex])) {
+                        displayMessage(target, "We detected that Link Label Field contains non-numeric values. Only numeric values are supported in this field.", "Link Label Field contains non-numeric values", false);
+                        return {
+                            nodes: [{"id": "error", "value": 0, "loaded": false, "style": { "opacity" : 0 }}],
+                            links: [],
+                            classes: [],
+                            format: null,
+                        };
+                    }
+                }
+                rowLinkValue = parseFloat(row[linkLabelColumnIndex]);
+                link.extra.linkValue += rowLinkValue;
             }
 
             return link;
