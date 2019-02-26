@@ -521,6 +521,226 @@
                 }
             }
         },
+        "thresholds": {
+            "displayName": "BETA - Thresholds",
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": { "bool": true }
+                },
+                "thresholdType1": {
+                    "displayName": "Threshold Type",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            { "value": "line", "displayName": "Line" },
+                            { "value": "area", "displayName": "Area" }
+                        ]
+                    }
+                },
+                "thresholdLineValue1": {
+                    "displayName": "Value",
+                    "type": { "text": true }
+                },
+                "thresholdAreaFrom1": {
+                    "displayName": "Value From",
+                    "type": { "text": true }
+                },
+                "thresholdAreaTo1": {
+                    "displayName": "Value To",
+                    "type": { "text": true }
+                },
+                "thresholdValueAxis1": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "thresholdPosition1": {
+                    "displayName": "Threshold Position",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            {"value": "above", "displayName": "Above"},
+                            {"value": "under", "displayName": "Under"}
+                        ]
+                    }
+                },
+                "thresholdFillColor1": {
+                    "displayName": "Threshold Fill Color 1",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdFillColorOpacity1": {
+                    "displayName": "Threshold Fill Opacity 1",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineColor1": {
+                    "displayName": "Threshold Line Color 1",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdLineColorOpacity1": {
+                    "displayName": "Threshold Line Opacity 1",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineWidth1": {
+                    "displayName": "Threshold Line Width 1",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "showThreshold2": {
+                    "displayName": "Show Threshold 2",
+                    "description": "Threshold 2",
+                    "type": { "bool": true }
+                },
+                "thresholdType2": {
+                    "displayName": "Threshold Type",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            { "value": "line", "displayName": "Line" },
+                            { "value": "area", "displayName": "Area" }
+                        ]
+                    }
+                },
+                "thresholdLineValue2": {
+                    "displayName": "Value",
+                    "type": { "text": true }
+                },
+                "thresholdAreaFrom2": {
+                    "displayName": "Value From",
+                    "type": { "text": true }
+                },
+                "thresholdAreaTo2": {
+                    "displayName": "Value To",
+                    "type": { "text": true }
+                },
+                "thresholdValueAxis2": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "thresholdPosition2": {
+                    "displayName": "Threshold Position 2",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            {"value": "above", "displayName": "Above"},
+                            {"value": "under", "displayName": "Under"}
+                        ]
+                    }
+                },
+                "thresholdFillColor2": {
+                    "displayName": "Threshold Fill Color 2",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdFillColorOpacity2": {
+                    "displayName": "Threshold Fill Opacity 2",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineColor2": {
+                    "displayName": "Threshold Line Color 2",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdLineColorOpacity2": {
+                    "displayName": "Threshold Line Opacity 2",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineWidth2": {
+                    "displayName": "Threshold Line Width 2",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "showThreshold3": {
+                    "displayName": "Show Threshold 3",
+                    "description": "Threshold 3",
+                    "type": { "bool": true }
+                },
+                "thresholdType3": {
+                    "displayName": "Threshold Type",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            { "value": "line", "displayName": "Line" },
+                            { "value": "area", "displayName": "Area" }
+                        ]
+                    }
+                },
+                "thresholdLineValue3": {
+                    "displayName": "Value",
+                    "type": { "text": true }
+                },
+                "thresholdAreaFrom3": {
+                    "displayName": "Value From",
+                    "type": { "text": true }
+                },
+                "thresholdAreaTo3": {
+                    "displayName": "Value To",
+                    "type": { "text": true }
+                },
+                "thresholdValueAxis3": {
+                    "displayName": "Value Axis",
+                    "description": "The value axis linked to the series.",
+                    "type": {
+                        "enumeration": [
+                            {"value": "primary", "displayName": "Primary"},
+                            {"value": "secondary", "displayName": "Secondary"}
+                        ]
+                    }
+                },
+                "thresholdPosition3": {
+                    "displayName": "Threshold Position 3",
+                    "description": "",
+                    "type": {
+                        "enumeration": [
+                            {"value": "above", "displayName": "Above"},
+                            {"value": "under", "displayName": "Under"}
+                        ]
+                    }
+                },
+                "thresholdFillColor3": {
+                    "displayName": "Threshold Fill Color 3",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdFillColorOpacity3": {
+                    "displayName": "Threshold Fill Opacity 3",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineColor3": {
+                    "displayName": "Threshold Line Color 3",
+                    "description": "",
+                    "type": { "fill": { "solid": { "color": true }} }
+                },
+                "thresholdLineColorOpacity3": {
+                    "displayName": "Threshold Line Opacity 3",
+                    "description": "",
+                    "type": { "integer": true }
+                },
+                "thresholdLineWidth3": {
+                    "displayName": "Threshold Line Width 3",
+                    "description": "",
+                    "type": { "integer": true }
+                }
+            }
+        },
         "stacks": {
             "displayName": "Stack Settings",
             "properties": {

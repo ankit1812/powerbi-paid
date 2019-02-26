@@ -545,7 +545,7 @@ module powerbi.extensibility.visual {
 
         let CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
 
-        let query = color.toLowerCase();
+        let query = color.toString().toLowerCase();
         let index = -1;
         let x = CSS_COLOR_NAMES.some(function(element, i) {
             if (query === element.toLowerCase()) {
@@ -891,5 +891,155 @@ module powerbi.extensibility.visual {
                 isDefault = (categoryProps.nodeType === "default");
         }
         return isDefault;
+    }
+
+    interface IThresholdSettings {
+        from: number;
+        position: "above" | "under";
+        style: {
+            fillColor: string;
+            lineColor: string;
+            lineWidth: number;
+        }
+        to: number;
+    }
+
+    export interface IThresholdCapabilities {
+        thresholdType1: "line" | "area";
+        thresholdLineValue1: string;
+        thresholdAreaFrom1: string;
+        thresholdAreaTo1: string;
+        thresholdValueAxis1: "primary" | "secondary";
+        thresholdPosition1: "above" | "under";
+        thresholdFillColor1: { solid: { color: string } };
+        thresholdFillColorOpacity1: number;
+        thresholdLineColor1: { solid: { color: string } };
+        thresholdLineColorOpacity1: number;
+        thresholdLineWidth1: number;
+
+        thresholdType2: "line" | "area";
+        thresholdLineValue2: string;
+        thresholdAreaFrom2: string;
+        thresholdAreaTo2: string;
+        thresholdValueAxis2: "primary" | "secondary";
+        thresholdPosition2: "above" | "under";
+        thresholdFillColor2: { solid: { color: string } };
+        thresholdFillColorOpacity2: number;
+        thresholdLineColor2: { solid: { color: string } };
+        thresholdLineColorOpacity2: number;
+        thresholdLineWidth2: number;
+
+        thresholdType3: "line" | "area";
+        thresholdLineValue3: string;
+        thresholdAreaFrom3: string;
+        thresholdAreaTo3: string;
+        thresholdValueAxis3: "primary" | "secondary";
+        thresholdPosition3: "above" | "under";
+        thresholdFillColor3: { solid: { color: string } };
+        thresholdFillColorOpacity3: number;
+        thresholdLineColor3: { solid: { color: string } };
+        thresholdLineColorOpacity3: number;
+        thresholdLineWidth3: number;
+    }
+
+    export function toggleThresholdValues(i: number, props:any) {
+        if (!props.thresholds.hasOwnProperty("thresholdType" + i)) {
+            return;
+        }
+
+        if (props.thresholds["thresholdType" + i] === "line") {
+            delete props.thresholds["thresholdAreaFrom" + i];
+            delete props.thresholds["thresholdAreaTo" + i];
+        } else {
+            delete props.thresholds["thresholdLineValue" + i];
+        }
+    }
+
+    // Function manipulates threshold settings starting and above second threshold.
+    // First threshold shouldn't be manipulated from this function.
+    export function toggleThresholdSettings(thresholdNumber: number, props: any) {
+        if (!props.thresholds["showThreshold" + thresholdNumber]) {
+            delete props.thresholds["thresholdType" + thresholdNumber];
+            delete props.thresholds["thresholdLineValue" + thresholdNumber];
+            delete props.thresholds["thresholdAreaFrom" + thresholdNumber];
+            delete props.thresholds["thresholdAreaTo" + thresholdNumber];
+            delete props.thresholds["thresholdValueAxis" + thresholdNumber];
+            delete props.thresholds["thresholdPosition" + thresholdNumber];
+            delete props.thresholds["thresholdFillColor" + thresholdNumber];
+            delete props.thresholds["thresholdFillColorOpacity" + thresholdNumber];
+            delete props.thresholds["thresholdLineColor" + thresholdNumber];
+            delete props.thresholds["thresholdLineColorOpacity" + thresholdNumber];
+            delete props.thresholds["thresholdLineWidth" + thresholdNumber];
+        } else {
+            toggleThresholdValues(thresholdNumber, props);
+        }
+    }
+
+    export function thresholdValidValues(props: any) {
+        let thresholdValues: {
+            [propertyName: string]: string[] | ValidationOptions;
+        } = void 0;
+
+        thresholdValues = {
+            thresholdFillColorOpacity1: { numberRange: { min: 0, max: 100 } },
+            thresholdLineColorOpacity1: { numberRange: { min: 0, max: 100 } },
+            thresholdLineWidth1: { numberRange: { min: 0, max: 10 } },
+
+            thresholdFillColorOpacity2: { numberRange: { min: 0, max: 100 } },
+            thresholdLineColorOpacity2: { numberRange: { min: 0, max: 100 } },
+            thresholdLineWidth2: { numberRange: { min: 0, max: 10 } },
+
+            thresholdFillColorOpacity3: { numberRange: { min: 0, max: 100 } },
+            thresholdLineColorOpacity3: { numberRange: { min: 0, max: 100 } },
+            thresholdLineWidth3: { numberRange: { min: 0, max: 10 } }
+        }
+        return thresholdValues;
+    }
+
+    function threshold(i: number, settings: any, props: any, visual: any) {
+        let threshold: IThresholdSettings;
+        let valueFrom: number = -Infinity;
+        let valueTo: number = Infinity;
+
+        if (props.thresholds["thresholdType" + i] === "line") {
+            let lineValue: number = 0;
+            lineValue = parseInt(secureString(props.thresholds["thresholdLineValue" + i]));
+            valueFrom = valueTo = (isNaN(lineValue) ? 0 : lineValue);
+        } else {
+            valueFrom = parseInt(secureString(props.thresholds["thresholdAreaFrom" + i]));
+            valueTo = parseInt(secureString(props.thresholds["thresholdAreaTo" + i]));
+
+            valueFrom = (!isNaN(valueFrom) ? valueFrom : -Infinity);
+            valueTo = (!isNaN(valueTo) ? valueTo : Infinity);
+        }
+
+        threshold = {
+            from: valueFrom,
+            to: valueTo,
+            position: props.thresholds["thresholdPosition" + i],
+            style: {
+                fillColor: deriveColor(visual.ZC.ZoomCharts, props.thresholds["thresholdFillColor" + i], props.thresholds["thresholdFillColorOpacity" + i]),
+                lineColor: deriveColor(visual.ZC.ZoomCharts, props.thresholds["thresholdLineColor" + i], props.thresholds["thresholdLineColorOpacity" + i]),
+                lineWidth: props.thresholds["thresholdLineWidth" + i]
+            }
+        }
+
+        settings.valueAxis[props.thresholds["thresholdValueAxis" + i]].thresholds.push(threshold);
+        return settings;
+    }
+
+    export function setThresholdSettings(settings: any, props: any, visual: any) {
+        if (props.thresholds.show) {
+            for (let i: number = 1; i <= visual.MAX_THRESHOLD_COUNT; i++) {
+                if (i == 1) {
+                    settings = threshold(i, settings, props, visual);
+                } else {
+                    if (props.thresholds["showThreshold" + i]) {
+                        settings = threshold(i, settings, props, visual);
+                    }
+                }
+            }
+        }
+        return settings;
     }
 }

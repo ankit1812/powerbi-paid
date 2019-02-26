@@ -68,6 +68,11 @@ module powerbi.extensibility.visual {
             titleEnabled: boolean;
             labelAngle: string | number;
         };
+        thresholds: IThresholdCapabilities & {
+            show: boolean;
+            showThreshold2: boolean;
+            showThreshold3: boolean;
+        };
         stacks: {
             mode: "normal" | "proportional" | "based";
         };
@@ -121,6 +126,7 @@ module powerbi.extensibility.visual {
         private customProperties: IChartVisualProperties;
         private currentSeries: ZoomCharts.Dictionary<boolean> = Object.create(null);
         private currentSortField:any = null;
+        private MAX_THRESHOLD_COUNT: number = 3;
 
         constructor(options: VisualConstructorOptions) {
             super(options);
@@ -210,6 +216,46 @@ module powerbi.extensibility.visual {
                     titleFontSize: 16,
                     titleFontFamily: "",
                     titleFontStyle: "",
+                },
+                thresholds: {
+                    show: false,
+                    thresholdType1: "line",
+                    thresholdLineValue1: "0",
+                    thresholdAreaFrom1: "",
+                    thresholdAreaTo1: "",
+                    thresholdValueAxis1: "primary",
+                    thresholdPosition1: "above",
+                    thresholdFillColor1: { solid: { color: "#FF8598" } },
+                    thresholdFillColorOpacity1: 20,
+                    thresholdLineColor1: { solid: { color: "#FF0000" } },
+                    thresholdLineColorOpacity1: 50,
+                    thresholdLineWidth1: 1,
+
+                    showThreshold2: false,
+                    thresholdType2: "line",
+                    thresholdLineValue2: "0",
+                    thresholdAreaFrom2: "",
+                    thresholdAreaTo2: "",
+                    thresholdValueAxis2: "primary",
+                    thresholdPosition2: "above",
+                    thresholdFillColor2: { solid: { color: "#FF8598" } },
+                    thresholdFillColorOpacity2: 20,
+                    thresholdLineColor2: { solid: { color: "#FF0000" } },
+                    thresholdLineColorOpacity2: 50,
+                    thresholdLineWidth2: 1,
+
+                    showThreshold3: false,
+                    thresholdType3: "line",
+                    thresholdLineValue3: "0",
+                    thresholdAreaFrom3: "",
+                    thresholdAreaTo3: "",
+                    thresholdValueAxis3: "primary",
+                    thresholdPosition3: "above",
+                    thresholdFillColor3: { solid: { color: "#FF8598" } },
+                    thresholdFillColorOpacity3: 20,
+                    thresholdLineColor3: { solid: { color: "#FF0000" } },
+                    thresholdLineColorOpacity3: 50,
+                    thresholdLineWidth3: 1,
                 },
                 stacks: {
                     mode: "normal"
@@ -593,6 +639,7 @@ module powerbi.extensibility.visual {
                                     }
                                 }
                             },
+                            thresholds: [],
                             valueFormatterFunction: (value: number, unitName: string, unitValue: number, name: string) => {
                                 let str = name;
                                 let v = name;
@@ -642,6 +689,7 @@ module powerbi.extensibility.visual {
                                     }
                                 }
                             },
+                            thresholds: [],
                             valueFormatterFunction: (value: number, unitName: string, unitValue: number, name: string) => {
                                 let str = name;
                                 let v = name;
@@ -685,6 +733,7 @@ module powerbi.extensibility.visual {
                 }
                 
                 settings.valueAxis.primary.style.hgrid = setGridlineSettings(settings.valueAxis.primary.style.hgrid, props, "valueAxis1", this);
+                settings = setThresholdSettings(settings, props, this);
                 settings = addPieChartLegendSettings(settings, props);
                 settings = toggleInfoButton(this, settings, props);
                 let sortField = null; //default
@@ -912,6 +961,15 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis2.valuePrefix;
                     delete props.valueAxis2.valueSuffix;
                 }
+            }
+
+            if (objectName === "thresholds") {
+                toggleThresholdValues(1, props);
+
+                toggleThresholdSettings(2, props);
+                toggleThresholdSettings(3, props);
+
+                validValues = thresholdValidValues(props);
             }
 
             return [{
