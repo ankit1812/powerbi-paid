@@ -345,6 +345,11 @@
                     "description": "Whether to use logarithmic scale.",
                     "type": { "bool": true }
                 },
+                "axisSize": {
+                    "displayName": "BETA - Axis Size",
+                    "description": "Min value: 0 (auto), Max value: 500",
+                    "type": { "integer": true }
+                },
                 "valueType": {
                     "displayName": "Value Type",
                     "description": "Whether to display values as standard numeric values or as percentage.",
@@ -352,6 +357,44 @@
                         "enumeration": [
                             {"value": "numeric", "displayName": "Numeric"},
                             {"value": "percentage", "displayName": "Percentage"}
+                        ]
+                    }
+                },
+                "valueDecimal": {
+                    "displayName": "BETA - Value Decimals",
+                    "description": "Set number of decimals for values",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                },
+                "percentageDecimal": {
+                    "displayName": "BETA - Percentage Decimals",
+                    "description": "Set number of decimals for percentages",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
                         ]
                     }
                 },
@@ -487,6 +530,11 @@
                     "description": "Whether to use logarithmic scale.",
                     "type": { "bool": true }
                 },
+                "axisSize": {
+                    "displayName": "BETA - Axis Size",
+                    "description": "Min value: 0 (auto), Max value: 500",
+                    "type": { "integer": true }
+                },
                 "valueType": {
                     "displayName": "Value Type",
                     "description": "Whether to display values as standard numeric values or as percentage.",
@@ -494,6 +542,44 @@
                         "enumeration": [
                             {"value": "numeric", "displayName": "Numeric"},
                             {"value": "percentage", "displayName": "Percentage"}
+                        ]
+                    }
+                },
+                "valueDecimal": {
+                    "displayName": "BETA - Value Decimals",
+                    "description": "Set number of decimals for values",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
+                        ]
+                    }
+                },
+                "percentageDecimal": {
+                    "displayName": "BETA - Percentage Decimals",
+                    "description": "Set number of decimals for percentages",
+                    "type": {
+                        "enumeration": [
+                            {"value": "auto", "displayName": "Auto"},
+                            {"value": "0", "displayName": "0"},
+                            {"value": "1", "displayName": "1"},
+                            {"value": "2", "displayName": "2"},
+                            {"value": "3", "displayName": "3"},
+                            {"value": "4", "displayName": "4"},
+                            {"value": "5", "displayName": "5"},
+                            {"value": "6", "displayName": "6"},
+                            {"value": "7", "displayName": "7"},
+                            {"value": "8", "displayName": "8"},
+                            {"value": "9", "displayName": "9"}
                         ]
                     }
                 },

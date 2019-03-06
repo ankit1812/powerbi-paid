@@ -311,6 +311,80 @@ module powerbi.extensibility.visual {
         return value.replace(" ", "");
     }
 
+    export function isFloat(n) {
+        return Number(n) === n && n % 1 !== 0;
+    }
+
+    export function customShortenValueCalculation(value: number, unit: number): number {
+        let currentValue: number = value;
+
+        if (!isFloat(currentValue)) {
+            currentValue /= unit;
+        }
+        return currentValue;
+    }
+
+    export function valueFormatter(value: number, unitName: string, unitValue: number,
+        name: string, objectProperty: string, props: any, formatString: string): string
+    {
+        if (objectProperty === "") {
+            return "";
+        }
+
+        let formatter: any = powerbi.extensibility.utils.formatting.valueFormatter;
+        let formattedString: string = name;
+        let defaultName: string = name;
+        let currentValue: any = value;
+
+        if (props[objectProperty].valueType === "percentage") {
+            if (props[objectProperty].percentageDecimal !== "auto") {
+                currentValue *= 100;
+                currentValue = currentValue.toFixed(props[objectProperty].percentageDecimal);
+            }
+
+            formattedString = defaultName = formatter.format(currentValue, formatString);
+
+            if (!props[objectProperty].showValueAffixes &&
+                props[objectProperty].percentageDecimal !== "auto") {
+                formattedString += " %";
+            }
+        } else {
+            if (props[objectProperty].valueShortening) {
+                currentValue = customShortenValueCalculation(value, unitValue);
+            }
+
+            if (props[objectProperty].valueDecimal !== "auto") {
+                currentValue = currentValue.toFixed(props[objectProperty].valueDecimal);
+            }
+
+            formattedString = defaultName = formatter.format(currentValue, formatString);
+        }
+
+        if (props[objectProperty].showValueAffixes) {
+            formattedString = props[objectProperty].valuePrefix ? props[objectProperty].valuePrefix + " " + defaultName : defaultName;
+            if (props[objectProperty].valueShortening) {
+                formattedString += " " + unitName;
+            }
+            formattedString += props[objectProperty].valueSuffix ? " " + props[objectProperty].valueSuffix : "";
+        } else {
+            if (props[objectProperty].valueDecimal !== "auto" && props[objectProperty].valueType !== "percentage") {
+                formattedString = "$ ";
+                formattedString += defaultName;
+            } else {
+                formattedString = defaultName;
+            }
+
+            if (props[objectProperty].valueType !== "percentage" && props[objectProperty].valueShortening) {
+                formattedString += " " + unitName;
+            }
+
+            if (props[objectProperty].valueType === "percentage" && props[objectProperty].percentageDecimal !== "auto") {
+                formattedString += " %";
+            }
+        }
+        return formattedString;
+    }
+
     export function mergeProperties<T>(source: T, target: T, maxDepth = 1) {
         if (!source)
             return;

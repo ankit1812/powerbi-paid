@@ -41,7 +41,10 @@ module powerbi.extensibility.visual {
             title: string;
             zeroLine: "visible" | "center" | "floating";
             logScale: boolean;
+            axisSize: number;
             valueType: "numeric" | "percentage";
+            valueDecimal: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+            percentageDecimal: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
             valueShortening: boolean;
             showValueAffixes: boolean;
             valuePrefix: string;
@@ -54,7 +57,10 @@ module powerbi.extensibility.visual {
             title: string;
             zeroLine: "visible" | "center" | "floating";
             logScale: boolean;
+            axisSize: number;
             valueType: "numeric" | "percentage";
+            valueDecimal: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+            percentageDecimal: "auto" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
             valueShortening: boolean;
             showValueAffixes: boolean;
             valuePrefix: string;
@@ -172,8 +178,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.1.1.2";
-            releaseDate = "Mar 5, 2019";
+            version = "v1.2.0.0";
+            releaseDate = "Mar 6, 2019";
             visualType = "advanced-timeseries-visual";
             visualName= "Advanced Timeseries Visual";
 
@@ -206,7 +212,10 @@ module powerbi.extensibility.visual {
                     titleFontStyle: "",
                     zeroLine: "visible",
                     logScale: false,
+                    axisSize: 0,
                     valueType: "numeric",
+                    valueDecimal: "auto",
+                    percentageDecimal: "auto",
                     valueShortening: true,
                     showValueAffixes: false,
                     valuePrefix: "",
@@ -231,7 +240,10 @@ module powerbi.extensibility.visual {
                     titleFontStyle: "",
                     zeroLine: "visible",
                     logScale: false,
+                    axisSize: 0,
                     valueType: "numeric",
+                    valueDecimal: "auto",
+                    percentageDecimal: "auto",
                     valueShortening: true,
                     showValueAffixes: false,
                     valuePrefix: "",
@@ -680,6 +692,7 @@ module powerbi.extensibility.visual {
                             zeroLine: props.valueAxis1.zeroLine,
                             logScale: props.valueAxis1.logScale,
                             hgrid: props.valueAxis1.showGridlines,
+                            size: (props.valueAxis1.axisSize > 0 ? props.valueAxis1.axisSize : null),
                             style: {
                                 valueLabel: {
                                     textStyle: {
@@ -696,32 +709,7 @@ module powerbi.extensibility.visual {
                             },
                             thresholds: [],
                             valueFormatterFunction: (value: number, unitName: string, unitValue: number, name: string) => {
-                                let str = name;
-                                let v = name;
-
-                                //case if we need to calculate percentage instead of numeric value:
-                                if(props.valueAxis1.valueType == "percentage") {
-                                    //if no shortening:
-                                    if(!props.valueAxis1.valueShortening) {
-                                        value *= 100;
-                                        str = value + " %";
-                                        v = str;
-                                    } else {
-                                        //if shortening: (actually this would be rare case, but still...)
-                                        str = v = ((value / unitValue) * 100) + " " + unitName + " %";
-                                    }                                   
-                                } else {
-                                    if(!props.valueAxis1.valueShortening) {
-                                        str = value + "";
-                                        v = str;
-                                    }
-                                }
-
-                                if(props.valueAxis1.showValueAffixes) {
-                                    str = props.valueAxis1.valuePrefix ? props.valueAxis1.valuePrefix + " " + v : v;
-                                    str += props.valueAxis1.valueSuffix ? " " + props.valueAxis1.valueSuffix : "";
-                                }
-                                return str;
+                                return valueFormatter(value, unitName, unitValue, name, "valueAxis1", props, this.primaryAxisFormatString);
                             }
                         },
                         "secondary": {
@@ -730,6 +718,7 @@ module powerbi.extensibility.visual {
                             title: secureString(props.valueAxis2.title),
                             zeroLine: props.valueAxis2.zeroLine,
                             logScale: props.valueAxis2.logScale,
+                            size: (props.valueAxis2.axisSize > 0 ? props.valueAxis2.axisSize : null),
                             style: {
                                 valueLabel: {
                                     textStyle: {
@@ -746,32 +735,7 @@ module powerbi.extensibility.visual {
                             },
                             thresholds: [],
                             valueFormatterFunction: (value: number, unitName: string, unitValue: number, name: string) => {
-                                let str = name;
-                                let v = name;
-
-                                //case if we need to calculate percentage instead of numeric value:
-                                if(props.valueAxis2.valueType == "percentage") {
-                                    //if no shortening:
-                                    if(!props.valueAxis2.valueShortening) {
-                                        value *= 100;
-                                        str = value + " %";
-                                        v = str;
-                                    } else {
-                                        //if shortening: (actually this would be rare case, but still...)
-                                        str = v = ((value / unitValue) * 100) + " " + unitName + " %";
-                                    }                                   
-                                } else {
-                                    if(!props.valueAxis2.valueShortening) {
-                                        str = value + "";
-                                        v = str;
-                                    }
-                                }
-
-                                if(props.valueAxis2.showValueAffixes) {
-                                    str = props.valueAxis2.valuePrefix ? props.valueAxis2.valuePrefix + " " + v : v;
-                                    str += props.valueAxis2.valueSuffix ? " " + props.valueAxis2.valueSuffix : "";
-                                }
-                                return str;
+                                return valueFormatter(value, unitName, unitValue, name, "valueAxis2", props, this.secondaryAxisFormatString);
                             }
                         }
                     },
@@ -1048,9 +1012,17 @@ module powerbi.extensibility.visual {
                     }
                 }
 
+                if (props.valueAxis1.valueType === "numeric") {
+                    delete props.valueAxis1.percentageDecimal;
+                } else if (props.valueAxis1.valueType === "percentage") {
+                    delete props.valueAxis1.valueDecimal;
+                    delete props.valueAxis1.valueShortening;
+                }
+
                 validValues = {
                     lineWidth: { numberRange: {min: 0, max: 10} },
-                    gridlineOpacity: { numberRange: {min: 0 , max: 100} }
+                    gridlineOpacity: { numberRange: {min: 0 , max: 100} },
+                    axisSize: { numberRange: {min: 0 , max: 500} }
                 };
             }
             if( objectName === "valueAxis2") {
@@ -1058,6 +1030,17 @@ module powerbi.extensibility.visual {
                     delete props.valueAxis2.valuePrefix;
                     delete props.valueAxis2.valueSuffix;
                 }
+
+                if (props.valueAxis2.valueType === "numeric") {
+                    delete props.valueAxis2.percentageDecimal;
+                } else if (props.valueAxis2.valueType === "percentage") {
+                    delete props.valueAxis2.valueShortening;
+                    delete props.valueAxis2.valueDecimal;
+                }
+
+                validValues = {
+                    axisSize: { numberRange: {min: 0 , max: 500} }
+                };
             }
 
             if (objectName === "holidayHighlight") {
