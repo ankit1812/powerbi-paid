@@ -1,6 +1,6 @@
 {
   "visual": {
-    "name": "ZoomChartsTimeChartPaid",
+    "name": "ZoomCharts_Advanced_TimeSeries_Visual",
     "displayName": "ZoomCharts Advanced TimeSeries Visual",
     "guid": "ZoomChartsTimeChartPaidE77E4ED357DC402ABA005987437CF500",
     "visualClassName": "Visual2",
