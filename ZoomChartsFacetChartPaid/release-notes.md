@@ -2,6 +2,13 @@
 
 =========================== Changelog ===========================
 
+Version 1.2.0 (2019-03-19)
+
+* Removed 'BETA - ' text from capabilities.json 'displayName.
+* Changed 'releaseDate' to todays in paid visual.ts.
+
+-----------------------------------------------------------------
+
 Version 1.2.0 (2019-03-18)
 
 * Removed fourth version number. On app source it should be only 

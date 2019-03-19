@@ -138,7 +138,7 @@ module powerbi.extensibility.visual {
             super(options);
 
             version = "v1.2.0";
-            releaseDate = "Mar 18, 2019";
+            releaseDate = "Mar 19, 2019";
             visualType = "advanced-combo-visual";
             visualName = "Advanced Combo Visual";
 
