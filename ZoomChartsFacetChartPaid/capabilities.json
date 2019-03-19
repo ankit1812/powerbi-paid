@@ -268,7 +268,7 @@
                     "type": { "bool": true }
                 },
                 "axisSize": {
-                    "displayName": "BETA - Axis Size",
+                    "displayName": "Axis Size",
                     "description": "Min value: 0 (auto), Max value: 500",
                     "type": { "integer": true }
                 },
@@ -283,7 +283,7 @@
                     }
                 },
                 "valueDecimal": {
-                    "displayName": "BETA - Value Decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals for values",
                     "type": {
                         "enumeration": [
@@ -302,7 +302,7 @@
                     }
                 },
                 "percentageDecimal": {
-                    "displayName": "BETA - Percentage Decimals",
+                    "displayName": "Percentage Decimals",
                     "description": "Set number of decimals for percentages",
                     "type": {
                         "enumeration": [
@@ -339,7 +339,7 @@
                     "type": { "text": true }
                 },
                 "showGridlines": {
-                    "displayName": "BETA - Gridlines (toggle)",
+                    "displayName": "Gridlines",
                     "description": "Turn horizontal gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -448,7 +448,7 @@
                     }
                 },
                 "axisSize": {
-                    "displayName": "BETA - Axis Size",
+                    "displayName": "Axis Size",
                     "description": "Min value: 0 (auto), Max value: 500",
                     "type": { "integer": true }
                 },
@@ -463,7 +463,7 @@
                     }
                 },
                 "valueDecimal": {
-                    "displayName": "BETA - Value Decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals for values",
                     "type": {
                         "enumeration": [
@@ -482,7 +482,7 @@
                     }
                 },
                 "percentageDecimal": {
-                    "displayName": "BETA - Percentage Decimals",
+                    "displayName": "Percentage Decimals",
                     "description": "Set number of decimals for percentages",
                     "type": {
                         "enumeration": [
@@ -608,7 +608,7 @@
             }
         },
         "thresholds": {
-            "displayName": "BETA - Thresholds",
+            "displayName": "Thresholds",
             "properties": {
                 "show": {
                     "displayName": "Show",

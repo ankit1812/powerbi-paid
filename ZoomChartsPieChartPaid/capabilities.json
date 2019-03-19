@@ -123,14 +123,14 @@
                     }
                 },
                 "othersLabel": {
-                    "displayName": "BETA - `Others` Label",
+                    "displayName": "`Others` Label",
                     "description": "This setting allows to change the name of `Others` slice.",
                     "type": {
                         "text": true
                     }
                 },
                 "previousLabel": {
-                    "displayName": "BETA - `Previous` Label",
+                    "displayName": "`Previous` Label",
                     "description": "This setting allows to change the name of `Previous` slice.",
                     "type": {
                         "text": true
@@ -147,7 +147,7 @@
                     }
                 },
                 "othersSizing": {
-                    "displayName": "BETA - `Others`/`Previous` Sizing",
+                    "displayName": "`Others`/`Previous` Sizing",
                     "description": "This setting allows to switch between actual and default sizing mode for the `Others` and `Previous` slices.",
                     "type": {
                         "enumeration": [

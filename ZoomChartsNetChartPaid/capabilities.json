@@ -199,7 +199,7 @@
             "description": "Settings used for default category nodes and values.",
             "properties": {
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -567,7 +567,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -787,7 +787,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1007,7 +1007,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1227,7 +1227,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1447,7 +1447,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1667,7 +1667,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -1898,7 +1898,7 @@
                     }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -2107,7 +2107,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},
@@ -2327,7 +2327,7 @@
                     "type": { "bool": true }
                 },
                 "nodeType": {
-                    "displayName": "BETA - Node Type",
+                    "displayName": "Node Type",
                     "type": {
                         "enumeration": [
                             {"value": "default", "displayName": "Shape (default)"},

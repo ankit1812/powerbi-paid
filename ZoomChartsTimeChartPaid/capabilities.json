@@ -346,7 +346,7 @@
                     "type": { "bool": true }
                 },
                 "axisSize": {
-                    "displayName": "BETA - Axis Size",
+                    "displayName": "Axis Size",
                     "description": "Min value: 0 (auto), Max value: 500",
                     "type": { "integer": true }
                 },
@@ -361,7 +361,7 @@
                     }
                 },
                 "valueDecimal": {
-                    "displayName": "BETA - Value Decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals for values",
                     "type": {
                         "enumeration": [
@@ -380,7 +380,7 @@
                     }
                 },
                 "percentageDecimal": {
-                    "displayName": "BETA - Percentage Decimals",
+                    "displayName": "Percentage Decimals",
                     "description": "Set number of decimals for percentages",
                     "type": {
                         "enumeration": [
@@ -417,7 +417,7 @@
                     "type": { "text": true }
                 },
                 "showGridlines": {
-                    "displayName": "BETA - Gridlines",
+                    "displayName": "Gridlines",
                     "description": "Turn horizontal gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -531,7 +531,7 @@
                     "type": { "bool": true }
                 },
                 "axisSize": {
-                    "displayName": "BETA - Axis Size",
+                    "displayName": "Axis Size",
                     "description": "Min value: 0 (auto), Max value: 500",
                     "type": { "integer": true }
                 },
@@ -546,7 +546,7 @@
                     }
                 },
                 "valueDecimal": {
-                    "displayName": "BETA - Value Decimals",
+                    "displayName": "Value Decimals",
                     "description": "Set number of decimals for values",
                     "type": {
                         "enumeration": [
@@ -565,7 +565,7 @@
                     }
                 },
                 "percentageDecimal": {
-                    "displayName": "BETA - Percentage Decimals",
+                    "displayName": "Percentage Decimals",
                     "description": "Set number of decimals for percentages",
                     "type": {
                         "enumeration": [
@@ -644,7 +644,7 @@
                     "type": { "integer": true }
                 },
                 "showGridlines": {
-                    "displayName": "BETA - Gridlines",
+                    "displayName": "Gridlines",
                     "description": "Turn vertical gridlines on/off",
                     "type": { "bool": true }
                 },
@@ -677,7 +677,7 @@
             }
         },
         "thresholds": {
-            "displayName": "BETA - Thresholds",
+            "displayName": "Thresholds",
             "properties": {
                 "show": {
                     "displayName": "Show",
@@ -897,7 +897,7 @@
             }
         },
         "holidayHighlight": {
-            "displayName": "BETA - Holiday Highlight",
+            "displayName": "Holiday Highlight",
             "properties": {
                 "show": {
                     "displayName": "Show",
@@ -1200,7 +1200,7 @@
             "displayName": "Series 1 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -1216,17 +1216,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -1254,50 +1254,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -1307,12 +1307,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -1322,7 +1322,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -1476,7 +1476,7 @@
             "displayName": "Series 2 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -1492,17 +1492,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -1530,50 +1530,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -1583,12 +1583,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -1598,7 +1598,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -1752,7 +1752,7 @@
             "displayName": "Series 3 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -1768,17 +1768,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -1806,50 +1806,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -1859,12 +1859,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -1874,7 +1874,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -2028,7 +2028,7 @@
             "displayName": "Series 4 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -2044,17 +2044,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -2082,50 +2082,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -2135,12 +2135,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -2150,7 +2150,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -2304,7 +2304,7 @@
             "displayName": "Series 5 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -2320,17 +2320,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -2358,50 +2358,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -2411,12 +2411,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -2426,7 +2426,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -2580,7 +2580,7 @@
             "displayName": "Series 6 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -2596,17 +2596,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -2634,50 +2634,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -2687,12 +2687,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -2702,7 +2702,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -2856,7 +2856,7 @@
             "displayName": "Series 7 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -2872,17 +2872,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -2910,50 +2910,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -2963,12 +2963,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -2978,7 +2978,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -3132,7 +3132,7 @@
             "displayName": "Series 8 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -3148,17 +3148,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -3186,50 +3186,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -3239,12 +3239,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -3254,7 +3254,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -3408,7 +3408,7 @@
             "displayName": "Series 9 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -3424,17 +3424,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -3462,50 +3462,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -3515,12 +3515,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -3530,7 +3530,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -3684,7 +3684,7 @@
             "displayName": "Series 10 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -3700,17 +3700,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -3738,50 +3738,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -3791,12 +3791,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -3806,7 +3806,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -3960,7 +3960,7 @@
             "displayName": "Series 11 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -3976,17 +3976,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -4014,50 +4014,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -4067,12 +4067,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -4082,7 +4082,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
@@ -4235,7 +4235,7 @@
             "displayName": "Series 12 value labels",
             "properties": {
                 "valueLabelPosition": {
-                    "displayName": "BETA - Label Position",
+                    "displayName": "Label Position",
                     "description": "Positioning label",
                     "type": {
                         "enumeration": [
@@ -4251,17 +4251,17 @@
                     }
                 },
                 "valueLabelAngle": {
-                    "displayName": "BETA - Label Angle",
+                    "displayName": "Label Angle",
                     "description": "Angling label",
                     "type": { "integer": true }
                 },
                 "valueLabelBorderRadius": {
-                    "displayName": "BETA - Label Border Radius",
+                    "displayName": "Label Border Radius",
                     "description": "Border radius for label",
                     "type": { "integer": true }
                 },
                 "valueLabelPadding": {
-                    "displayName": "BETA - Label Padding",
+                    "displayName": "Label Padding",
                     "description": "Padding for label",
                     "type": { "integer": true }
                 },
@@ -4289,50 +4289,50 @@
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColor": {
-                    "displayName": "BETA - Background Color",
+                    "displayName": "Background Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundColorOpacity": {
-                    "displayName": "BETA - Background Opacity",
+                    "displayName": "Background Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineColor": {
-                    "displayName": "BETA - Background Line Color",
+                    "displayName": "Background Line Color",
                     "description": "Box line color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundLineColorOpacity": {
-                    "displayName": "BETA - Background Line Opacity",
+                    "displayName": "Background Line Opacity",
                     "description": "Line opacity",
                     "type": { "integer": true }
                 },
                 "backgroundLineWidth": {
-                    "displayName": "BETA - Background Line Width",
+                    "displayName": "Background Line Width",
                     "description": "Line width",
                     "type": { "integer": true }
                 },
                 "backgroundShadowColor": {
-                    "displayName": "BETA - Background Shadow Color",
+                    "displayName": "Background Shadow Color",
                     "description": "Shadow Color",
                     "type": { "fill": { "solid": { "color": true }} }
                 },
                 "backgroundShadowColorOpacity": {
-                    "displayName": "BETA - Background Shadow Opacity",
+                    "displayName": "Background Shadow Opacity",
                     "description": "Shadow Color Opacity",
                     "type": { "integer": true }
                 },
                 "backgroundShadowBlur": {
-                    "displayName": "BETA - Backgorund Shadow Blur",
+                    "displayName": "Backgorund Shadow Blur",
                     "description": "Shadow Blur",
                     "type": { "integer": true }
                 },
                 "backgroundShadowPlacement": {
-                    "displayName": "BETA - Shadow Placement",
+                    "displayName": "Shadow Placement",
                     "description": "Placement of shadow X, Y",
                     "type": { "bool": true }
                 },
                 "backgroundShadowOffsetXDirection": {
-                    "displayName": "BETA - Shadow Horizontal Placement",
+                    "displayName": "Shadow Horizontal Placement",
                     "description": "Horizontal placement",
                     "type": {
                         "enumeration": [
@@ -4342,12 +4342,12 @@
                     }
                 },
                 "backgroundShadowOffsetX": {
-                    "displayName": "BETA - Shadow Horizontal Value",
+                    "displayName": "Shadow Horizontal Value",
                     "description": "Horizontal value",
                     "type": { "integer": true }
                 },
                 "backgroundShadowOffsetYDirection": {
-                    "displayName": "BETA - Shadow Vertical Placement",
+                    "displayName": "Shadow Vertical Placement",
                     "description": "Vertical placement",
                     "type": {
                         "enumeration": [
@@ -4357,7 +4357,7 @@
                     }
                 },
                 "backgroundShadowOffsetY": {
-                    "displayName": "BETA - Shadow Vertical Value",
+                    "displayName": "Shadow Vertical Value",
                     "description": "Vertical value",
                     "type": { "integer": true }
                 },
