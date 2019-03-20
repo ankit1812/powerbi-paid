@@ -178,8 +178,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.2.0";
-            releaseDate = "Mar 19, 2019";
+            version = "v1.3.0.0";
+            releaseDate = "Mar 20, 2019";
             visualType = "advanced-timeseries-visual";
             visualName= "Advanced TimeSeries Visual";
 

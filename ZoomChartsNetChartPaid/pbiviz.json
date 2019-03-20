@@ -4,12 +4,12 @@
     "displayName": "ZoomCharts Advanced Network Visual",
     "guid": "ZoomChartsNetChartPaidA1D59E3B59078E6D50A4CB1C3D4E2129C500",
     "visualClassName": "Visual2",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "description": "ZoomCharts Advanced Network Visual",
     "supportUrl": "https://zoomcharts.com/en/microsoft-power-bi-custom-visuals/",
     "gitHubUrl": "https://github.com/zoomcharts/powerbi-paid"
   },
-  "apiVersion": "1.9.0",
+  "apiVersion": "2.3.0",
   "author": {
     "name": "ZoomCharts",
     "email": "powerbi@zoomcharts.com"
