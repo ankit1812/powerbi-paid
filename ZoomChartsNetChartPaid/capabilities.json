@@ -7,7 +7,7 @@
         },
         {
             "displayName": "Measure",
-            "name": "Size",
+            "name": "nodeValue",
             "kind": "Measure"
         },
         {
@@ -39,67 +39,33 @@
         {
             "conditions": [
                 {
-                    "Nodes": {
-                        "min": 1,
-                        "max": 9
-                    },
-                    "imageField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "nodeColorField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "linkLabelField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "linkColorField": {
-                        "min": 0,
-                        "max": 1
-                    }
+                    "Nodes": { "min": 1, "max": 9 },
+                    "nodeValue": { "max": 1 },
+                    "imageField": { "max": 1 },
+                    "nodeColorField": { "max": 1 },
+                    "linkLabelField": { "max": 1 },
+                    "linkColorField": { "max": 1 }
                 }
             ],
             "categorical": {
                 "categories": {
-                    "for": {
-                        "in": "Nodes"
-                    },
-                    "dataReductionAlgorithm": {
-                        "top": {
-                            "count": 100000
-                        }
-                    }
+                    "select": [
+                        { "for": { "in": "Nodes" } },
+                        { "for": { "in": "imageField" } },
+                        { "for": { "in": "nodeColorField" } },
+                        { "for": { "in": "linkLabelField" } },
+                        { "for": { "in": "linkColorField" } }
+                    ],
+                    "dataReductionAlgorithm": { "top": { "count": 100000 } }
                 },
                 "values": {
                     "select": [
-                        { "for": { "in": "Size" } },
-                        {
-                            "bind": {
-                                "to": "Nodes"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "imageField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "nodeColorField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "linkLabelField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "linkColorField"
-                            }
-                        }
+                        { "for": { "in": "nodeValue" } },
+                        { "bind": { "to": "Nodes" } },
+                        { "bind": { "to": "imageField" } },
+                        { "bind": { "to": "nodeColorField" } },
+                        { "bind": { "to": "linkLabelField" } },
+                        { "bind": { "to": "linkColorField" } }
                     ]
                 }
             }

@@ -101,7 +101,7 @@ module powerbi.extensibility.visual {
         private customProperties: IChartVisualProperties;
         private currentCategories: ZoomCharts.Dictionary<boolean> = Object.create(null);
         public lastOptions: VisualUpdateOptions = null;
-        public columnIndexes: IChartMetadataColumnIndexesObject = null;
+        public columnIndexes: IChartTableColumnIndexesObject = null;
 
         constructor(options: VisualConstructorOptions) {
             super(options);

@@ -794,14 +794,20 @@ module powerbi.extensibility.visual {
         return "rgba(" + [r,g,b].join(",") + "," + opacity + ")";
     }
 
-    export interface IChartMetadataColumnIndexesObject {
+    interface IChartCommonMetadataColumnIndexesObject {
         valueColumnIndex: null|number|string;
         imageColumnIndex: null|number|string;
         linkLabelColumnIndex: null|number|string;
         nodeColorColumnIndex: null|number|string;
         linkColorColumnIndex: null|number|string;
-        fromNodesColumnIndex?: null|number|string;
-        toNodesColumnIndex?: null|number|string;
+    }
+    export interface IChartCategoryIndexesObject extends IChartCommonMetadataColumnIndexesObject {
+        nodeColumnIndexes?: null|Array<(string|number)>;
+    }
+
+    export interface IChartTableColumnIndexesObject extends IChartCommonMetadataColumnIndexesObject {
+        sourceNodesColumnIndex?: null|number|string;
+        targetNodesColumnIndex?: null|number|string;
         nodeLabelColumnIndex?: null|number|string;
         categoryClassColumnIndex?: null|number|string;
         nodePopupColumnIndexes?: null|Array<(string|number)>;

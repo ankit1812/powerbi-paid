@@ -96,7 +96,7 @@ module powerbi.extensibility.visual {
         private customProperties: IChartVisualProperties;
         private currentCategories: ZoomCharts.Dictionary<boolean> = Object.create(null);
         public lastOptions: VisualUpdateOptions = null;
-        public columnIndexes: IChartMetadataColumnIndexesObject = null;
+        public categoryIndexes: IChartCategoryIndexesObject = null;
 
         constructor(options: VisualConstructorOptions) {
             super(options);
@@ -440,7 +440,7 @@ module powerbi.extensibility.visual {
                 }
 
                 //no Field for images, so don't show 'Show Images' switch:
-                if(!this.columnIndexes.imageColumnIndex) {
+                if(!this.categoryIndexes.imageColumnIndex) {
                     delete vals.showImages;
                 }
 
@@ -538,7 +538,7 @@ module powerbi.extensibility.visual {
                 vals = this.removeNodeSetting(props.nodes, vals);
 
                 //no Field for images, so don't show 'Show Images' switch:
-                if(!this.columnIndexes.imageColumnIndex) {
+                if(!this.categoryIndexes.imageColumnIndex) {
                     delete vals.showImages;
                 }
 
@@ -578,7 +578,7 @@ module powerbi.extensibility.visual {
                 }
 
                 //No Field is set for link labels, so don't show related settings:
-                if(!this.columnIndexes.linkLabelColumnIndex) {
+                if(!this.categoryIndexes.linkLabelColumnIndex) {
                     delete vals.linkLabelBackgroundColor;
                     delete vals.linkLabelBackgroundOpacity;
                     delete vals.linkLabelBorderColor;

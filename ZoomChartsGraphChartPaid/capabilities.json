@@ -2,19 +2,19 @@
     "dataRoles": [
         {
             "displayName": "Source Nodes",
-            "name": "fromNodes",
+            "name": "sourceNodes",
             "description": "Field containing an ID of from node. An ID should not contain spaces.",
             "kind": "Grouping"
         },
         {
             "displayName": "Target Nodes",
-            "name": "toNodes",
+            "name": "targetNodes",
             "description": "Field containing comma separated Target node IDs of target nodes. An ID of the node should not contain spaces.",
             "kind": "Grouping"
         },
         {
             "displayName": "Value",
-            "name": "Size",
+            "name": "nodeValue",
             "description": "This field will be used to determine the value and size of the nodes",
             "kind": "Measure"
         },
@@ -71,117 +71,35 @@
         {
             "conditions": [
                 {
-                    "fromNodes": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "toNodes": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "Size": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "imageField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "nodeColorField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "nodeLabelField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "linkLabelField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "linkColorField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "categoryClassField": {
-                        "min": 0,
-                        "max": 1
-                    },
-                    "nodePopupContentFields": {
-                        "min": 0,
-                        "max": 9
-                    },
-                    "linkWidthField": {
-                        "min": 0,
-                        "max": 1
-                    }
+                    "sourceNodes": { "max": 1 },
+                    "targetNodes": { "max": 1 },
+                    "nodeValue": { "max": 1 },
+                    "imageField": { "max": 1 },
+                    "nodeColorField": { "max": 1 },
+                    "nodeLabelField": { "max": 1 },
+                    "linkLabelField": { "max": 1 },
+                    "linkColorField": { "max": 1 },
+                    "categoryClassField": { "max": 1 },
+                    "nodePopupContentFields": { "max": 9 },
+                    "linkWidthField": { "max": 1 }
                 }
             ],
-            "categorical": {
-                "categories": {
-                    "for": {
-                        "in": "fromNodes"
-                    },
-                    "dataReductionAlgorithm": {
-                        "top": {
-                            "count": 100000
-                        }
-                    }
-                },
-                "values": {
+            "table": {
+                "rows": {
                     "select": [
-                        { "for": { "in": "Size" } },
-                        {
-                            "bind": {
-                                "to": "fromNodes"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "toNodes"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "imageField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "nodeColorField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "nodeLabelField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "linkLabelField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "linkColorField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "categoryClassField"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "nodePopupContentFields"
-                            }
-                        },
-                        {
-                            "bind": {
-                                "to": "linkWidthField"
-                            }
-                        }
-                    ]
+                        { "bind": { "to": "sourceNodes" } },
+                        { "bind": { "to": "targetNodes" } },
+                        { "bind": { "to": "nodeValue" } },
+                        { "bind": { "to": "imageField" } },
+                        { "bind": { "to": "nodeColorField" } },
+                        { "bind": { "to": "nodeLabelField" } },
+                        { "bind": { "to": "linkLabelField" } },
+                        { "bind": { "to": "linkColorField" } },
+                        { "bind": { "to": "categoryClassField" } },
+                        { "bind": { "to": "nodePopupContentFields" } },
+                        { "bind": { "to": "linkWidthField" } }
+                    ],
+                    "dataReductionAlgorithm": { "top": { "count": 100000 } }
                 }
             }
         }
