@@ -2,6 +2,15 @@
 
 =========================== Changelog ===========================
 
+Version 1.3.0.1 (2019-03-21)
+
+* Fixed Network and Graph charts, because were not showing at all. 
+  Adding/removing spaces, newlines, renaming capabilities and 
+  variables.
+  Updating internal version.
+
+-----------------------------------------------------------------
+
 Version 1.3.0.0 (2019-03-20)
 
 * Updated to API 2.3.0.
