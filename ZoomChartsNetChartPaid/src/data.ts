@@ -18,7 +18,10 @@ module powerbi.extensibility.visual {
                 return root;
             }
 
-            if (typeof(dataView.categorical.categories) == "undefined") {
+            if (//needed to add this line, because sometimes it outputs error of not able to access categories of null
+                dataView.categorical.categories === null || 
+                typeof(dataView.categorical.categories) == "undefined"
+            ) {
                 displayMessage(target, "Please, select at least one category for node grouping", "Incorrect data", false);
                 return root;
             }
@@ -146,6 +149,8 @@ module powerbi.extensibility.visual {
                     }
                     let sid: any = host.createSelectionIdBuilder().withCategory(dataViewCategories[y], x).createSelectionId();
                     if (typeof(nodeMap[y][nodeId]) === "undefined") {
+                        let nodeImage = (imageCategoryIndex !== null ? secureString(dataView.categorical.categories[imageCategoryIndex].values[x]) : null);
+                        let nodeColor = (nodeColorCategoyIndex !== null ? secureString(dataView.categorical.categories[nodeColorCategoyIndex].values[x]) : null);
                         nodeMap[y][nodeId] = {
                             name: secureString(v),
                             id: x,
@@ -153,8 +158,8 @@ module powerbi.extensibility.visual {
                             value: 0,
                             selectionIds: [],
                             rowData: [],
-                            image: (imageCategoryIndex === null ? "" : secureString(dataView.categorical.categories[imageCategoryIndex].values[x])),
-                            nodeColor: (nodeColorCategoyIndex === null ? "" : secureString(dataView.categorical.categories[nodeColorCategoyIndex].values[x]))
+                            image: secureString(nodeImage),
+                            nodeColor: secureString(nodeColor)
                         };
                         nodeMap[y][nodeId].rowData.push(Data.generateRowData(x, dataView, categoryIndexes));
 
@@ -168,10 +173,11 @@ module powerbi.extensibility.visual {
                         let t = nodeId;
                         let lid = f + "-" + t;
                         if (linkMap.indexOf(lid) < 0) {
+                            let linkColor = dataView.categorical.categories[linkColorCategoryIndex].values[x];
                             let linkExtra = {
                                 linkLabel: null,
                                 linkValue: 0,
-                                linkColor: (linkColorCategoryIndex === null) ? "" : secureString(dataView.categorical.categories[linkColorCategoryIndex].values[x])
+                                linkColor: (linkColorCategoryIndex === null) ? "" : secureString(linkColor)
                             };
 
                             linkMap.push(lid);
@@ -186,10 +192,9 @@ module powerbi.extensibility.visual {
                         let lvalue: any;
 
                         if (linkLabelCategoryIndex != null) {
-                            if (dataView.categorical.categories[linkLabelCategoryIndex]) {
-                                if(isNaN(parseFloat(dataView.categorical.categories[linkLabelCategoryIndex].values[x])) || 
-                                    !isFinite(dataView.categorical.categories[linkLabelCategoryIndex].values[x])
-                                ) {
+                            let linkLabel = dataView.categorical.categories[linkLabelCategoryIndex];
+                            if (linkLabel) {
+                                if(isNaN(parseFloat(linkLabel.values[x])) || !isFinite(linkLabel.values[x])) {
                                     displayMessage(target, "We detected that Link Label Field contains non-numeric values. Only numeric values are supported in this field.", "Link Label Field contains non-numeric values", false);
                                     return {
                                         nodes: [{"id": "error", "value":0, "loaded":false, "style":{"opacity":0}}],
@@ -197,10 +202,9 @@ module powerbi.extensibility.visual {
                                         classes: [],
                                         format: null,
                                     };
-                                    
                                 }
                             }
-                            lvalue = parseInt(dataView.categorical.categories[linkLabelCategoryIndex].values[x]);
+                            lvalue = parseInt(linkLabel.values[x]);
                             root.links[linkMap.indexOf(lid)].extra.linkValue += lvalue;
                         }
                     }
@@ -376,21 +380,22 @@ module powerbi.extensibility.visual {
                 return [];
             }
 
-            let value: any = "";
+            let value: any;
             let row: Array<any> = [];
             for (let i in categoryIndexes) {
                 if (categoryIndexes[i] === null) continue;
                 if (Array.isArray(categoryIndexes[i]) && categoryIndexes[i].length > 0) {
                     for (let n = 0; n < categoryIndexes[i].length; n++) {
-                        row.push(rows[categoryIndexes[i][n]].values[valueNumber]);
+                        row.push(secureString(rows[categoryIndexes[i][n]].values[valueNumber]));
                     }
                 } else {
-                    row.push(rows[categoryIndexes[i]].values[valueNumber]);
+                    row.push(secureString(rows[categoryIndexes[i]].values[valueNumber]));
                 }
             }
             if (typeof(dataView.categorical.values) != "undefined") {
                 value = dataView.categorical.values[0].values[valueNumber];
             }
+            value = (typeof(value) != "number" && !isNaN(value) ? parseFloat(value) : 1);
             row.push(value);
             return row;
         }

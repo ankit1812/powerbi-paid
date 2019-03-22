@@ -105,8 +105,8 @@ module powerbi.extensibility.visual {
 
         constructor(options: VisualConstructorOptions) {
             super(options);
-            version = "v1.3.0.1";
-            releaseDate = "Mar 21, 2019";
+            version = "v1.3.0.2";
+            releaseDate = "Mar 22, 2019";
             visualType = "advanced-graph-visual";
             visualName= "Advanced Graph Visual";
 

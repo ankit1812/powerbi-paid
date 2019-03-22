@@ -2,6 +2,12 @@
 
 =========================== Changelog ===========================
 
+Version 1.3.0.2 (2019-03-22)
+
+* PBI-154: Testing and fixing errors for Graph visual.
+
+-----------------------------------------------------------------
+
 Version 1.3.0.1 (2019-03-21)
 
 * Fixed Network and Graph charts, because were not showing at all. 

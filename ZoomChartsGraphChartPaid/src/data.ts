@@ -121,7 +121,7 @@ module powerbi.extensibility.visual {
                         shape = customCategoryShape;
                     }
                 }
-                
+
                 let o:any = {
                     className: "category" + m, //y
                     nameLegend: co.name,
@@ -177,12 +177,12 @@ module powerbi.extensibility.visual {
                         //node created, but not yet filled with data:
                         //fill it:
                         let label = (row && row[nodeLabelColumnIndex]) ? row[nodeLabelColumnIndex] : sourceNodeId;
-                        let value = row[valueColumnIndex];
+                        let value = (row && row[valueColumnIndex] && !isNaN(row[valueColumnIndex]) ? parseFloat(row[valueColumnIndex]) : 1);
                         let image = (row && row[imageColumnIndex]) ? row[imageColumnIndex] : null;
                         let nodeColor = (row && row[nodeColorColumnIndex]) ? row[nodeColorColumnIndex] : null;
                         let categoryClass = (row && row[categoryClassColumnIndex]) ? row[categoryClassColumnIndex] : "category1";
 
-                        node.className = categoryClass;
+                        node.className = secureString(categoryClass);
                         node.extra.isFilled = true;
                         node.extra.name = secureString(label);
                         node.extra.value = value;
@@ -205,6 +205,7 @@ module powerbi.extensibility.visual {
                     let toIds = targetNodeIds.split(",");
 
                     if (toIds && toIds.length) {
+                        let link;
                         for (let x2 = 0; x2 < toIds.length; x2++) {
                             let toNodeId = toIds[x2];
                             
@@ -219,10 +220,17 @@ module powerbi.extensibility.visual {
 
                                 //create link
                                 let linkId = sourceNodeId + ":" + toNodeId;
-                                let link = Data.createLink(linkId, sourceNodeId, toNodeId, row, tableColumnIndexes, target);
+                                link = Data.createLink(linkId, sourceNodeId, toNodeId, row, tableColumnIndexes, target);
                                 linkMap2[linkId] = link;
                                 root.links.push(linkMap2[linkId]);
+
+                                if (link.hasOwnProperty("nodes") && link["nodes"][0].id === "error") break;
                             }
+                        }
+                        // should do the same as in Network chart
+                        if (typeof(link) != "undefined" && link.hasOwnProperty("nodes") && link["nodes"][0].id === "error") {
+                            displayMessage(target, "We detected that Link Label Field contains non-numeric values. Only numeric values are supported in this field.", "Link Label Field contains non-numeric values", false);
+                            return link;
                         }
                     }
                 }
@@ -298,7 +306,7 @@ module powerbi.extensibility.visual {
                 for (let x = 0; x < root.nodes.length; x++) {
                     let node = root.nodes[x];
                     let belonging_category = this.getNodeBelongingCategory(visual.currentCategories, node);
-                    let radius = base + (root.nodes[x].extra.value-min)/max * max_gain;
+                    let radius = base + (root.nodes[x].extra.value - min) / max * max_gain;
                     root.nodes[x].extra.radius = getLimitedRadius(radius, props, belonging_category.props);
                 }
             } else if (mode == "ultra-dynamic") {
@@ -416,7 +424,7 @@ module powerbi.extensibility.visual {
             let nodePopupColumnIndexes = columnIndexes.nodePopupColumnIndexes;
 
             let label = (row && row[nodeLabelColumnIndex]) ? row[nodeLabelColumnIndex] : nodeId;
-            let value = (row && row[valueColumnIndex]) ? parseFloat(row[valueColumnIndex]) : 1;
+            let value = (row && row[valueColumnIndex]) && !isNaN(row[valueColumnIndex]) ? parseFloat(row[valueColumnIndex]) : 1;
             let image = (row && row[imageColumnIndex]) ? row[imageColumnIndex] : null;
             let nodeColor = (row && row[nodeColorColumnIndex]) ? row[nodeColorColumnIndex] : null;
             let categoryClass = (row && row[categoryClassColumnIndex]) ? row[categoryClassColumnIndex] : "category1";
@@ -424,7 +432,7 @@ module powerbi.extensibility.visual {
             let node = {
                 id: nodeId, 
                 loaded: true,
-                className: categoryClass,
+                className: secureString(categoryClass),
                 extra: {
                     isFilled: row ? true : false,
                     name: secureString(label),
@@ -439,7 +447,6 @@ module powerbi.extensibility.visual {
                     popup: this.buildNodePopupContent(nodePopupColumnIndexes, row, columns),
                 }
             };
-
             return node;
         }
 
@@ -456,7 +463,9 @@ module powerbi.extensibility.visual {
                     linkLabel: null,
                     linkValue: 0,
                     linkColor: (linkColorColumnIndex === null) ? "" : secureString(row[linkColorColumnIndex]),
-                    linkWidth: (linkWidthColumnIndex === null) ? 1  : secureString(row[linkWidthColumnIndex]),
+                    linkWidth: (linkWidthColumnIndex === null || 
+                        (linkWidthColumnIndex && row[linkWidthColumnIndex] && isNaN(row[linkWidthColumnIndex]))
+                    ) ? 1  : secureString(row[linkWidthColumnIndex])
                 }
             }
 
@@ -464,7 +473,6 @@ module powerbi.extensibility.visual {
                 let rowLinkValue: number = 0;
                 if (row[linkLabelColumnIndex]) {
                     if (isNaN(parseFloat(row[linkLabelColumnIndex])) || !isFinite(row[linkLabelColumnIndex])) {
-                        displayMessage(target, "We detected that Link Label Field contains non-numeric values. Only numeric values are supported in this field.", "Link Label Field contains non-numeric values", false);
                         return {
                             nodes: [{"id": "error", "value": 0, "loaded": false, "style": { "opacity" : 0 }}],
                             links: [],
