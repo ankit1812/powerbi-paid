@@ -2,6 +2,12 @@
 
 =========================== Changelog ===========================
 
+Version 1.3.0 (2019-03-25)
+
+* PBI-154: Updated version for app source.
+
+-----------------------------------------------------------------
+
 Version 1.3.0.2 (2019-03-22)
 
 * PBI-154: Testing and fixing errors for Graph visual.
