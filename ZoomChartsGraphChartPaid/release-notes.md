@@ -2,6 +2,12 @@
 
 =========================== Changelog ===========================
 
+Version 1.3.1 (2019-03-28)
+
+* PBI-154: Fixing/testing issues after another app source fail.
+
+-----------------------------------------------------------------
+
 Version 1.3.0 (2019-03-25)
 
 * PBI-154: Updated version for app source.

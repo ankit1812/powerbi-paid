@@ -18,15 +18,15 @@ module powerbi.extensibility.visual {
                 return root;
             }
 
-            if (dataView.table == null) {
-                displayMessage(target, "Please, provide data", "No data", false);
+            let tableRows = Data.getTableRows(dataView);
+            let rowCount: number = tableRows.length;
+            if (dataView.table == null || rowCount <= 0) {
+                displayMessage(target, "Well this is awkward... No data has been found in the columns, that were added to the fields list. Please check your data file and add data to all the required columns.", "No data", false);
                 return root;
             }
 
             let tableColumnIndexes = Data.getTableColumnIndexes(dataView);
             let tableColumns = Data.getTableColumns(dataView);
-            let tableRows = Data.getTableRows(dataView);
-            let rowCount: number = tableRows.length;
             visual.columnIndexes = tableColumnIndexes;
 
             let sourceNodesColumnIndex = tableColumnIndexes.sourceNodesColumnIndex;
@@ -40,7 +40,7 @@ module powerbi.extensibility.visual {
             let categoryClassColumnIndex = tableColumnIndexes.categoryClassColumnIndex;
             let nodePopupColumnIndexes = tableColumnIndexes.nodePopupColumnIndexes;
             let linkWidthColumnIndex = tableColumnIndexes.linkWidthColumnIndex;
-
+ 
             if (sourceNodesColumnIndex == null) {
                 displayMessage(target, "Please, select 'Source Nodes' for node grouping", "Incorrect data", false);
                 return root;
@@ -159,11 +159,32 @@ module powerbi.extensibility.visual {
             let nodeMap2 = {};
             let linkMap2 = {};
             let categoriesFound = [];
+
             let selIds: Array<visuals.ISelectionId> = Data.generateSelectionIds(dataView, visual.host, sourceNodesColumnIndex);
             root.format = Data.getTableColumnFormat(dataView, sourceNodesColumnIndex);
 
             for (let x = 0; x < rowCount; x++) {
                 let row = tableRows[x];
+                // check if no empty fields in 'Source Nodes'
+                if (
+                    row && !row[sourceNodesColumnIndex] || 
+                    (row && row[sourceNodesColumnIndex] && row[sourceNodesColumnIndex].length <= 0)
+                ) {
+                    displayMessage(target, "'Source Nodes' can't have empty data", "Empty data", false);
+                    return Data.errorData();
+                }
+
+                // check correct data type in 'Source Nodes', this check is done, because if we pass data type 'number' in 
+                // fields 'Source Nodes' or 'Target Nodes', then replace() outputs error
+                if (row && row[sourceNodesColumnIndex] && typeof(row[sourceNodesColumnIndex]) !== "string") {
+                    displayMessage(target, "An unsupported Data type has been detected in 'Source Nodes' this field only supports Data Types 'Text' and 'String'", "Unsupported Data Type", false);
+                    return Data.errorData();
+                }
+                if (row && row[targetNodesColumnIndex] && typeof(row[targetNodesColumnIndex]) !== "string") {
+                    displayMessage(target, "An unsupported Data type has been detected in 'Target Nodes' this field only supports Data Types 'Text' and 'String'", "Unsupported Data Type", false);
+                    return Data.errorData();
+                }
+
                 let sourceNodeId = row[sourceNodesColumnIndex].replace(/ /g, "");
                 let targetNodeIds = row[targetNodesColumnIndex];
                 let sid: visuals.ISelectionId = (typeof(selIds) == "undefined" ? undefined : selIds[x]);
@@ -177,7 +198,7 @@ module powerbi.extensibility.visual {
                         //node created, but not yet filled with data:
                         //fill it:
                         let label = (row && row[nodeLabelColumnIndex]) ? row[nodeLabelColumnIndex] : sourceNodeId;
-                        let value = (row && row[valueColumnIndex] && !isNaN(row[valueColumnIndex]) ? parseFloat(row[valueColumnIndex]) : 1);
+                        let value = (row && row[valueColumnIndex] && (isFinite(row[valueColumnIndex]) && !isNaN(row[valueColumnIndex])) ? parseFloat(row[valueColumnIndex]) : 1);
                         let image = (row && row[imageColumnIndex]) ? row[imageColumnIndex] : null;
                         let nodeColor = (row && row[nodeColorColumnIndex]) ? row[nodeColorColumnIndex] : null;
                         let categoryClass = (row && row[categoryClassColumnIndex]) ? row[categoryClassColumnIndex] : "category1";
@@ -239,12 +260,7 @@ module powerbi.extensibility.visual {
                 if (row[categoryClassColumnIndex]) {
                     if (validCategoryClasses.indexOf(row[categoryClassColumnIndex]) == -1) {
                         displayMessage(target, "We support up to 9 category classes like: 'category1', 'category2' up to 'category9'", "Unsupported category class: '" + row[categoryClassColumnIndex] + "'", false);
-                        return {
-                            nodes: [{"id": "error", "value":0, "loaded":false, "style":{"opacity":0}}],
-                            links: [],
-                            classes: [],
-                            format: null,
-                        };
+                        return Data.errorData();
                     } else {
                         if (categoriesFound.indexOf(row[categoryClassColumnIndex]) == -1 ) {
                             categoriesFound.push(row[categoryClassColumnIndex]);
@@ -424,7 +440,7 @@ module powerbi.extensibility.visual {
             let nodePopupColumnIndexes = columnIndexes.nodePopupColumnIndexes;
 
             let label = (row && row[nodeLabelColumnIndex]) ? row[nodeLabelColumnIndex] : nodeId;
-            let value = (row && row[valueColumnIndex]) && !isNaN(row[valueColumnIndex]) ? parseFloat(row[valueColumnIndex]) : 1;
+            let value = (row && row[valueColumnIndex]) && (isFinite(row[valueColumnIndex]) && !isNaN(row[valueColumnIndex])) ? parseFloat(row[valueColumnIndex]) : 1;
             let image = (row && row[imageColumnIndex]) ? row[imageColumnIndex] : null;
             let nodeColor = (row && row[nodeColorColumnIndex]) ? row[nodeColorColumnIndex] : null;
             let categoryClass = (row && row[categoryClassColumnIndex]) ? row[categoryClassColumnIndex] : "category1";
@@ -464,8 +480,10 @@ module powerbi.extensibility.visual {
                     linkValue: 0,
                     linkColor: (linkColorColumnIndex === null) ? "" : secureString(row[linkColorColumnIndex]),
                     linkWidth: (linkWidthColumnIndex === null || 
-                        (linkWidthColumnIndex && row[linkWidthColumnIndex] && isNaN(row[linkWidthColumnIndex]))
-                    ) ? 1  : secureString(row[linkWidthColumnIndex])
+                        (linkWidthColumnIndex && row[linkWidthColumnIndex] && 
+                            (!isFinite(row[linkWidthColumnIndex]) && isNaN(row[linkWidthColumnIndex]))
+                        )
+                    ) ? 1 : secureString(row[linkWidthColumnIndex])
                 }
             }
 
@@ -473,12 +491,7 @@ module powerbi.extensibility.visual {
                 let rowLinkValue: number = 0;
                 if (row[linkLabelColumnIndex]) {
                     if (isNaN(parseFloat(row[linkLabelColumnIndex])) || !isFinite(row[linkLabelColumnIndex])) {
-                        return {
-                            nodes: [{"id": "error", "value": 0, "loaded": false, "style": { "opacity" : 0 }}],
-                            links: [],
-                            classes: [],
-                            format: null,
-                        };
+                        return Data.errorData();
                     }
                 }
                 rowLinkValue = parseFloat(row[linkLabelColumnIndex]);
@@ -594,7 +607,13 @@ module powerbi.extensibility.visual {
          */
         private static generateSelectionIds(dataView: DataView, host: IVisualHost, columnIndex: any): visuals.ISelectionId[] {
             // will not generate selection ids if columnIndex not present
-            if (columnIndex == null || (Array.isArray(columnIndex) && columnIndex.length <= 0)) {
+            if (
+                !dataView ||
+                dataView.table == null || 
+                dataView.table.rows.length <= 0 || 
+                columnIndex == null || 
+                (Array.isArray(columnIndex) && columnIndex.length <= 0)
+            ) {
                 return undefined;
             }
 
@@ -628,6 +647,15 @@ module powerbi.extensibility.visual {
                 format = dataView.table.columns[columnIndex].format;
             }
             return format;
+        }
+
+        public static errorData() {
+            return {
+                nodes: [{"id": "error", "value": 0, "loaded": false, "style": { "opacity" : 0 }}],
+                links: [],
+                classes: [],
+                format: null,
+            };
         }
     }
 
